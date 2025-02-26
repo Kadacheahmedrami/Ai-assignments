@@ -1,0 +1,552 @@
+{
+  "nodes": [
+    {
+      "id": 1001,
+      "name": "Algiers",
+      "lat": 36.752887,
+      "lon": 3.042048,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 3415811
+    },
+    {
+      "id": 1002,
+      "name": "Oran",
+      "lat": 35.6971,
+      "lon": -0.6308,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 803329
+    },
+    {
+      "id": 1003,
+      "name": "Constantine",
+      "lat": 36.3650,
+      "lon": 6.6147,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 448374
+    },
+    {
+      "id": 1004,
+      "name": "Annaba",
+      "lat": 36.9000,
+      "lon": 7.7667,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 300000
+    },
+    {
+      "id": 1005,
+      "name": "Blida",
+      "lat": 36.4700,
+      "lon": 2.8333,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 100000
+    },
+    {
+      "id": 1006,
+      "name": "Batna",
+      "lat": 35.5558,
+      "lon": 6.1745,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 250000
+    },
+    {
+      "id": 1007,
+      "name": "Tlemcen",
+      "lat": 34.8800,
+      "lon": -1.3161,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 150000
+    },
+    {
+      "id": 1008,
+      "name": "Tizi Ouzou",
+      "lat": 36.7111,
+      "lon": 4.0490,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 135000
+    },
+    {
+      "id": 1009,
+      "name": "Sétif",
+      "lat": 36.1911,
+      "lon": 5.4131,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 220000
+    },
+    {
+      "id": 1010,
+      "name": "Biskra",
+      "lat": 34.8500,
+      "lon": 5.7300,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 200000
+    },
+    {
+      "id": 1011,
+      "name": "Sidi Bel Abbès",
+      "lat": 35.1900,
+      "lon": -0.6300,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 200000
+    },
+    {
+      "id": 1012,
+      "name": "Skikda",
+      "lat": 36.8697,
+      "lon": 6.9097,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 160000
+    },
+    {
+      "id": 1013,
+      "name": "Béjaïa",
+      "lat": 36.7500,
+      "lon": 5.0833,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 180000
+    },
+    {
+      "id": 1014,
+      "name": "Béchar",
+      "lat": 31.6194,
+      "lon": -2.2100,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 150000
+    },
+    {
+      "id": 1015,
+      "name": "Djelfa",
+      "lat": 34.6700,
+      "lon": 3.2500,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 200000
+    },
+    {
+      "id": 1016,
+      "name": "Ouargla",
+      "lat": 31.9500,
+      "lon": 5.3200,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 150000
+    },
+    {
+      "id": 1017,
+      "name": "Ghardaïa",
+      "lat": 32.4900,
+      "lon": 3.6800,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 100000
+    },
+    {
+      "id": 1018,
+      "name": "Médéa",
+      "lat": 36.2600,
+      "lon": 2.7700,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 120000
+    },
+    {
+      "id": 1019,
+      "name": "Tébessa",
+      "lat": 35.4100,
+      "lon": 8.1200,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 120000
+    },
+    {
+      "id": 1020,
+      "name": "Mostaganem",
+      "lat": 35.9333,
+      "lon": 0.0833,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 120000
+    },
+    {
+      "id": 1021,
+      "name": "Tipaza",
+      "lat": 36.5800,
+      "lon": 2.4500,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 60000
+    },
+    {
+      "id": 1022,
+      "name": "Mascara",
+      "lat": 35.4000,
+      "lon": 0.1400,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 150000
+    },
+    {
+      "id": 1023,
+      "name": "Relizane",
+      "lat": 35.7380,
+      "lon": 0.5550,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 130000
+    },
+    {
+      "id": 1024,
+      "name": "Oum El Bouaghi",
+      "lat": 35.8667,
+      "lon": 7.1340,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 100000
+    },
+    {
+      "id": 1025,
+      "name": "Illizi",
+      "lat": 26.4833,
+      "lon": 8.4833,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 30000
+    },
+    {
+      "id": 1026,
+      "name": "Khenchela",
+      "lat": 35.4260,
+      "lon": 7.1450,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 120000
+    },
+    {
+      "id": 1027,
+      "name": "Souk Ahras",
+      "lat": 36.2800,
+      "lon": 7.9500,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 110000
+    },
+    {
+      "id": 1028,
+      "name": "Tiaret",
+      "lat": 35.3700,
+      "lon": 1.3200,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 150000
+    },
+    {
+      "id": 1029,
+      "name": "Naama",
+      "lat": 33.2500,
+      "lon": 0.2500,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 50000
+    },
+    {
+      "id": 1030,
+      "name": "Adrar",
+      "lat": 27.8750,
+      "lon": -0.2930,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 80000
+    },
+    {
+      "id": 1031,
+      "name": "Laghouat",
+      "lat": 33.8000,
+      "lon": 2.8667,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 150000
+    },
+    {
+      "id": 1032,
+      "name": "Tamanrasset",
+      "lat": 22.7850,
+      "lon": 5.5220,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 60000
+    },
+    {
+      "id": 1033,
+      "name": "Mila",
+      "lat": 36.4667,
+      "lon": 6.2700,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 150000
+    },
+    {
+      "id": 1034,
+      "name": "El Oued",
+      "lat": 33.3600,
+      "lon": 6.8600,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 100000
+    },
+    {
+      "id": 1035,
+      "name": "Guelma",
+      "lat": 36.4667,
+      "lon": 7.4400,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 150000
+    },
+    {
+      "id": 1036,
+      "name": "Tindouf",
+      "lat": 27.7000,
+      "lon": -8.2000,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 50000
+    },
+    {
+      "id": 1037,
+      "name": "Bordj Bou Arreridj",
+      "lat": 36.0600,
+      "lon": 4.7800,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 100000
+    },
+    {
+      "id": 1038,
+      "name": "El Bayadh",
+      "lat": 33.6800,
+      "lon": 1.9000,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 70000
+    },
+    {
+      "id": 1039,
+      "name": "Aïn Defla",
+      "lat": 36.2000,
+      "lon": 1.9333,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 80000
+    },
+    {
+      "id": 1040,
+      "name": "Tissemsilt",
+      "lat": 35.3470,
+      "lon": 1.8333,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 70000
+    },
+    {
+      "id": 1041,
+      "name": "El Tarf",
+      "lat": 36.7620,
+      "lon": 8.2400,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 50000
+    },
+    {
+      "id": 1042,
+      "name": "Chlef",
+      "lat": 36.1700,
+      "lon": 1.3300,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 150000
+    },
+    {
+      "id": 1043,
+      "name": "Aïn Témouchent",
+      "lat": 35.1700,
+      "lon": -1.2500,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 80000
+    },
+    {
+      "id": 1044,
+      "name": "Bordj Menaïel",
+      "lat": 36.7400,
+      "lon": 4.0300,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 120000
+    },
+    {
+      "id": 1045,
+      "name": "M'sila",
+      "lat": 35.7070,
+      "lon": 4.5340,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 100000
+    },
+    {
+      "id": 1046,
+      "name": "Ouled Djellal",
+      "lat": 34.4254103,
+      "lon": 5.0644342,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 63000
+    },
+    {
+      "id": 1047,
+      "name": "Bou Saâda",
+      "lat": 35.2133123,
+      "lon": 4.1809702,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 125573
+    },
+    {
+      "id": 1048,
+      "name": "Bordj El Kiffan",
+      "lat": 36.747273,
+      "lon": 3.1908953,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 151950
+    },
+    {
+      "id": 1049,
+      "name": "Bir Mourad Raïs",
+      "lat": 36.7393938,
+      "lon": 3.0500748,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 45345
+    },
+    {
+      "id": 1050,
+      "name": "El Biar",
+      "lat": 36.7688818,
+      "lon": 3.030651,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 52582
+    },
+    {
+      "id": 1051,
+      "name": "Bab Ezzouar",
+      "lat": 36.7220068,
+      "lon": 3.1856291,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 92000
+    },
+    {
+      "id": 1052,
+      "name": "Beni Messous",
+      "lat": 36.7800963,
+      "lon": 2.974557,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 36191
+    },
+    {
+      "id": 1053,
+      "name": "Chéraga",
+      "lat": 36.7669269,
+      "lon": 2.9602571,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 80824
+    },
+    {
+      "id": 1054,
+      "name": "Dely Brahim",
+      "lat": 36.7516098,
+      "lon": 2.9825732,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 35230
+    },
+    {
+      "id": 1055,
+      "name": "Draria",
+      "lat": 36.713911,
+      "lon": 2.997737,
+      "nodeType": "city",
+      "isSettlement": true
+    },
+    {
+      "id": 1056,
+      "name": "Saoula",
+      "lat": 36.7027016,
+      "lon": 3.0238994,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 41690
+    },
+    {
+      "id": 1057,
+      "name": "Birkhadem",
+      "lat": 36.716075,
+      "lon": 3.0497361,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 77749
+    },
+    {
+      "id": 1058,
+      "name": "Kouba",
+      "lat": 36.7323557,
+      "lon": 3.0874783,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 104708
+    },
+    {
+      "id": 1059,
+      "name": "Ain Naadja",
+      "lat": 36.7024722,
+      "lon": 3.0801951,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 133247
+    },
+    {
+      "id": 1060,
+      "name": "El Harrach",
+      "lat": 36.7207974,
+      "lon": 3.1373893,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 48869
+    },
+    {
+      "id": 1061,
+      "name": "Bachdjarrah",
+      "lat": 36.7200591,
+      "lon": 3.1126365,
+      "nodeType": "city",
+      "isSettlement": true,
+      "population": 93289
+    }
+  ]
+}

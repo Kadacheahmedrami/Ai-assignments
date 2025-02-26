@@ -1,13 +1,18 @@
-  export interface Node {
-    id: string;
-    lat: number;
-    lon: number;
-  }
+export interface Node {
+  id: number;           // Changed to a number to match the sample data
+  name: string;
+  lat: number;
+  lon: number;
+  nodeType: string;
+  isSettlement: boolean;
+  population: number;
+}
+
   
-  export interface Edge {
-    start: string;
-    destination: string;
-  }
+export interface Edge {
+  start: number;
+  destination: number;
+}
 
 
 

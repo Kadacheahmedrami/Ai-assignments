@@ -1,6 +1,10 @@
 import fs from "fs";
 import path from "path";
-import MapComponent from "@/componenets/map"
+import MapComponent from "@/componenets/map";
+
+// Force dynamic rendering
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   // Read JSON from the public folder using the filesystem
   const nodespath = path.join(process.cwd(), "public", "nodes.json");
@@ -11,16 +15,9 @@ export default async function Home() {
   const nodes = JSON.parse(nodesData);
   const edges = JSON.parse(edgesData);
 
-  console.log(edges.edges); // ✅ This will work on the server
-
   return (
     <>
-      <main>
-      
-       
-
-        <MapComponent nodes={nodes.nodes} edges={edges.edges} />
-      </main>
+      <MapComponent nodes={nodes.nodes} edges={edges.edges} />
     </>
   );
 }

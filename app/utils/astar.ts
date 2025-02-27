@@ -14,7 +14,13 @@ nodes : Node[]
 interface location {
   lang :number
   lot : number
-  }
+}
+
+interface jariPropos
+{
+  nodeid : number
+  edges : Edge[]
+}
 
 
 
@@ -42,14 +48,39 @@ export const h = (location1:location , location2:location) =>
   }
 
 
+export const getJari = ({nodeid ,edges } : jariPropos) =>
+{
+  
+
+  
+  const jiran =  edges.filter((edge)=>{
+    if (edge.start === nodeid)
+    {
+    return edge
+    }
+  })
+
+
+
+  return jiran  
+}
+
 
 
 
 export const aStar = (graph: Graph, start: string, goal: string) => {
- 
+  const nodes =   graph.nodes
+  const starterId = GetIdByName({city : start , nodes})
+  const goalId = GetIdByName({city :goal, nodes})
+  let path =[]
 
 
-
+  if(!starterId || !goalId)
+  {
+    return { path: [], cost: Infinity }; 
+  }
+  
+  
 
 
   return { path: [], cost: Infinity }; 

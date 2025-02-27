@@ -1,23 +1,26 @@
-import fs from "fs";
-import path from "path";
-import MapComponent from "@/componenets/map";
 
+import MapComponent from "@/componenets/map";
+import {getEdges, getNodes } from "@/app/utils/getData"
+import {GetIdByName} from "@/app/utils/astar"
 // Force dynamic rendering
 export const dynamic = "force-dynamic";
 
+
+
+
 export default async function Home() {
   // Read JSON from the public folder using the filesystem
-  const nodespath = path.join(process.cwd(), "public", "nodes.json");
-  const edgespath = path.join(process.cwd(), "public", "edges.json");
-  const nodesData = fs.readFileSync(nodespath, "utf8");
-  const edgesData = fs.readFileSync(edgespath, "utf8");
 
-  const nodes = JSON.parse(nodesData);
-  const edges = JSON.parse(edgesData);
+
+  const nodes = getNodes().nodes
+  const edges  = getEdges().edges
+  
+
+  
 
   return (
     <>
-      <MapComponent nodes={nodes.nodes} edges={edges.edges} />
+      <MapComponent nodes={nodes} edges={edges} />
     </>
   );
 }

@@ -15,9 +15,9 @@ export interface Edge {
 }
 
 
+export interface Graph {
+  nodes: Node[];
+  edges: Edge[];
+}
 
-  interface Graph {
-    nodes: Node[];
-    edges: Edge[];
-  }
   

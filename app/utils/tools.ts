@@ -3,9 +3,9 @@
 import {Edge,Node, Graph} from '@/app/types/graph'
 
 interface neighborsProps {
-    graph:Graph;
-    node : Node
-   }
+graph:Graph;
+node : Node
+}
 
 
 interface getSmalestProps {
@@ -64,19 +64,7 @@ export const GetNodeById = ({id , nodes}:nameidprops) => {
 
 
 
-export const getSmalestAstarRank = ({node,frontier, hmap}: getSmalestProps) =>{
 
-    let smalestCost = Infinity
-    let smalestCostNode = <Node> {}
-
-    frontier.map((node)=>{
-       
-
-    })
-    
-
-
-}
 
 
 
@@ -90,8 +78,6 @@ export const h= ({node1 , node2}:hProps) =>
   
     const y = Math.abs(location1.lat - location2.lat)
   
-    console.log("y=",y)
-    console.log(x)
     const dist = Math.sqrt((x*x)+(y*y))
     return dist
   }
@@ -104,9 +90,16 @@ export const heuristicMap = ({Graph , endNode}:heuristicMapProps) =>{
 
 const nodes = Graph.nodes
 
-const hValues =  nodes.map((node)=>{
-    return  [node , h({node1:endNode,node2 : node})]
-})
+    const hValues =  nodes.map((node)=>{
+        return  [node , h({node1:endNode,node2 : node})]
+    })
+
+    const hmap = hValues.map((hval)=>{
+        return {node :hval[0],h :hval[1]}
+    })
+
+    return hmap
+
 }
 
 
@@ -125,9 +118,11 @@ export const getJari = ({nodeid ,edges } : jariPropos) =>
 }
 
 
+
 // tjiib neghbior nodes 
 export const neighbors = ({ graph, node }: neighborsProps) =>
 {
+
     const nodes = graph.nodes
     const jiran = getJari({nodeid: node.id,edges:graph.edges})
     if(! jiran)
@@ -136,10 +131,23 @@ export const neighbors = ({ graph, node }: neighborsProps) =>
     }
 
     const neighbors = jiran.map((jar)=>{
-        return GetNodeById({id :  jar.destination, nodes: nodes})
+        return GetNodeById({id :  jar.destination, nodes: nodes})!
     })
 
     
     return neighbors
+
+}
+
+
+
+// calculate the cost for each nod in array and inser it in that node 
+
+export const insertcost = (nodes : Node[] ) =>
+{
+    const nodesWithCost = nodes.map((node,index)=>{
+        return node.cost= index
+    })
+    return nodesWithCost
 
 }

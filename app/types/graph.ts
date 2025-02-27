@@ -1,11 +1,13 @@
 export interface Node {
-  id: number;           // Changed to a number to match the sample data
+  id: number;      
   name: string;
   lat: number;
   lon: number;
   nodeType: string;
   isSettlement: boolean;
   population: number;
+  parent : Node   // parent that generated this node to do back tracking look it up at cs50 
+  cost :number
 }
 
   

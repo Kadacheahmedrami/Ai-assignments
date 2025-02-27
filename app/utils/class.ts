@@ -19,12 +19,12 @@ interface moveProps {
 
 
 
-class agent {
+export class Agent {
     constructor ({graph, node}:neighborsProps)
     {
         this.graph = graph;
         this.node  = node;
-
+        
     }
 
 
@@ -38,11 +38,23 @@ class agent {
 
     move = ({frontier,used}:moveProps) =>
     {
+    
+        
+    let selectedNode = <Node>{}
+    let min = Infinity
+     
 
- 
-    // slect a node from the frontier
-    const selectedNode = <Node>{}
+    frontier.map((node)=>{
+    if(min > node.cost )
+    {
+        min =  node.cost
+        selectedNode = node
+    }
+    })
 
+  
+    selectedNode.parent = this.node
+    
     this.node = selectedNode
     frontier = frontier.filter(node => node !== this.node)
     

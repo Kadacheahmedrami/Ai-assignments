@@ -3,7 +3,7 @@ import path from "path";
 
 
 
-export const getNodes = () =>
+export const  getNodes = () =>
 {
     const nodespath = path.join(process.cwd(), "public", "nodes.json");
     const nodesData = fs.readFileSync(nodespath, "utf8");

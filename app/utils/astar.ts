@@ -3,7 +3,7 @@
 import {Edge,Node, Graph} from '@/app/types/graph'
 
 import {GetNodeByName,GetNodeById} from "@/app/utils/tools"
-
+import {Agent} from '@/app/utils/class'
 
 
 
@@ -11,7 +11,7 @@ import {GetNodeByName,GetNodeById} from "@/app/utils/tools"
 
 
 export const aStar = (graph: Graph, start: string, goal: string) => {
-  const nodes =   graph.nodes
+  let nodes =   graph.nodes
   const st = GetNodeByName({name : start , nodes})
   const go = GetNodeByName({name :goal, nodes})
   let path =[]
@@ -22,8 +22,26 @@ export const aStar = (graph: Graph, start: string, goal: string) => {
     return { path: [], cost: Infinity }; 
   }
   
+
+  let frontier: Node[] = []
+  let vistedNodes = []
+  frontier.push(st)
+  let agent = new Agent({graph,node:st})
+
+  while(true)
+  {
+    if(frontier.length === 0)
+    {
+      alert("no path found")
+      return []
+    }
+
+    const neighbors = agent.neighbors()
+  }
+
+  
   
 
 
-  return { path: [], cost: Infinity }; 
+   
 };

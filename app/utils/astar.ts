@@ -7,12 +7,15 @@ import {getEdges, getNodes} from "@/app/utils/getData"
 
 
 interface idnameprops {
-
 city :string
 nodes : Node[]
-
-
 }
+
+interface location {
+  lang :number
+  lot : number
+  }
+
 
 
 export const GetIdByName = ({city , nodes}:idnameprops) => {
@@ -24,6 +27,19 @@ export const GetIdByName = ({city , nodes}:idnameprops) => {
   return foundNode ? foundNode.id : undefined;
 }
 
+
+
+export const h = (location1:location , location2:location) =>
+  {
+    const x = Math.abs(location1.lang - location2.lang )
+  
+    const y = Math.abs(location1.lot - location2.lot)
+  
+    console.log("y=",y)
+    console.log(x)
+    const dist = Math.sqrt((x*x)+(y*y))
+    return dist
+  }
 
 
 

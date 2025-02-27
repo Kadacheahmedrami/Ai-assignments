@@ -1,7 +1,7 @@
 
 import MapComponent from "@/componenets/map";
 import {getEdges, getNodes } from "@/app/utils/getData"
-import {GetIdByName} from "@/app/utils/astar"
+import {GetIdByName ,h} from "@/app/utils/astar"
 // Force dynamic rendering
 export const dynamic = "force-dynamic";
 

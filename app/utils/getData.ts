@@ -3,11 +3,6 @@ import path from "path";
 
 
 
- 
-
-
-
-
 export const getNodes = () =>
 {
     const nodespath = path.join(process.cwd(), "public", "nodes.json");

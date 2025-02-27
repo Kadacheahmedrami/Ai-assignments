@@ -1,7 +1,7 @@
 
 import MapComponent from "@/componenets/map";
 import {getEdges, getNodes } from "@/app/utils/getData"
-import {GetIdByName ,h,getJari} from "@/app/utils/astar"
+import {GetNodeByName,GetNodeById ,h,getJari} from "@/app/utils/tools"
 
 export const dynamic = "force-dynamic";
 

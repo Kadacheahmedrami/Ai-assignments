@@ -8,6 +8,12 @@ interface neighborsProps {
    }
 
 
+interface getSmalestProps {
+    node :Node,
+frontier : Node[],
+hmap : []
+}
+
 interface idnameprops {
 name :string
 nodes : Node[]
@@ -44,6 +50,8 @@ export const GetNodeByName = ({name , nodes}:idnameprops) => {
 }
 
 
+
+
 // tjiib node bl id
 export const GetNodeById = ({id , nodes}:nameidprops) => {
 
@@ -54,6 +62,21 @@ export const GetNodeById = ({id , nodes}:nameidprops) => {
   return foundNode;
 }
 
+
+
+export const getSmalestAstarRank = ({node,frontier, hmap}: getSmalestProps) =>{
+
+    let smalestCost = Infinity
+    let smalestCostNode = <Node> {}
+
+    frontier.map((node)=>{
+       
+
+    })
+    
+
+
+}
 
 
 

@@ -39,6 +39,18 @@ interface heuristicMapProps{
     endNode : Node;
 }
 
+interface hmapProp{
+    node:Node;
+    h : number
+}
+
+
+interface insertProp{
+    hmap : hmapProp[];
+    nodes : Node[]
+}
+
+
 // tjiib node bl name
 export const GetNodeByName = ({name , nodes}:idnameprops) => {
 
@@ -95,7 +107,7 @@ const nodes = Graph.nodes
     })
 
     const hmap = hValues.map((hval)=>{
-        return {node :hval[0],h :hval[1]}
+        return <hmapProp>{node :hval[0],h :hval[1]}
     })
 
     return hmap
@@ -143,11 +155,24 @@ export const neighbors = ({ graph, node }: neighborsProps) =>
 
 // calculate the cost for each nod in array and inser it in that node 
 
-export const insertcost = (nodes : Node[] ) =>
+export const insertcost = ({nodes,hmap} : insertProp ) =>
 {
-    const nodesWithCost = nodes.map((node,index)=>{
-        return node.cost= index
+    let nodesWithCost
+    hmap.find((tuple)=>{
+        
+        
+
+         nodesWithCost = nodes.map((node)=>{
+            if (tuple.node.id = node.id)
+            {
+                return node.cost= tuple.h
+            }
+           
+        })
+
+       
     })
     return nodesWithCost
+    
 
 }

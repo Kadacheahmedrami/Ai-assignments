@@ -25,11 +25,11 @@ export default async function Home() {
   let neighbors = agent.neighbors()
   let usednodes = [agent.node]
 
-  
+  const hmap = heuristicMap({Graph : {nodes,edges} , endNode : GetNodeById({id:1001,nodes})! })
 
   // function you give it array o nodes and it return the array of nodes and it insert an 
 
-  const frontier = insertcost(neighbors)
+  const frontier = insertcost({nodes :neighbors,hmap})
   console.log(agent.node)
   agent.move({frontier: neighbors ,used: usednodes })
   console.log(agent.node)

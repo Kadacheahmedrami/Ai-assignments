@@ -15,8 +15,10 @@ export default async function Home() {
 
 
   const result = aStar({graph:{nodes,edges},start:"Algiers",goal:"Tamanrasset"})
-    console.log(result?.path)
-
+    result?.path.map((p)=>{
+       console.log( p)
+    })
+    console.log(result?.cost)
   return (
     <>
   

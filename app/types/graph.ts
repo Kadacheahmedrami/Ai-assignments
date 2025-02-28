@@ -6,10 +6,9 @@ export interface Node {
   nodeType: string;
   isSettlement: boolean;
   population: number;
-  parent : Node   // parent that generated this node to do back tracking look it up at cs50 
+  parentid : number   // parent that generated this node to do back tracking look it up at cs50 
   cost :number
 }
-
   
 export interface Edge {
   start: number;

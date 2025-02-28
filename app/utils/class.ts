@@ -1,38 +1,25 @@
-import {Node,Edge,Graph} from '@/app/types/graph'
+import {Node,Graph} from '@/app/types/graph'
 import {neighbors } from '@/app/utils/tools'
+import {neighborsProps,moveProps} from '@/app/utils/interfaces'
 
-
-
-interface neighborsProps {
-    graph:Graph;
-    node : Node
-   }
-
-
-
-
-interface moveProps {
- 
-    frontier:Node[];
-
-   }
 
 
 
 export class Agent {
-    constructor ({graph, node}:neighborsProps)
+    constructor ({graph, node,currentCost}:neighborsProps)
     {
         this.graph = graph;
         this.node  = node;
+        this.currentCost = currentCost;
         
     }
 
-
+    currentCost : number ;
     node : Node  ;
     graph : Graph ;
   
     neighbors = () =>{
-        return neighbors({graph :this.graph,node :this.node})
+        return neighbors({graph :this.graph,node :this.node,currentCost: this.currentCost})
     }
 
 
@@ -52,10 +39,16 @@ export class Agent {
     }
     })
 
-    
-    selectedNode.parent = this.node
-    
+    // sauvgarder the parent
+    selectedNode.parentid = this.node.id
+
+    // agent t7araak lnode jdiid aka updatinah
     this.node = selectedNode
+
+    // sauvgarder the cost
+    this.currentCost = min
+
+
     frontier = frontier.filter(node => node !== this.node)
     
     }

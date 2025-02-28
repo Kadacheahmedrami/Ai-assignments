@@ -1,74 +1,8 @@
 
 
 import {Edge,Node, Graph} from '@/app/types/graph'
-import next from 'next';
 import { getDistance } from 'geolib';
-
-
-
-interface neighborsProps {
-graph:Graph;
-node : Node
-}
-
-
-interface getSmalestProps {
-    node :Node,
-frontier : Node[],
-hmap : []
-}
-
-interface idnameprops {
-name :string
-nodes : Node[]
-}
-
-interface hProps{
-    node1: Node;
-    node2: Node
-}
-
-interface nameidprops {
-  id :number
-  nodes : Node[]
-  }
-
-interface jariPropos
-{
-  nodeid : number
-  edges : Edge[]
-}
-interface heuristicMapProps{
-    Graph : Graph;
-    endNode : Node;
-}
-
-interface hmapProp{
-    node:Node;
-    h : number
-}
-
-
-interface insertProp{
-    hmap : hmapProp[];
-    graph : Graph;
-    currentNode : Node ;
-}
-
-
-interface costProp{
-
-    current:Node;
-    next:Node;
-    graph:Graph
-}
-
-interface substractProp{
-    neighbors :  Node[];
-    alreadyvisted : Node[];
-}
-
-
+import {idnameprops,nameidprops,hProps,heuristicMapProps,hmapProp,jariPropos,neighborsProps,costProp,insertProp,substractProp} from '@/app/utils/interfaces'
 
 // tjiib node bl name
 export const GetNodeByName = ({name , nodes}:idnameprops) => {
@@ -79,8 +13,6 @@ export const GetNodeByName = ({name , nodes}:idnameprops) => {
   
   return foundNode 
 }
-
-
 
 
 // tjiib node bl id
@@ -95,11 +27,6 @@ export const GetNodeById = ({id , nodes}:nameidprops) => {
 
 
 
-
-
-
-
-
 // h(x)
 export const h= ({node1 , node2}:hProps) =>
   {     
@@ -107,10 +34,6 @@ export const h= ({node1 , node2}:hProps) =>
         { latitude: node1.lat, longitude: node1.lon }, 
         { latitude: node2.lat , longitude: node2.lon }   
     );
-    
-
-
-  
     // converter to the metre 
     // la7iha ida data ta3k ta5dam bl km
     return distance*1000
@@ -137,7 +60,6 @@ const nodes = Graph.nodes
 }
 
 
-
 // tjiib edges
 export const getJari = ({nodeid ,edges } : jariPropos) =>
 {
@@ -150,7 +72,6 @@ export const getJari = ({nodeid ,edges } : jariPropos) =>
 
   return jiran  
 }
-
 
 
 // tjiib neghbior nodes 
@@ -174,7 +95,7 @@ export const neighbors = ({ graph, node }: neighborsProps) =>
 }
 
 // tjiib lcost mn node lnode aka g(x)
-export const getCost  = ( {current,next,graph}:costProp)=>
+export const getCost  = ( {current,next,graph,currentCost}:costProp)=>
     {
      const cost = graph.edges.find((edge)=>{
         if(edge.start === current.id &&  edge.destination === next.id)
@@ -188,34 +109,19 @@ export const getCost  = ( {current,next,graph}:costProp)=>
 
 // calculate the cost for each nod in array and inser it in that node 
 
-export const insertcost = ({graph,hmap,currentNode } : insertProp ) =>
+export const insertcost = ({graph,hmap,currentNode,currentCost } : insertProp ) =>
 {
     let nodesWithCost
-    
     let nodes = graph.nodes
-
-    
-
-    
-
-
     hmap.find((tuple)=>{
-        
-        
-
          nodesWithCost = nodes.map((node)=>{
             if (tuple.node.id === node.id)
             {
-                return node.cost= tuple.h + getCost({current:currentNode , next:node , graph} )
-            }
-           
+                return node.cost= tuple.h + getCost({current:currentNode , next:node , graph,currentCost} )
+            }  
         })
-
-       
     })
     return nodesWithCost
-    
-
 }
 
 

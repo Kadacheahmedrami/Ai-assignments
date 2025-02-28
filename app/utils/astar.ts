@@ -34,7 +34,7 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
 
 
 
-    let agent = new Agent({graph,node: st})
+    let agent = new Agent({graph,node: st,currentCost:0})
     let alreadyvisted = [agent.node] 
     const hmap = heuristicMap({Graph : {nodes,edges} , endNode : go })
     let frontier = [agent.node]
@@ -49,6 +49,8 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
 
     let x = 0
     // use the x to write a non crushable code
+    // i learned this from this video that talk how nasa write uncrashable code
+
     while(true && x< 10000)
     {
     
@@ -66,23 +68,22 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
         if(agent.node.id === go.id)
         { 
           
-
+          const cost = agent.currentCost
           while (agent.node)
           {
             // console.log(agent.node.name)
             path[path.length]= agent.node
-            agent.node = agent.node.parent
+            agent.node = GetNodeById({id:agent.node.parentid,nodes})!
            
           }
         
-          console.log("we found the path")
+          console.log("it wooorks :)")
        
-          
 
           path.reverse()
 
-      
-          return { path, cost: Infinity };
+        
+          return { path, cost};
 
         }
 
@@ -97,7 +98,7 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
 
        
 
-        insertcost({graph,hmap,currentNode:agent.node})
+        insertcost({graph,hmap,currentNode:agent.node,currentCost:agent.currentCost})
 
         alreadyvisted = alreadyvisted.concat([agent.node])
         

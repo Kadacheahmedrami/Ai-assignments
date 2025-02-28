@@ -14,7 +14,7 @@ interface neighborsProps {
 interface moveProps {
  
     frontier:Node[];
-    used : Node[]
+
    }
 
 
@@ -36,7 +36,7 @@ export class Agent {
     }
 
 
-    move = ({frontier,used}:moveProps) =>
+    move = ({frontier}:moveProps) =>
     {
     
         
@@ -52,7 +52,7 @@ export class Agent {
     }
     })
 
-  
+    
     selectedNode.parent = this.node
     
     this.node = selectedNode

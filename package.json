@@ -22,6 +22,7 @@
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.39.1",
     "framer-motion": "^12.0.6",
+    "geolib": "^3.3.4",
     "intersection-observer": "^0.12.2",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",

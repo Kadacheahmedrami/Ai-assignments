@@ -14,12 +14,14 @@ export interface Node {
 export interface Edge {
   start: number;
   destination: number;
+  distance : number;
 }
 
 
 export interface Graph {
   nodes: Node[];
   edges: Edge[];
+  
 }
 
   

@@ -1,6 +1,10 @@
 
 
 import {Edge,Node, Graph} from '@/app/types/graph'
+import next from 'next';
+import { getDistance } from 'geolib';
+
+
 
 interface neighborsProps {
 graph:Graph;
@@ -47,8 +51,23 @@ interface hmapProp{
 
 interface insertProp{
     hmap : hmapProp[];
-    nodes : Node[]
+    graph : Graph;
+    currentNode : Node ;
 }
+
+
+interface costProp{
+
+    current:Node;
+    next:Node;
+    graph:Graph
+}
+
+interface substractProp{
+    neighbors :  Node[];
+    alreadyvisted : Node[];
+}
+
 
 
 // tjiib node bl name
@@ -84,14 +103,17 @@ export const GetNodeById = ({id , nodes}:nameidprops) => {
 // h(x)
 export const h= ({node1 , node2}:hProps) =>
   {     
-    const location1 = { lon : node1.lon ,lat :node1.lat}
-    const location2 = { lon : node2.lon ,lat :node2.lat}
-    const x = Math.abs(location1.lon - location2.lon )
+    const distance = getDistance(
+        { latitude: node1.lat, longitude: node1.lon }, 
+        { latitude: node2.lat , longitude: node2.lon }   
+    );
+    
+
+
   
-    const y = Math.abs(location1.lat - location2.lat)
-  
-    const dist = Math.sqrt((x*x)+(y*y))
-    return dist
+    // converter to the metre 
+    // la7iha ida data ta3k ta5dam bl km
+    return distance*1000
   }
 
 
@@ -151,21 +173,40 @@ export const neighbors = ({ graph, node }: neighborsProps) =>
 
 }
 
+// tjiib lcost mn node lnode aka g(x)
+export const getCost  = ( {current,next,graph}:costProp)=>
+    {
+     const cost = graph.edges.find((edge)=>{
+        if(edge.start === current.id &&  edge.destination === next.id)
+        {
+            return edge.distance
+        }
+    })
+      return cost ? cost.distance : 0
+    }
 
 
 // calculate the cost for each nod in array and inser it in that node 
 
-export const insertcost = ({nodes,hmap} : insertProp ) =>
+export const insertcost = ({graph,hmap,currentNode } : insertProp ) =>
 {
     let nodesWithCost
+    
+    let nodes = graph.nodes
+
+    
+
+    
+
+
     hmap.find((tuple)=>{
         
         
 
          nodesWithCost = nodes.map((node)=>{
-            if (tuple.node.id = node.id)
+            if (tuple.node.id === node.id)
             {
-                return node.cost= tuple.h
+                return node.cost= tuple.h + getCost({current:currentNode , next:node , graph} )
             }
            
         })
@@ -176,3 +217,11 @@ export const insertcost = ({nodes,hmap} : insertProp ) =>
     
 
 }
+
+
+export const subtractNodesArray   =  ({ neighbors, alreadyvisted }: substractProp) : Node[]   => 
+{
+
+    return neighbors.filter(node => !alreadyvisted.some(visited => node.id === visited.id));
+}
+

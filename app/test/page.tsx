@@ -14,11 +14,9 @@ export default async function Home() {
   const edges  =  getEdges().edges
 
 
-  const result = aStar({graph:{nodes,edges},start:"Algiers",goal:"Tamanrasset"})
-    result?.path.map((p)=>{
-       console.log( p)
-    })
-    console.log(result?.cost)
+  const result = aStar({graph:{nodes,edges},start:"Algiers",goal:"Bejaia"})
+    console.log(result)
+    // console.log(result?.cost)
   return (
     <>
   

@@ -34,9 +34,8 @@ export const h= ({node1 , node2}:hProps) =>
         { latitude: node1.lat, longitude: node1.lon }, 
         { latitude: node2.lat , longitude: node2.lon }   
     );
-    // converter to the metre 
-    // la7iha ida data ta3k ta5dam bl km
-    return distance*1000
+ 
+    return distance/1000
   }
 
 
@@ -103,7 +102,7 @@ export const getCost  = ( {current,next,graph,currentCost}:costProp)=>
             return edge.distance
         }
     })
-      return cost ? cost.distance : 0
+      return cost ? cost.distance + currentCost : 0
     }
 
 
@@ -111,6 +110,7 @@ export const getCost  = ( {current,next,graph,currentCost}:costProp)=>
 
 export const insertcost = ({graph,hmap,currentNode,currentCost } : insertProp ) =>
 {
+  
     let nodesWithCost
     let nodes = graph.nodes
     hmap.find((tuple)=>{
@@ -122,6 +122,7 @@ export const insertcost = ({graph,hmap,currentNode,currentCost } : insertProp ) 
         })
     })
     return nodesWithCost
+
 }
 
 

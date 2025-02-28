@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FeatureCollection, Feature, Point, LineString } from "geojson";
+import { FeatureCollection, Feature, Point, LineString, GeoJsonProperties } from "geojson";
 import { Node, Edge } from "@/app/types/graph";
 
 // Set your Mapbox access token
@@ -11,9 +11,10 @@ mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 interface MapProps {
   nodes: Node[];
   edges: Edge[];
+  path?: Node[]; // A* path
 }
 
-const MapComponent: React.FC<MapProps> = ({ nodes, edges }) => {
+const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,6 +24,22 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges }) => {
       center: [3.042048, 36.752887],
       zoom: 6,
     });
+
+    // Fetch a route following roads between two nodes using Mapbox Directions API
+    const fetchRoute = async (start: Node, dest: Node): Promise<LineString | null> => {
+      const query = `https://api.mapbox.com/directions/v5/mapbox/driving/${start.lon},${start.lat};${dest.lon},${dest.lat}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
+      try {
+        const response = await fetch(query);
+        const data = await response.json();
+        if (data.routes && data.routes.length > 0) {
+          return data.routes[0].geometry;
+        }
+        return null;
+      } catch (error) {
+        console.error("Error fetching route:", error);
+        return null;
+      }
+    };
 
     map.on("load", () => {
       // --- Nodes ---
@@ -86,48 +103,29 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges }) => {
         },
       });
 
-      // --- Edges as roads ---
-      // Function to fetch a route following roads using the Mapbox Directions API
-      const fetchRoute = async (start: Node, dest: Node): Promise<LineString | null> => {
-        const query = `https://api.mapbox.com/directions/v5/mapbox/driving/${start.lon},${start.lat};${dest.lon},${dest.lat}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
-        try {
-          const response = await fetch(query);
-          const data = await response.json();
-          if (data.routes && data.routes.length > 0) {
-            return data.routes[0].geometry;
-          }
-          return null;
-        } catch (error) {
-          console.error("Error fetching route:", error);
-          return null;
-        }
-      };
-
-      // Load edge features that follow roads
+      // --- Edges as roads (grey background routes) ---
       const loadEdges = async () => {
         const edgeFeatures = await Promise.all(
           edges.map(async (edge) => {
-            // Match nodes by id (both stored as numbers)
             const startNode = nodes.find((node) => node.id === edge.start);
             const destNode = nodes.find((node) => node.id === edge.destination);
             if (startNode && destNode) {
               const routeGeometry = await fetchRoute(startNode, destNode);
               if (routeGeometry) {
                 return {
-                    type: "Feature",
-                    geometry: routeGeometry,
-                    properties: {
-                        start: edge.start,
-                        destination: edge.destination,
-                    },
-                } as unknown as Feature<LineString, { start: number; destination: number }>;
+                  type: "Feature",
+                  geometry: routeGeometry,
+                  properties: {
+                    start: edge.start,
+                    destination: edge.destination,
+                  },
+                } as Feature<LineString, { start: number; destination: number }>;
               }
             }
             return null;
           })
         );
 
-        // Filter out any null features
         const validEdgeFeatures = edgeFeatures.filter(
           (feature): feature is Feature<LineString, { start: number; destination: number }> =>
             feature !== null
@@ -161,10 +159,103 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges }) => {
       };
 
       loadEdges();
+
+      // --- A* Path on Roads with Smooth Animation ---
+      if (path && path.length > 0) {
+        // For each consecutive pair in the A* path, fetch the driving route geometry
+        const fetchPathGeometry = async () => {
+          let allCoordinates: number[][] = [];
+          for (let i = 0; i < path.length - 1; i++) {
+            const startNode = path[i];
+            const destNode = path[i + 1];
+            const routeGeom = await fetchRoute(startNode, destNode);
+            if (routeGeom) {
+              // For the first segment, add all coordinates; for subsequent segments, skip the duplicate start coordinate.
+              if (i === 0) {
+                allCoordinates = allCoordinates.concat(routeGeom.coordinates);
+              } else {
+                allCoordinates = allCoordinates.concat(routeGeom.coordinates.slice(1));
+              }
+            }
+          }
+          return allCoordinates;
+        };
+
+        fetchPathGeometry().then((coordinates) => {
+          if (coordinates && coordinates.length > 0) {
+            // Create initial geojson with the first coordinate
+            const initialGeojson: FeatureCollection<LineString, GeoJsonProperties> = {
+              type: "FeatureCollection",
+              features: [
+                {
+                  type: "Feature",
+                  geometry: {
+                    type: "LineString",
+                    coordinates: [coordinates[0]],
+                  },
+                  properties: {},
+                },
+              ],
+            };
+
+            map.addSource("astarPath", {
+              type: "geojson",
+              data: initialGeojson,
+            });
+
+            map.addLayer({
+              id: "astarPathLayer",
+              type: "line",
+              source: "astarPath",
+              layout: {
+                "line-join": "round",
+                "line-cap": "round",
+              },
+              paint: {
+                "line-color": "#00FF00",
+                "line-width": 4,
+                "line-opacity": 0.8,
+              },
+            });
+
+            // Ensure the animated path layer appears on top of the grey roads
+            map.moveLayer("edges-layer","astarPathLayer");
+
+            // Animate the drawing of the path
+            let progress = 0;
+            const totalPoints = coordinates.length;
+            const animatePath = () => {
+              progress += 0.01; // Increase progress over time
+              const numPoints = Math.floor(progress * totalPoints);
+              const animatedCoordinates = coordinates.slice(0, numPoints > 1 ? numPoints : 1);
+              
+              const animatedGeojson: FeatureCollection<LineString, GeoJsonProperties> = {
+                type: "FeatureCollection",
+                features: [
+                  {
+                    type: "Feature",
+                    geometry: {
+                      type: "LineString",
+                      coordinates: animatedCoordinates,
+                    },
+                    properties: {},
+                  },
+                ],
+              };
+
+              (map.getSource("astarPath") as mapboxgl.GeoJSONSource).setData(animatedGeojson);
+              if (progress < 1) {
+                requestAnimationFrame(animatePath);
+              }
+            };
+            animatePath();
+          }
+        });
+      }
     });
 
     return () => map.remove();
-  }, [nodes, edges]);
+  }, [nodes, edges, path]);
 
   return <div ref={mapContainerRef} style={{ width: "100%", height: "100vh" }} />;
 };

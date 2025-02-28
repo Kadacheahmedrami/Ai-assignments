@@ -37,6 +37,7 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
     let agent = new Agent({graph,node: st,currentCost:0})
     let alreadyvisted = [agent.node] 
     const hmap = heuristicMap({Graph : {nodes,edges} , endNode : go })
+   
     let frontier = [agent.node]
 
 
@@ -90,16 +91,18 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
         
       
         const neighbors = agent.neighbors()
-        const notvisited = subtractNodesArray({alreadyvisted,neighbors}
-
-        ) 
+        const notvisited = subtractNodesArray({neighbors,alreadyvisted}) 
 
         frontier = frontier.concat(notvisited)
 
        
+        
+        
 
-        insertcost({graph,hmap,currentNode:agent.node,currentCost:agent.currentCost})
-
+        neighbors.map((node)=>{
+          insertcost({graph,hmap,currentNode:node,currentCost:agent.currentCost})
+        })
+        
         alreadyvisted = alreadyvisted.concat([agent.node])
         
         // console.log('visted',alreadyvisted)

@@ -10,7 +10,7 @@ export default async function Home() {
   const edges = getEdges().edges;
 
   // Run A* search from "Algiers" to "Batna"
-  const result = aStar({ graph: { nodes, edges }, start: "Algiers", goal: "Biskra" });
+  const result = aStar({ graph: { nodes, edges }, start: "Algiers", goal: "Tamanrasset" });
   const path = result?.path; // This is your array of nodes
   console.log(path)
   return (

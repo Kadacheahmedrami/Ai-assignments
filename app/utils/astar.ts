@@ -91,8 +91,15 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
         
       
         const neighbors = agent.neighbors()
-        const notvisited = subtractNodesArray({neighbors,alreadyvisted}) 
 
+     
+
+        const notvisited = subtractNodesArray({neighbors,alreadyvisted})
+
+        notvisited.map((node)=>{
+          node.parentid = agent.node.id
+        })
+        
         frontier = frontier.concat(notvisited)
 
        

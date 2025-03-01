@@ -40,7 +40,7 @@ export class Agent {
     })
 
     // sauvgarder the parent
-    selectedNode.parentid = this.node.id
+    // selectedNode.parentid = this.node.id
 
     // agent t7araak lnode jdiid aka updatinah
     this.node = selectedNode

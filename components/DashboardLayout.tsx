@@ -26,14 +26,14 @@ type NavItem = {
 const navItems: NavItem[] = [
 
   {
-    title: "assignment01",
-    href: "/main/assignment01",
+    title: "assignment01 (tp)",
+    href: "/assignment01",
     icon: FileText,
     subItems: [
-      { title: "documentation ", href: "/main/assignment01/documentation", icon: FileText },
-      { title: "start", href: "/main/assignment01/start", icon: FileText },
-      { title: "code", href: "/main/assignment01/code", icon: FileText },
-      { title: "Contact", href: "/main/assignment01/contact", icon: FileText },
+      { title: "documentation ", href: "/assignment01/documentation", icon: FileText },
+      { title: "start", href: "/assignment01/start", icon: FileText },
+      { title: "code", href: "/assignment01/code", icon: FileText },
+      { title: "Contact", href: "/assignment01/contact", icon: FileText },
     ],
   }
 ]

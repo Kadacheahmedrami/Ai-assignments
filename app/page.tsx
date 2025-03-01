@@ -1,16 +1,13 @@
 
 
-export const dynamic = "force-dynamic";
+export default function MainPage() {
 
-export default async function Home() {
-
-
-  // Run A* search from "Algiers" to "Batna"
 
   return (
     <>
- 
-  
+    <div className="h-[93.8vh] w-screen bg-black">
+
+    </div>
     </>
   );
 }

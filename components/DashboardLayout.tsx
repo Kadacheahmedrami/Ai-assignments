@@ -27,11 +27,11 @@ const navItems: NavItem[] = [
 
   {
     title: "assignment01",
-    href: "/main/pages",
+    href: "/main/assignment01",
     icon: FileText,
     subItems: [
       { title: "documentation ", href: "/main/assignment01/documentation", icon: FileText },
-      { title: "aStar", href: "/main/assignment01/aStar", icon: FileText },
+      { title: "start", href: "/main/assignment01/start", icon: FileText },
       { title: "code", href: "/main/assignment01/code", icon: FileText },
       { title: "Contact", href: "/main/assignment01/contact", icon: FileText },
     ],

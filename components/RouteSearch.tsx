@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { Node, Edge } from '@/app/types/graph';
 import { aStar } from '@/app/utils/astar';
 
@@ -25,7 +25,8 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ suggestions, onSelect }
           key={city} 
           className="px-4 py-2 hover:bg-blue-100 cursor-pointer"
           role="option"
-          onMouseDown={() => onSelect(city)} // onMouseDown prevents input blur before selection
+          aria-selected="false" // Added to satisfy ARIA requirements
+          onMouseDown={() => onSelect(city)}
         >
           {city}
         </li>
@@ -45,18 +46,18 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
   // Compute the list of city names once
   const cityNames = useMemo(() => nodes.map(node => node.name), [nodes]);
 
-  // Function to filter suggestions based on input
-  const getSuggestions = (input: string): string[] => {
+  // Wrap getSuggestions in useCallback so that its identity remains stable
+  const getSuggestions = useCallback((input: string): string[] => {
     if (!input) return [];
     const inputLower = input.toLowerCase();
     return cityNames
       .filter(city => city.toLowerCase().includes(inputLower))
-      .slice(0, 5); // Limit to 5 suggestions
-  };
+      .slice(0, 5);
+  }, [cityNames]);
 
-  // Memoized suggestions for each input
-  const filteredStartSuggestions = useMemo(() => getSuggestions(start), [start, cityNames]);
-  const filteredGoalSuggestions = useMemo(() => getSuggestions(goal), [goal, cityNames]);
+  // Memoized suggestions for each input field, now including getSuggestions in the dependency arrays
+  const filteredStartSuggestions = useMemo(() => getSuggestions(start), [start, getSuggestions]);
+  const filteredGoalSuggestions = useMemo(() => getSuggestions(goal), [goal, getSuggestions]);
 
   // Handle form submission for route search
   const handleSubmit = async (e: React.FormEvent) => {
@@ -92,13 +93,13 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
       return;
     }
 
-    // Calculate the path using A* algorithm
+    // Calculate the path using the A* algorithm
     setIsLoading(true);
     try {
-      const result = aStar({ 
-        graph: { nodes, edges }, 
-        start: start, 
-        goal: goal 
+      const result = aStar({
+        graph: { nodes, edges },
+        start,
+        goal
       });
 
       if (!result) {
@@ -125,11 +126,9 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
   };
 
   return (
-    <section className=" p-6 max-w-xl mx-auto">
-   
+    <section className="p-6 max-w-xl mx-auto">
       <form onSubmit={handleSubmit} noValidate>
         <div className="flex flex-col space-y-4">
-          {/* Row for input fields and search button */}
           <div className="flex flex-row space-x-4 items-end">
             {/* Starting City Input */}
             <div className="relative flex-1">
@@ -151,7 +150,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
               {showStartSuggestions && filteredStartSuggestions.length > 0 && (
                 <SuggestionList 
                   suggestions={filteredStartSuggestions} 
-                  onSelect={(value) => handleSelectSuggestion(value, 'start')} 
+                  onSelect={(value) => handleSelectSuggestion(value, 'start')}
                 />
               )}
             </div>
@@ -176,7 +175,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
               {showGoalSuggestions && filteredGoalSuggestions.length > 0 && (
                 <SuggestionList 
                   suggestions={filteredGoalSuggestions} 
-                  onSelect={(value) => handleSelectSuggestion(value, 'goal')} 
+                  onSelect={(value) => handleSelectSuggestion(value, 'goal')}
                 />
               )}
             </div>

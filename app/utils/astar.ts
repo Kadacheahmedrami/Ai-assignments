@@ -11,11 +11,11 @@ export interface aStarProps{
 }
 export const aStar = ({graph , start , goal }:aStarProps) => {
 
-  let nodes =   graph.nodes
-  let edges =   graph.edges
+  const nodes =   graph.nodes
+  const edges =   graph.edges
   const st = GetNodeByName({name : start , nodes})
   const go = GetNodeByName({name :goal, nodes})
-  let path: Node[] = []
+  const path: Node[] = []
 
   if(!st || !go)
   {
@@ -24,7 +24,7 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
   }
   else
   {
-    let agent = new Agent({graph,node: st,currentCost:0})
+    const agent = new Agent({graph,node: st,currentCost:0})
     let alreadyvisted = [agent.node] 
     const hmap = heuristicMap({Graph : {nodes,edges} , endNode : go })
     let frontier = [agent.node]

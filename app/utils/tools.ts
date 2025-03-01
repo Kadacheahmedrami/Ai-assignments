@@ -112,7 +112,7 @@ export const insertcost = ({graph,hmap,currentNode,currentCost } : insertProp ) 
 {
   
     let nodesWithCost
-    let nodes = graph.nodes
+    const nodes = graph.nodes
     hmap.find((tuple)=>{
          nodesWithCost = nodes.map((node)=>{
             if (tuple.node.id === node.id)

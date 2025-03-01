@@ -9,7 +9,6 @@ import {
   LayoutDashboard,
   FileText,
   BookOpen,
-  Image,
   Users,
   Settings,
   Menu,

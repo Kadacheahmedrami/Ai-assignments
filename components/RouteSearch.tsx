@@ -126,7 +126,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
   };
 
   return (
-    <section className="p-6 max-w-xl mx-auto">
+    <section className="">
       <form onSubmit={handleSubmit} noValidate>
         <div className="flex flex-col space-y-4">
           <div className="flex flex-row space-x-4 items-end">

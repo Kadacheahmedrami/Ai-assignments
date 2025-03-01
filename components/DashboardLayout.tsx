@@ -24,45 +24,18 @@ type NavItem = {
 }
 
 const navItems: NavItem[] = [
+
   {
-    title: "Dashboard",
-    href: "/main",
-    icon: LayoutDashboard,
-  },
-  {
-    title: "Pages",
+    title: "assignment01",
     href: "/main/pages",
     icon: FileText,
     subItems: [
-      { title: "Landing Page", href: "/main/pages/landing", icon: FileText },
-      { title: "About Us", href: "/main/pages/about", icon: FileText },
-      { title: "Services", href: "/main/pages/services", icon: FileText },
-      { title: "Contact", href: "/main/pages/contact", icon: FileText },
+      { title: "documentation ", href: "/main/assignment01/documentation", icon: FileText },
+      { title: "aStar", href: "/main/assignment01/aStar", icon: FileText },
+      { title: "code", href: "/main/assignment01/code", icon: FileText },
+      { title: "Contact", href: "/main/assignment01/contact", icon: FileText },
     ],
-  },
-  {
-    title: "Community",
-    href: "/main/community",
-    icon: BookOpen,
-    subItems: [
-      { title: "News", href: "/main/community/news", icon: BookOpen },
-      { title: "History", href: "/main/community/history", icon: BookOpen },
-      { title: "Events", href: "/main/community/events", icon: BookOpen },
-      { title: "Programs", href: "/main/community/programs", icon: BookOpen },
-      { title: "Startups", href: "/main/community/startups", icon: BookOpen },
-    ],
-  },
-
-  {
-    title: "Users",
-    href: "/main/users",
-    icon: Users,
-  },
-  {
-    title: "Settings",
-    href: "/main/settings",
-    icon: Settings,
-  },
+  }
 ]
 
 const NavItemComponent: React.FC<{ item: NavItem; isOpen: boolean }> = ({ item, isOpen }) => {
@@ -117,16 +90,16 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
       {/* Sidebar */}
       <aside
         className={`
-          fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-indigo-800 to-purple-900 text-white transition-all duration-300 ease-in-out transform 
+          fixed inset-y-0 left-0 z-50 w-80 bg-gradient-to-b from-gray-800 to-gray-900 text-white transition-all duration-300 ease-in-out transform 
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
           lg:relative lg:translate-x-0
         `}
       >
-        <div className="flex items-center justify-between h-16 px-4 bg-indigo-900">
+        <div className="flex items-center justify-between h-16 px-4 bg-gray-800">
           <span className="text-2xl font-bold">Dashboard</span>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="p-2 rounded-md lg:hidden hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="p-2 rounded-md lg:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
@@ -137,31 +110,30 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
           ))}
         </nav>
       </aside>
-
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="flex items-center justify-between p-4 bg-white shadow-md">
+        <header className="flex items-center justify-between p-4 bg-gray-900 shadow-md">
           <div className="flex items-center space-x-4">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="p-2 rounded-lg text-gray-600 lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+              className="p-2 rounded-lg text-gray-300 lg:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
             >
               <Menu className="h-6 w-6" />
             </button>
-            <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
+            <h1 className="text-2xl font-semibold text-white">Dashboard</h1>
           </div>
 
           <div className="flex items-center space-x-4">
-            <button className="p-2 rounded-full text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+            <button className="p-2 rounded-full text-gray-300 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
               <Bell className="h-6 w-6" />
             </button>
-            <button className="p-2 rounded-full text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+            <button className="p-2 rounded-full text-gray-300 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
               <User className="h-6 w-6" />
             </button>
           </div>
         </header>
 
-        <main className="flex-1 overflow-x-hidden overflow-y-auto h-full bg-gray-100">
+        <main className="flex-1 overflow-x-hidden overflow-y-auto h-full">
           <div className="">{children}</div>
         </main>
       </div>

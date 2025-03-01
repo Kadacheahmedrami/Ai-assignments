@@ -24,11 +24,18 @@ export class Agent {
         selectedNode = node
     }
     })
+    
+    if(!selectedNode)
+    {
+        return frontier;
+    }
+
     // agent t7araak lnode jdiid aka updatinah
     this.node = selectedNode
     // sauvgarder the cost
     this.currentCost = min
-    frontier = frontier.filter(node => node !== this.node)
+
+    return frontier.filter(node => node !== this.node)
     }
 
 

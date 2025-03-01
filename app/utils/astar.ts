@@ -76,8 +76,9 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
         alreadyvisted = alreadyvisted.concat([agent.node])
        // added pour eviter la boucle 
         frontier = subtractNodesArray({neighbors: frontier,alreadyvisted})
-        // console.log('step ',x, '= ',agent.node.name)
-        agent.move({frontier})
+        // console.log('step ',x, '= ',agent.node.name
+        frontier = agent.move({frontier});
+
       }
       x=x+1
     }

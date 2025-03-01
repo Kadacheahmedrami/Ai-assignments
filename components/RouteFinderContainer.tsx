@@ -21,7 +21,7 @@ const RouteFinderContainer: React.FC<RouteFinderContainerProps> = ({ nodes, edge
   return (
     <div className="w-full h-full">
      
-      <div className='flex flex-row absolute  z-10  '>
+      <div className='flex p-6 max-w-xl mx-auto flex-col absolute  z-10  '>
       <RouteSearch 
         nodes={nodes} 
         edges={edges} 
@@ -29,12 +29,12 @@ const RouteFinderContainer: React.FC<RouteFinderContainerProps> = ({ nodes, edge
       />
       
       {hasSearched && (
-        <div className="">
-          <h2 className="text-xl font-semibold  mb-2">Route Information</h2>
+        <div className="text-white mt-2">
+       
           {path.length > 0 ? (
             <div>
-              <p className="mb-2">
-                <span className="font-medium">Path found:</span> {path.map(node => node.name).join(' → ')}
+              <p className="mb-2 font-bold text-[20px]">
+                {path.map(node => node.name).join(' → ')}
               </p>
               <p>
                 <span className="font-medium">Total cities:</span> {path.length}

@@ -143,7 +143,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
                 onFocus={() => setShowStartSuggestions(true)}
                 onBlur={() => setTimeout(() => setShowStartSuggestions(false), 100)}
                 placeholder="Enter starting city"
-                className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full bg-white px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-autocomplete="list"
                 aria-controls="start-suggestion-list"
               />
@@ -168,7 +168,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
                 onFocus={() => setShowGoalSuggestions(true)}
                 onBlur={() => setTimeout(() => setShowGoalSuggestions(false), 100)}
                 placeholder="Enter destination city"
-                className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full bg-white px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-autocomplete="list"
                 aria-controls="goal-suggestion-list"
               />

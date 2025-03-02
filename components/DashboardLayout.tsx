@@ -86,7 +86,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex overflow-hidden h-screen bg-gray-100">
       {/* Sidebar */}
       <aside
         className={`

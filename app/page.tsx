@@ -1,13 +1,13 @@
+import Image from "next/image";
 
-
-export default function MainPage() {
-
-
+export default function Home() {
   return (
-    <>
-    <div className="h-[93.8vh] w-screen bg-black">
-
+    <div className="">
+      <main className="">
+       
+        </main>
+       <footer>
+      </footer>
     </div>
-    </>
   );
 }

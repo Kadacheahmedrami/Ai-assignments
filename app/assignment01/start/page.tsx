@@ -14,7 +14,7 @@ export default function MainPage() {
 
   return (
     <>
-      <div className="w-full lg:w-[86.65%] h-[89.3%] absolute bg-black">
+      <div className="w-full lg:w-[86.65%] h-[89.5%] overflow-hidden absolute bg-black">
         <Image 
           src="/wall.jpg" 
           alt="Background" 

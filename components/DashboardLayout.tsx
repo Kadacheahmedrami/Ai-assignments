@@ -133,7 +133,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
           </div>
         </header>
 
-        <main className="flex-1 overflow-x-hidden overflow-hidden h-full">
+        <main className="flex-1 overflow-x-hidden  overflow-scroll h-full">
           <div className="">{children}</div>
         </main>
       </div>

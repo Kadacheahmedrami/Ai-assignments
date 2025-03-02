@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.0.3",
+    "@react-three/fiber": "^9.0.4",
+    "@react-three/postprocessing": "^3.0.4",
     "geolib": "^3.3.4",
     "lucide-react": "^0.477.0",
+    "maath": "^0.10.8",
     "mapbox-gl": "^3.10.0",
     "next": "15.2.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "three": "^0.174.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

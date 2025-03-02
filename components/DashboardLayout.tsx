@@ -90,12 +90,12 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
       {/* Sidebar */}
       <aside
         className={`
-          fixed inset-y-0 left-0 z-50 w-80 bg-gradient-to-b from-gray-800 to-gray-900 text-white transition-all duration-300 ease-in-out transform 
+          fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-gray-800 to-gray-900 text-white transition-all duration-300 ease-in-out transform 
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
           lg:relative lg:translate-x-0
         `}
       >
-        <div className="flex items-center justify-between h-16 px-4 bg-gray-800">
+        <div className="flex items-center justify-between h-[8vh] px-4 bg-gray-800">
           <span className="text-2xl font-bold">Dashboard</span>
           <button
             onClick={() => setSidebarOpen(false)}
@@ -113,7 +113,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         <header className="flex items-center justify-between p-4 bg-gray-900 shadow-md">
-          <div className="flex items-center space-x-4">
+          <div className="flex h-[7vh] items-center space-x-4">
             <button
               onClick={() => setSidebarOpen(true)}
               className="p-2 rounded-lg text-gray-300 lg:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
@@ -133,7 +133,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
           </div>
         </header>
 
-        <main className="flex-1 overflow-x-hidden overflow-y-auto h-full">
+        <main className="flex-1 overflow-x-hidden overflow-hidden h-full">
           <div className="">{children}</div>
         </main>
       </div>

@@ -17,7 +17,7 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ suggestions, onSelect }
   if (suggestions.length === 0) return null;
   return (
     <ul
-      className="absolute z-10 w-full bg-white mt-1 border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto"
+      className="absolute z-10 w-full bg-white mt-1 border border-gray-300  shadow-lg max-h-60 overflow-auto"
       role="listbox"
     >
       {suggestions.map((city) => (
@@ -132,7 +132,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
           <div className="flex flex-row space-x-4 items-end">
             {/* Starting City Input */}
             <div className="relative flex-1">
-              <label htmlFor="start" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="start" className="block text-sm font-medium text-white mb-1">
                 Starting City
               </label>
               <input
@@ -143,7 +143,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
                 onFocus={() => setShowStartSuggestions(true)}
                 onBlur={() => setTimeout(() => setShowStartSuggestions(false), 100)}
                 placeholder="Enter starting city"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-autocomplete="list"
                 aria-controls="start-suggestion-list"
               />
@@ -157,7 +157,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
 
             {/* Destination City Input */}
             <div className="relative flex-1">
-              <label htmlFor="goal" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="goal" className="block text-sm font-medium text-white mb-1">
                 Destination City
               </label>
               <input
@@ -168,7 +168,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
                 onFocus={() => setShowGoalSuggestions(true)}
                 onBlur={() => setTimeout(() => setShowGoalSuggestions(false), 100)}
                 placeholder="Enter destination city"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-autocomplete="list"
                 aria-controls="goal-suggestion-list"
               />
@@ -185,7 +185,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
               <button
                 type="submit"
                 disabled={isLoading}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4  transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center">
@@ -210,7 +210,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
 
           {/* Error Message */}
           {error && (
-            <div role="alert" className="text-red-500 text-sm py-2 px-3 bg-red-50 rounded-md">
+            <div role="alert" className="text-red-500 text-sm py-2 px-3 bg-red-50 ">
               {error}
             </div>
           )}

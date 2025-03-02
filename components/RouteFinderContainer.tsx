@@ -19,36 +19,27 @@ const RouteFinderContainer: React.FC<RouteFinderContainerProps> = ({ nodes, edge
   };
 
   return (
-    <div className="w-full h-full">
-     
-      <div className='flex p-6 max-w-xl mx-auto flex-col absolute  z-10  '>
-      <RouteSearch 
-        nodes={nodes} 
-        edges={edges} 
-        onPathFound={handlePathFound} 
-      />
-      
-      {hasSearched && (
-        <div className="text-white mt-2">
-       
-          {path.length > 0 ? (
-            <div>
-              <p className="mb-2 font-bold text-[20px]">
-                {path.map(node => node.name).join(' → ')}
-              </p>
-              <p>
-                <span className="font-medium">Total cities:</span> {path.length}
-              </p>
-            </div>
-          ) : (
-            <p className="text-orange-600">No path could be found between these cities.</p>
-          )}
-        </div>
-      )}
+    <div className="w-full h-full ">
+      <div className="flex p-6 max-w-xl mx-auto flex-col absolute z-10">
+        <RouteSearch nodes={nodes} edges={edges} onPathFound={handlePathFound} />
+        {hasSearched && (
+          <div className="text-white mt-2">
+            {path.length > 0 ? (
+              <div>
+                <p className="mb-2 font-bold text-[20px]">
+                  {path.map(node => node.name).join(' → ')}
+                </p>
+                <p>
+                  <span className="font-medium">Total cities:</span> {path.length}
+                </p>
+              </div>
+            ) : (
+              <p className="text-orange-600">No path could be found between these cities.</p>
+            )}
+          </div>
+        )}
       </div>
-      
-      
-      <div className="h-[93.5vh] bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="h-[93.5vh] bg-white  shadow-lg overflow-hidden">
         <MapComponent nodes={nodes} edges={edges} path={path} />
       </div>
     </div>

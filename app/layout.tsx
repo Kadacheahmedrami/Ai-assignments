@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+
 import "./globals.css";
 import type React from "react"
 import { DashboardLayout } from "@/components/DashboardLayout"
 
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 
 export const metadata: Metadata = {
@@ -30,7 +24,7 @@ export default function RootLayout({
 
     <html lang="en">
       <body
-        className={`${geistSans.variable}  antialiased`}
+        className={`  antialiased`}
       >
      <DashboardLayout>{children}</DashboardLayout>
       </body>

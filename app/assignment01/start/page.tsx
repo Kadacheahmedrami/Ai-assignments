@@ -14,7 +14,7 @@ export default function MainPage() {
 
   return (
     <>
-      <div className="w-full md:w-[86.5%] h-[94vh] absolute bg-black">
+      <div className="w-full lg:w-[86.65%] h-[89.3%] absolute bg-black">
         <Image 
           src="/wall.jpg" 
           alt="Background" 
@@ -22,7 +22,7 @@ export default function MainPage() {
           style={{ objectFit: "cover" }} 
           quality={100}
         />
-      </div>
+      </div>  
       <RouteFinderContainer nodes={nodes} edges={edges} />
     </>
   );

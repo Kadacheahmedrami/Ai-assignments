@@ -2,7 +2,13 @@
 import React, { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { FeatureCollection, Feature, Point, LineString, GeoJsonProperties } from "geojson";
+import {
+  FeatureCollection,
+  Feature,
+  Point,
+  LineString,
+  GeoJsonProperties,
+} from "geojson";
 import { Node, Edge } from "@/app/types/graph";
 
 // Set your Mapbox access token
@@ -16,31 +22,39 @@ interface MapProps {
 
 const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<mapboxgl.Map | null>(null);
 
+  // Helper: fetch a route between two nodes using Mapbox Directions API
+  const fetchRoute = async (
+    start: Node,
+    dest: Node
+  ): Promise<LineString | null> => {
+    const query = `https://api.mapbox.com/directions/v5/mapbox/driving/${start.lon},${start.lat};${dest.lon},${dest.lat}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
+    try {
+      const response = await fetch(query);
+      const data = await response.json();
+      if (data.routes && data.routes.length > 0) {
+        return data.routes[0].geometry;
+      }
+      return null;
+    } catch (error) {
+      console.error("Error fetching route:", error);
+      return null;
+    }
+  };
+
+  // --- Initialize the map only once ---
   useEffect(() => {
+    if (!mapContainerRef.current) return;
+
     const map = new mapboxgl.Map({
-      container: mapContainerRef.current!,
+      container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/dark-v9",
       center: [-90, 30],
       zoom: 0.5,
-      projection: "globe"
+      projection: "globe",
     });
-
-    // Fetch a route between two nodes using Mapbox Directions API
-    const fetchRoute = async (start: Node, dest: Node): Promise<LineString | null> => {
-      const query = `https://api.mapbox.com/directions/v5/mapbox/driving/${start.lon},${start.lat};${dest.lon},${dest.lat}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
-      try {
-        const response = await fetch(query);
-        const data = await response.json();
-        if (data.routes && data.routes.length > 0) {
-          return data.routes[0].geometry;
-        }
-        return null;
-      } catch (error) {
-        console.error("Error fetching route:", error);
-        return null;
-      }
-    };
+    mapRef.current = map;
 
     map.on("load", () => {
       // Smooth zoom animation from far out to Algeria over 3 seconds
@@ -50,7 +64,7 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
         duration: 3000,
       });
 
-      // --- Nodes ---
+      // --- Add Nodes ---
       const nodeFeatures: Feature<Point>[] = nodes.map((node) => ({
         type: "Feature",
         geometry: {
@@ -83,6 +97,7 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
         },
       });
 
+      // --- Node Labels ---
       map.addLayer({
         id: "node-labels",
         type: "symbol",
@@ -93,7 +108,7 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
             "Name: ", ["get", "name"], "\n",
             "Type: ", ["get", "nodeType"], "\n",
             "ID: ", ["get", "id"], "\n",
-            "Population: ", ["get", "population"]
+            "Population: ", ["get", "population"],
           ],
           "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
           "text-size": 12,
@@ -105,7 +120,7 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
         },
       });
 
-      // --- Edges as roads ---
+      // --- Add Edges as Roads ---
       const loadEdges = async () => {
         const edgeFeatures = await Promise.all(
           edges.map(async (edge) => {
@@ -129,12 +144,17 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
         );
 
         const validEdgeFeatures = edgeFeatures.filter(
-          (feature): feature is Feature<LineString, { start: number; destination: number }> =>
+          (
+            feature
+          ): feature is Feature<LineString, { start: number; destination: number }> =>
             feature !== null
         );
 
         if (validEdgeFeatures.length > 0) {
-          const edgesGeojson: FeatureCollection<LineString, { start: number; destination: number }> = {
+          const edgesGeojson: FeatureCollection<
+            LineString,
+            { start: number; destination: number }
+          > = {
             type: "FeatureCollection",
             features: validEdgeFeatures,
           };
@@ -151,115 +171,136 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
       };
 
       loadEdges();
+    });
 
-      // --- A* Path Animation ---
-      if (path && path.length > 0) {
-        // Helper: Fetch and combine coordinates for the entire path
-        const getPathCoordinates = async (): Promise<number[][]> => {
-          let allCoordinates: number[][] = [];
-          for (let i = 0; i < path.length - 1; i++) {
-            const startNode = path[i];
-            const destNode = path[i + 1];
-            const routeGeom = await fetchRoute(startNode, destNode);
-            if (routeGeom) {
-              // Avoid duplicating coordinates where segments connect
-              allCoordinates = allCoordinates.concat(
-                i === 0 ? routeGeom.coordinates : routeGeom.coordinates.slice(1)
-              );
-            }
-          }
-          return allCoordinates;
-        };
+    return () => {
+      map.remove();
+    };
+  }, []); // Runs only once on mount
 
-        (async () => {
-          const coordinates = await getPathCoordinates();
-          if (!coordinates.length) return;
+  // --- Update only the A* path when `path` changes ---
+  useEffect(() => {
+    if (!mapRef.current) return;
+    if (!path || path.length === 0) {
+      // Optionally remove the astarPath layer/source if path is empty
+      if (mapRef.current.getLayer("astarPathLayer")) {
+        mapRef.current.removeLayer("astarPathLayer");
+      }
+      if (mapRef.current.getSource("astarPath")) {
+        mapRef.current.removeSource("astarPath");
+      }
+      return;
+    }
 
-          // Create initial A* path source with the first coordinate
-          const initialGeojson: FeatureCollection<LineString, GeoJsonProperties> = {
-            type: "FeatureCollection",
-            features: [{
+    const updateAstarPath = async () => {
+      let allCoordinates: number[][] = [];
+      for (let i = 0; i < path.length - 1; i++) {
+        const startNode = path[i];
+        const destNode = path[i + 1];
+        const routeGeom = await fetchRoute(startNode, destNode);
+        if (routeGeom) {
+          // Avoid duplicate coordinates at segment joins
+          allCoordinates = allCoordinates.concat(
+            i === 0 ? routeGeom.coordinates : routeGeom.coordinates.slice(1)
+          );
+        }
+      }
+      if (allCoordinates.length === 0) return;
+
+      // If the astarPath source doesn't exist yet, create it along with its layer
+ // Replace the original astarPathLayer creation with this updated version
+if (!mapRef.current!.getSource("astarPath")) {
+  const initialGeojson: FeatureCollection<LineString, GeoJsonProperties> = {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        geometry: {
+          type: "LineString",
+          coordinates: [allCoordinates[0]],
+        },
+        properties: {},
+      },
+    ],
+  };
+  mapRef.current!.addSource("astarPath", { type: "geojson", data: initialGeojson });
+  mapRef.current!.addLayer({
+    id: "astarPathLayer",
+    type: "line",
+    source: "astarPath",
+    layout: { "line-join": "round", "line-cap": "round" },
+    paint: {
+      "line-color": "blue", // Vibrant purple
+      "line-width": 6,         // Thicker line for more impact
+      "line-opacity": 1,
+      "line-blur": 4,          // Adds a glowing effect
+    },
+  });
+}
+
+
+      // Animate the path update over a duration
+      const duration = 3000; // in milliseconds
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        let progress = (currentTime - startTime) / duration;
+        progress = Math.min(progress, 1);
+
+        // Easing function for smoother animation
+        const easeInOutQuad = (t: number) =>
+          t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        const easedProgress = easeInOutQuad(progress);
+
+        const numPoints = Math.floor(easedProgress * allCoordinates.length) || 1;
+        const animatedCoordinates = allCoordinates.slice(0, numPoints);
+
+        const animatedGeojson: FeatureCollection<LineString, GeoJsonProperties> = {
+          type: "FeatureCollection",
+          features: [
+            {
               type: "Feature",
               geometry: {
                 type: "LineString",
-                coordinates: [coordinates[0]],
+                coordinates: animatedCoordinates,
               },
               properties: {},
-            }],
-          };
-
-          map.addSource("astarPath", { type: "geojson", data: initialGeojson });
-          map.addLayer({
-            id: "astarPathLayer",
-            type: "line",
-            source: "astarPath",
-            layout: { "line-join": "round", "line-cap": "round" },
-            paint: {
-              "line-color": "#00FF00",
-              "line-width": 4,
-              "line-opacity": 0.8,
             },
-          });
+          ],
+        };
 
-          // Enhanced, time-based animation using an easing function
-          const duration = 3000; // duration in milliseconds
-          const startTime = performance.now();
+        const source = mapRef.current!.getSource("astarPath") as mapboxgl.GeoJSONSource;
+        source.setData(animatedGeojson);
 
-          const animate = (currentTime: number) => {
-            let progress = (currentTime - startTime) / duration;
-            progress = Math.min(progress, 1);
-
-            // Ease-in-out function for smoother animation
-            const easeInOutQuad = (t: number) =>
-              t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-            const easedProgress = easeInOutQuad(progress);
-
-            const numPoints = Math.floor(easedProgress * coordinates.length) || 1;
-            const animatedCoordinates = coordinates.slice(0, numPoints);
-
-            const animatedGeojson: FeatureCollection<LineString, GeoJsonProperties> = {
-              type: "FeatureCollection",
-              features: [{
-                type: "Feature",
-                geometry: {
-                  type: "LineString",
-                  coordinates: animatedCoordinates,
-                },
-                properties: {},
-              }],
-            };
-
-            (map.getSource("astarPath") as mapboxgl.GeoJSONSource).setData(animatedGeojson);
-
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            }
-          };
-
+        if (progress < 1) {
           requestAnimationFrame(animate);
-        })();
-      }
-    });
+        }
+      };
 
-    return () => map.remove();
-  }, [nodes, edges, path]);
+      requestAnimationFrame(animate);
+    };
+
+    // Ensure the map style is loaded before updating the path
+    if (!mapRef.current.isStyleLoaded()) {
+      mapRef.current.once("styledata", updateAstarPath);
+    } else {
+      updateAstarPath();
+    }
+  }, [path]);
 
   return (
-    <>
-      <div
-        ref={mapContainerRef}
-        className="map-container"
-        style={{
-          width: "100%",
-          height: "100vh",
-          animation: "fadeInZoom 3s ease-out",
-          borderRadius: "10px",
-          boxShadow: "0 0 30px rgba(0, 0, 0, 0.8)",
-          overflow: "hidden",
-        }}
-      />
-   
-    </>
+    <div
+      ref={mapContainerRef}
+      className="map-container"
+      style={{
+        width: "100%",
+        height: "100vh",
+        animation: "fadeInZoom 3s ease-out",
+        borderRadius: "10px",
+        boxShadow: "0 0 30px rgba(0, 0, 0, 0.8)",
+        overflow: "hidden",
+      }}
+    />
   );
 };
 

@@ -1,14 +1,10 @@
-import type { NextPage } from "next"
-import Link from "next/link"
-import { Github, Linkedin, Mail, ArrowRight } from "lucide-react"
+import type { NextPage } from "next";
+import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
 
-type Props = {}
-
-const contact: NextPage<Props> = () => {
+// If you have no props, you can remove the Props type entirely
+const contact: NextPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
-
-
       {/* Contact Links */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -76,9 +72,9 @@ const contact: NextPage<Props> = () => {
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
             <h2 className="text-2xl font-bold text-white mb-6">About Me</h2>
             <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              I'm a software developer passionate about creating efficient algorithms and solving complex problems. My
+              I&apos;m a software developer passionate about creating efficient algorithms and solving complex problems. My
               recent work includes implementing the A* pathfinding algorithm for geographic data and various other
-              optimization projects. Feel free to reach out if you'd like to collaborate or discuss interesting
+              optimization projects. Feel free to reach out if you&apos;d like to collaborate or discuss interesting
               technical challenges.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -118,8 +114,7 @@ const contact: NextPage<Props> = () => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default contact
-
+export default contact;

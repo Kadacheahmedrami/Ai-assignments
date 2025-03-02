@@ -6,11 +6,7 @@ import { usePathname } from "next/navigation"
 import {
   ChevronDown,
   ChevronRight,
-  LayoutDashboard,
   FileText,
-  BookOpen,
-  Users,
-  Settings,
   Menu,
   Bell,
   User,

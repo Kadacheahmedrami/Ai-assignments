@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import Image from "next/image"
+
 import {
   Code,
   GitBranch,
@@ -343,7 +343,7 @@ export const GetNodeById = ({id, nodes}: nameidprops) => {
                 </pre>
                 <p className="text-gray-300 text-sm">
                   These functions provide convenient ways to retrieve nodes from the graph by either name or ID, which
-                  is essential for the algorithm's operation.
+                  is essential for the algorithms operation.
                 </p>
               </div>
 
@@ -373,7 +373,7 @@ export const heuristicMap = ({Graph, endNode}: heuristicMapProps) => {
                 </pre>
                 <p className="text-gray-300 text-sm">
                   The heuristic functions calculate the estimated distance to the goal, which is crucial for the A*
-                  algorithm's efficiency in finding the optimal path.
+                  algorithms efficiency in finding the optimal path.
                 </p>
               </div>
 
@@ -450,7 +450,7 @@ export const subtractNodesArray = ({neighbors, alreadyvisted}: substractProp): N
                 </pre>
                 <p className="text-gray-300 text-sm">
                   These functions handle cost calculations, node updates, and filtering operations that are essential
-                  for the A* algorithm's path-finding process.
+                  for the A* algorithms path-finding process.
                 </p>
               </div>
             </div>
@@ -573,7 +573,7 @@ export const aStar = ({graph, start, goal}: aStarProps) => {
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
                     <span>
                       <span className="font-semibold">Safety Limit:</span> Uses a counter (x) to prevent infinite loops,
-                      inspired by NASA's approach to robust code
+                      inspired by NASAs approach to robust code
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -628,7 +628,7 @@ export const aStar = ({graph, start, goal}: aStarProps) => {
               </div>
               <p className="text-gray-300">
                 This implementation follows the classic A* algorithm pattern but is adapted for geographic data. The use
-                of a safety counter (x) is inspired by NASA's approach to writing robust, uncrashable code. The
+                of a safety counter (x) is inspired by NASAs approach to writing robust, uncrashable code. The
                 algorithm efficiently balances exploration of promising paths with the guarantee of finding the optimal
                 solution when one exists.
               </p>

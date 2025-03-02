@@ -177,7 +177,7 @@ const Documentation: NextPage = () => {
               <h3 className="text-xl font-bold text-white mb-3">Agent</h3>
               <p className="text-gray-300">
                 Navigates through the graph, tracking costs and current position. The agent maintains state information
-                and makes decisions based on the algorithm's logic.
+                and makes decisions based on the algorithms logic.
               </p>
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
@@ -474,7 +474,7 @@ const Documentation: NextPage = () => {
               <div className="relative z-10 p-8">
                 <div className="flex items-center mb-4">
                   <Youtube className="text-red-500 w-8 h-8 mr-3" />
-                  <h3 className="text-xl font-bold text-white">NASA's Uncrashable Code</h3>
+                  <h3 className="text-xl font-bold text-white">NASAs Uncrashable Code</h3>
                 </div>
                 <p className="text-gray-300 mb-6">
                   A deep dive into robust code techniques used by NASA for mission-critical systems. Learn how these
@@ -544,7 +544,7 @@ const Documentation: NextPage = () => {
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">CS50 AI Lectures</h3>
                 <p className="text-gray-300 mb-4">
-                  Harvard's CS50 AI course provides excellent explanations of search algorithms, including A* and its
+                  Harvards CS50 AI course provides excellent explanations of search algorithms, including A* and its
                   applications.
                 </p>
                 <div className="flex items-center">

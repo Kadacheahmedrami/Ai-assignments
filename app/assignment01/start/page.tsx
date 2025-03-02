@@ -14,16 +14,17 @@ export default function MainPage() {
 
   return (
     <>
-      <div className="w-full lg:w-[86.65%] h-[89.5%] overflow-hidden absolute bg-black">
+      <div className="w-full lg:w-[86.1%] h-[92.1%] overflow-hidden absolute bg-black">
         <Image 
           src="/wall.jpg" 
           alt="Background" 
           fill 
-          style={{ objectFit: "cover" }} 
+          style={{ objectFit: "fill" }} 
           quality={100}
         />
+           <RouteFinderContainer nodes={nodes} edges={edges} />
       </div>  
-      <RouteFinderContainer nodes={nodes} edges={edges} />
+   
     </>
   );
 }

@@ -1,2 +1,22 @@
 @import "tailwindcss";
 
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* Optional: smooth scrolling */
+  }
+  
+
+  
+  * {
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* IE 10+ */
+  }
+  
+  /* Chrome, Safari, and Opera */
+  *::-webkit-scrollbar {
+    display: none;
+  }

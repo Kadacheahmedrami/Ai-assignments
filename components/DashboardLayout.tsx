@@ -82,7 +82,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="flex overflow-hidden h-screen bg-gray-100">
+    <div className="flex  h-screen bg-gray-100">
       {/* Sidebar */}
       <aside
         className={`
@@ -107,9 +107,9 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
         </nav>
       </aside>
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="flex items-center justify-between p-4 bg-gray-900 shadow-md">
-          <div className="flex h-[7vh] items-center space-x-4">
+      <div className="flex-1 overflow-y-scroll flex flex-col ">
+        <header className="flex items-center justify-between  p-4  bg-gray-900 shadow-md">
+          <div className="flex  items-center space-x-4">
             <button
               onClick={() => setSidebarOpen(true)}
               className="p-2 rounded-lg text-gray-300 lg:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
@@ -129,7 +129,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
           </div>
         </header>
 
-        <main className="flex-1 overflow-x-hidden  overflow-scroll h-full">
+        <main className="flex-1 w-full  h-full">
           <div className="">{children}</div>
         </main>
       </div>
@@ -137,7 +137,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
       {/* Overlay for mobile */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden"
+          className="fixed inset-0  z-40 bg-black bg-opacity-50 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         ></div>
       )}

@@ -20,7 +20,7 @@ export default function Home() {
   if (!mounted) return null
 
   return (
-    <main className="relative w-full h-[92.2vh] overflow-hidden bg-black dark">
+    <main className="relative w-full h-full overflow-hidden bg-black dark">
       {/* Blue gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-black"></div>
 
@@ -44,7 +44,7 @@ export default function Home() {
               Welcome to my personal website where I share my assignments and projects from AI courses. Dive into my experiments and explore the innovative work I&apos;m doing in the field of artificial intelligence.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="/Assignments" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-full text-lg font-medium flex items-center transition-all duration-300 shadow-lg shadow-blue-700/30 hover:shadow-blue-700/50">
+              <a href="/assignments" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-full text-lg font-medium flex items-center transition-all duration-300 shadow-lg shadow-blue-700/30 hover:shadow-blue-700/50">
                 View Assignments
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>

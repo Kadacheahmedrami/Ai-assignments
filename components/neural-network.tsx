@@ -99,7 +99,7 @@ export default function NeuralNetwork() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       // Update and draw nodes
-      nodesRef.current.forEach((node, index) => {
+      nodesRef.current.forEach((node) => {
         // Update position
         node.x += node.speedX
         node.y += node.speedY

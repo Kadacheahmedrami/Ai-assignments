@@ -10,7 +10,7 @@ import { easing } from "maath"
 function NeuralNetwork({ count = 100, connections = 150 }) {
   const pointsRef = useRef<THREE.Points>(null)
   const linesRef = useRef<THREE.LineSegments>(null)
-  const { viewport, mouse } = useThree()
+  const {  mouse } = useThree()
 
   // Create nodes
   useEffect(() => {
@@ -77,29 +77,42 @@ function NeuralNetwork({ count = 100, connections = 150 }) {
     linesRef.current.geometry.setAttribute("color", new THREE.BufferAttribute(lineColors, 3))
   }, [count, connections])
 
-  // Animation
   useFrame((state, delta) => {
     if (!pointsRef.current || !linesRef.current) return
-
+  
     // Rotate based on mouse position
     const rotationSpeed = 0.05
     pointsRef.current.rotation.y += rotationSpeed * delta
     linesRef.current.rotation.y += rotationSpeed * delta
-
-    // Tilt based on mouse position
-    easing.damp3(pointsRef.current.rotation, [Math.PI / 4 + mouse.y * 0.2, Math.PI / 4 + mouse.x * 0.2, 0], 0.2, delta)
+  
+    // Create a temporary vector from the Euler values
+    const currentRot = new THREE.Vector3(
+      pointsRef.current.rotation.x,
+      pointsRef.current.rotation.y,
+      pointsRef.current.rotation.z
+    )
+    const targetRot = new THREE.Vector3(
+      Math.PI / 4 + mouse.y * 0.2,
+      Math.PI / 4 + mouse.x * 0.2,
+      0
+    )
+  
+    // Damp the vector values
+    easing.damp3(currentRot, targetRot, 0.2, delta)
+  
+    // Update the Euler with the damped values
+    pointsRef.current.rotation.set(currentRot.x, currentRot.y, currentRot.z)
     linesRef.current.rotation.copy(pointsRef.current.rotation)
-
-    // Pulse effect
+  
+    // Pulse effect code...
     const time = state.clock.getElapsedTime()
     const sizes = pointsRef.current.geometry.attributes.size as THREE.BufferAttribute
-
     for (let i = 0; i < count; i++) {
       sizes.array[i] = Math.sin(time * 2 + i) * 0.05 + 0.1
     }
     sizes.needsUpdate = true
   })
-
+  
   return (
     <group>
       <points ref={pointsRef}>

@@ -20,7 +20,7 @@ export default function Home() {
   if (!mounted) return null
 
   return (
-    <main className="relative w-full h-screen overflow-hidden bg-black dark">
+    <main className="relative w-full h-[92.2vh] overflow-hidden bg-black dark">
       <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-black"></div>
 
       {/* Neural network background */}

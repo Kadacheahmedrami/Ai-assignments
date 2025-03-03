@@ -11,11 +11,12 @@ import {
   Bell,
   User,
 } from "lucide-react"
+import { SVGProps } from 'react'
 
-type NavItem = {
+interface NavItem {
   title: string
   href: string
-  icon: React.ElementType
+  icon: React.FC<SVGProps<SVGSVGElement>>
   subItems?: NavItem[]
 }
 

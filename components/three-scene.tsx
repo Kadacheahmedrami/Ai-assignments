@@ -10,9 +10,9 @@ import { easing } from "maath"
 function NeuralNetwork({ count = 100, connections = 150 }) {
   const pointsRef = useRef<THREE.Points>(null)
   const linesRef = useRef<THREE.LineSegments>(null)
-  const {  mouse } = useThree()
+  const { mouse } = useThree()
 
-  // Create nodes
+  // Create nodes and connections with a blue theme
   useEffect(() => {
     if (!pointsRef.current || !linesRef.current) return
 
@@ -28,7 +28,8 @@ function NeuralNetwork({ count = 100, connections = 150 }) {
       positions[i3 + 2] = (Math.random() - 0.5) * 10
 
       const color = new THREE.Color()
-      color.setHSL(0.6 + Math.random() * 0.2, 0.8, 0.6)
+      // Set HSL for blue: narrow variation around hue=0.6 (blue)
+      color.setHSL(0.6 + Math.random() * 0.02, 0.8, 0.6)
       colors[i3] = color.r
       colors[i3 + 1] = color.g
       colors[i3 + 2] = color.b
@@ -60,9 +61,9 @@ function NeuralNetwork({ count = 100, connections = 150 }) {
       linePositions[i6 + 4] = positions[nodeB * 3 + 1]
       linePositions[i6 + 5] = positions[nodeB * 3 + 2]
 
-      // Colors
+      // Use blue color for lines
       const color = new THREE.Color()
-      color.setHSL(0.6 + Math.random() * 0.2, 0.8, 0.6)
+      color.setHSL(0.6 + Math.random() * 0.02, 0.8, 0.6)
 
       lineColors[i6] = color.r
       lineColors[i6 + 1] = color.g
@@ -150,7 +151,8 @@ function DataSphere() {
     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
       <mesh ref={meshRef} scale={2.5}>
         <sphereGeometry args={[1, 64, 64]} />
-        <MeshDistortMaterial color="#4b0082" roughness={0.1} metalness={0.8} distort={0.3} speed={2} />
+        {/* Blue themed material */}
+        <MeshDistortMaterial color="#1e90ff" roughness={0.1} metalness={0.8} distort={0.3} speed={2} />
       </mesh>
     </Float>
   )
@@ -160,13 +162,15 @@ function Scene() {
   return (
     <>
       <ambientLight intensity={0.2} />
-      <pointLight position={[10, 10, 10]} intensity={1} color="#8a2be2" />
-      <pointLight position={[-10, -10, -10]} intensity={1} color="#4b0082" />
+      {/* Blue point lights */}
+      <pointLight position={[10, 10, 10]} intensity={1} color="#1e90ff" />
+      <pointLight position={[-10, -10, -10]} intensity={1} color="#6495ed" />
 
       <DataSphere />
       <NeuralNetwork count={150} connections={200} />
 
-      <Sparkles count={500} scale={15} size={1} speed={0.3} color="#8a2be2" />
+      {/* Blue sparkles */}
+      <Sparkles count={500} scale={15} size={1} speed={0.3} color="#1e90ff" />
 
       <EffectComposer>
         <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.9} intensity={1.5} />
@@ -197,4 +201,3 @@ export default function ThreeScene() {
     </div>
   )
 }
-

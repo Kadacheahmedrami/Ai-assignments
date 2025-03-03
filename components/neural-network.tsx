@@ -56,7 +56,7 @@ export default function NeuralNetwork() {
     updateCanvasSize()
     window.addEventListener("resize", updateCanvasSize)
 
-    // Create nodes
+    // Create nodes with a blue theme
     const nodeCount = 100
     const nodes: Node[] = []
 
@@ -65,7 +65,8 @@ export default function NeuralNetwork() {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: Math.random() * 2 + 1,
-        color: `rgba(${Math.floor(100 + Math.random() * 100)}, ${Math.floor(50 + Math.random() * 150)}, ${Math.floor(200 + Math.random() * 55)}, ${0.5 + Math.random() * 0.5})`,
+        // Use a consistent blue color with varying opacity
+        color: `rgba(30,144,255, ${0.5 + Math.random() * 0.5})`,
         speedX: (Math.random() - 0.5) * 0.5,
         speedY: (Math.random() - 0.5) * 0.5,
       })
@@ -73,7 +74,7 @@ export default function NeuralNetwork() {
 
     nodesRef.current = nodes
 
-    // Create connections
+    // Create connections (blue)
     const connectionCount = 150
     const connections: Connection[] = []
 
@@ -125,7 +126,7 @@ export default function NeuralNetwork() {
         ctx.fill()
       })
 
-      // Draw connections
+      // Draw connections in blue
       connectionsRef.current.forEach((connection) => {
         const sourceNode = nodesRef.current[connection.source]
         const targetNode = nodesRef.current[connection.target]
@@ -139,7 +140,7 @@ export default function NeuralNetwork() {
           ctx.beginPath()
           ctx.moveTo(sourceNode.x, sourceNode.y)
           ctx.lineTo(targetNode.x, targetNode.y)
-          ctx.strokeStyle = `rgba(138, 43, 226, ${connection.opacity * (1 - distance / 150)})`
+          ctx.strokeStyle = `rgba(30,144,255, ${connection.opacity * (1 - distance / 150)})`
           ctx.lineWidth = 0.5
           ctx.stroke()
         }
@@ -158,4 +159,3 @@ export default function NeuralNetwork() {
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" onMouseMove={handleMouseMove} />
 }
-

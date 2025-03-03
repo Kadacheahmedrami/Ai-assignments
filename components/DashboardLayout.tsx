@@ -4,14 +4,19 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
+  ArrowLeft,
   ChevronDown,
   ChevronRight,
   FileText,
   Menu,
   Bell,
   User,
+  BookOpen,
+  PlayCircle,
+  Code,
+  Mail,
 } from "lucide-react"
-import { SVGProps } from 'react'
+import { SVGProps } from "react"
 
 interface NavItem {
   title: string
@@ -21,19 +26,19 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-
   {
     title: "assignment01 (tp)",
     href: "/assignment01",
     icon: FileText,
     subItems: [
-      { title: "documentation ", href: "/assignments/assignment01/documentation", icon: FileText },
-      { title: "start", href: "/assignments/assignment01/start", icon: FileText },
-      { title: "code", href: "/assignments/assignment01/code", icon: FileText },
-      { title: "Contact", href: "/assignments/assignment01/contact", icon: FileText },
+      { title: "documentation", href: "/assignments/assignment01/documentation", icon: BookOpen },
+      { title: "start", href: "/assignments/assignment01/start", icon: PlayCircle },
+      { title: "code", href: "/assignments/assignment01/code", icon: Code },
+      { title: "Contact", href: "/assignments/assignment01/contact", icon: User },
     ],
-  }
+  },
 ]
+
 
 const NavItemComponent: React.FC<{ item: NavItem; isOpen: boolean }> = ({ item, isOpen }) => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false)
@@ -41,22 +46,24 @@ const NavItemComponent: React.FC<{ item: NavItem; isOpen: boolean }> = ({ item, 
   const isActive = pathname === item.href || pathname.startsWith(item.href + "/")
   const hasSubItems = item.subItems && item.subItems.length > 0
 
-  const bgColor = isActive ? "bg-indigo-700" : "hover:bg-indigo-600"
-  const textColor = isActive ? "text-white" : "text-indigo-100"
+  // Active items have a blue background; otherwise, use a darker blue on hover
+  const bgColor = isActive ? "bg-blue-700" : "hover:bg-blue-800"
+  // Active items use white text; non-active items use a soft gray for dark themes
+  const textColor = isActive ? "text-white" : "text-gray-300"
 
   return (
     <div>
       <Link
         href={item.href}
-        className={`flex items-center p-3 rounded-lg ${bgColor} ${textColor} transition-all duration-200 ease-in-out`}
         onClick={(e) => {
           if (hasSubItems) {
             e.preventDefault()
             setIsSubMenuOpen(!isSubMenuOpen)
           }
         }}
+        className={`flex items-center p-3 rounded-md ${bgColor} ${textColor} transition-colors duration-200`}
       >
-        <item.icon className="h-6 w-6 mr-3" />
+        <item.icon className="h-6 w-6 mr-2" />
         {isOpen && (
           <>
             <span className="flex-1">{item.title}</span>
@@ -79,6 +86,7 @@ const NavItemComponent: React.FC<{ item: NavItem; isOpen: boolean }> = ({ item, 
   )
 }
 
+
 export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -93,7 +101,10 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
         `}
       >
         <div className="flex items-center justify-between h-[8vh] px-4 bg-gray-800">
-          <span className="text-2xl font-bold">Dashboard</span>
+        <a href="/" className="text-2xl font-bold flex items-center">
+  <ArrowLeft className="mr-2" />
+  Home
+</a>
           <button
             onClick={() => setSidebarOpen(false)}
             className="p-2 rounded-md lg:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"

@@ -5,30 +5,27 @@ import React from "react"
 
 const Documentation: NextPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b  overflow-hidden from-slate-900 to-slate-800 text-white font-sans">
- 
-
+    <div className="min-h-screen bg-gradient-to-b overflow-hidden from-slate-900 to-slate-800 text-white font-sans">
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-slate-900">
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=800&width=1600')] bg-cover bg-center opacity-10"></div>
-        <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
           <div className="text-center md:text-left md:max-w-3xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-                A* Algorithm
+                Maze Search Algorithms
               </span>
-              <span className="block text-white mt-1">Implementation Documentation</span>
+              <span className="block text-white mt-1">Visualization & Implementation</span>
             </h1>
             <p className="mt-6 text-xl text-gray-300 max-w-3xl">
-              A comprehensive guide to our A* search algorithm for finding the shortest path between cities using
-              OpenStreetMap data.
+              Explore our interactive 3D maze visualization that demonstrates multiple search algorithms—Breadth-First Search (BFS), Depth-First Search (DFS), Uniform Cost Search (UCS), A* Search, and Greedy Best-First Search. See how each algorithm navigates the maze and finds the optimal path.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a
                 href="#algorithm"
                 className="px-8 py-3 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center"
               >
-                View Algorithm
+                View Maze Search
                 <ChevronRight className="ml-2 h-4 w-4" />
               </a>
               <a
@@ -48,15 +45,15 @@ const Documentation: NextPage = () => {
         <div className="mb-16 rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/10 relative group">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <Image
-            src="/astar-hero.png"
-            alt="A* Algorithm Visualization"
+            src="/maze-hero.png"
+            alt="3D Maze Visualization with Search Algorithms"
             width={1200}
             height={600}
             className="w-full h-auto object-cover"
           />
           <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-900 to-transparent">
             <p className="text-sm text-gray-300">
-              Visual representation of the A* algorithm finding the shortest path between two cities
+              A dynamic 3D maze where various search algorithms visualize their exploration process.
             </p>
           </div>
         </div>
@@ -69,19 +66,16 @@ const Documentation: NextPage = () => {
           </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
             <p className="text-gray-300 text-lg leading-relaxed">
-              This project implements the A* search algorithm to determine the optimal path between two nodes in a
-              weighted graph. By leveraging OpenStreetMap data, the algorithm converts real-world map data into a graph
-              representation. Nodes represent cities or intersections, and edges represent the roads between them. The
-              A* algorithm combines path cost and heuristic estimates to quickly find the shortest route.
+              This project implements several search algorithms to solve a grid-based maze. The maze is represented by a matrix where each cell may be open, a wall, the start, or the goal. The search algorithms—BFS, DFS, Uniform Cost Search, A* Search, and Greedy Best-First Search—demonstrate distinct exploration and pathfinding techniques. The maze is rendered in 3D with smooth animations that reveal how each algorithm expands through the grid.
             </p>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
                 <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
                   <MapPin className="h-6 w-6 text-blue-400" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Map Integration</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">Interactive Maze</h3>
                 <p className="text-gray-300">
-                  Seamlessly integrates with OpenStreetMap data for real-world applications
+                  A grid-based maze where walls, start, and goal are visually represented in a 3D environment.
                 </p>
               </div>
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
@@ -97,12 +91,14 @@ const Documentation: NextPage = () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2"
                     />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Efficient Pathfinding</h3>
-                <p className="text-gray-300">Optimized algorithm that balances speed and accuracy for route planning</p>
+                <h3 className="text-lg font-semibold text-white mb-2">Multiple Algorithms</h3>
+                <p className="text-gray-300">
+                  Explore how different strategies like BFS, DFS, UCS, A*, and Greedy search navigate through the maze.
+                </p>
               </div>
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
                 <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
@@ -121,8 +117,10 @@ const Documentation: NextPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Robust Implementation</h3>
-                <p className="text-gray-300">Handles edge cases and ensures reliable performance in all scenarios</p>
+                <h3 className="text-lg font-semibold text-white mb-2">Visual Feedback</h3>
+                <p className="text-gray-300">
+                  Animated expansion nodes and path connectors visually demonstrate the algorithm’s progression.
+                </p>
               </div>
             </div>
           </div>
@@ -152,10 +150,9 @@ const Documentation: NextPage = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Graph</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Maze Renderer</h3>
               <p className="text-gray-300">
-                Structure containing nodes (cities) and edges (roads with distances). The graph representation is
-                optimized for quick lookups and traversal operations.
+                The component responsible for rendering the 3D maze, including walls, start/goal cubes, and dynamic animations.
               </p>
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
@@ -175,10 +172,9 @@ const Documentation: NextPage = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Agent</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Search Algorithms</h3>
               <p className="text-gray-300">
-                Navigates through the graph, tracking costs and current position. The agent maintains state information
-                and makes decisions based on the algorithms logic.
+                Implementations of BFS, DFS, Uniform Cost Search, A* Search, and Greedy Best-First Search tailored to explore the maze.
               </p>
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
@@ -194,14 +190,13 @@ const Documentation: NextPage = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2"
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Heuristic Function</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Animation Engine</h3>
               <p className="text-gray-300">
-                Uses geographic data to estimate the cost (distance) to the goal. The heuristic is admissible, ensuring
-                that it never overestimates the actual cost.
+                Uses smooth timing and dynamic scaling (as seen in the ExpansionCube component) to visually represent node exploration.
               </p>
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
@@ -221,10 +216,9 @@ const Documentation: NextPage = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Pathfinding Logic</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Path Reconstruction</h3>
               <p className="text-gray-300">
-                Implements the A* algorithm to balance actual cost and heuristic estimates. The core logic efficiently
-                manages the frontier and explored sets.
+                After finding the goal, the path is backtracked and rendered as connectors between the explored nodes.
               </p>
             </div>
           </div>
@@ -244,55 +238,45 @@ const Documentation: NextPage = () => {
                   <div className="absolute left-6 -translate-x-1/2 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
                     <span className="text-xs font-bold">1</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Initialize the starting node</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Initialize the Maze</h3>
                   <p className="text-gray-300">
-                    Set the cost of the starting node to zero and prepare it for exploration.
+                    Identify the start, goal, and walls within the grid and prepare the rendering environment.
                   </p>
                 </li>
                 <li className="pl-16 relative">
                   <div className="absolute left-6 -translate-x-1/2 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
                     <span className="text-xs font-bold">2</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Generate heuristic values</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Select a Search Algorithm</h3>
                   <p className="text-gray-300">
-                    Calculate heuristic values for all nodes based on their distance to the goal using geographic
-                    coordinates.
+                    Choose from BFS, DFS, UCS, A*, or Greedy Best-First Search to explore the maze.
                   </p>
                 </li>
                 <li className="pl-16 relative">
                   <div className="absolute left-6 -translate-x-1/2 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
                     <span className="text-xs font-bold">3</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Add starting node to frontier</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Expand Nodes</h3>
                   <p className="text-gray-300">
-                    Place the starting node in the priority queue (frontier) to begin the search process.
+                    Iteratively explore neighbor cells while marking visited nodes, using the selected algorithm’s strategy.
                   </p>
                 </li>
                 <li className="pl-16 relative">
                   <div className="absolute left-6 -translate-x-1/2 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
                     <span className="text-xs font-bold">4</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Select and move to optimal node</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Animate Expansion</h3>
                   <p className="text-gray-300">
-                    Iteratively select and move to the node with the minimum estimated total cost (f = g + h).
+                    Display each expansion step with smooth animations and dynamic scaling for visual clarity.
                   </p>
                 </li>
                 <li className="pl-16 relative">
                   <div className="absolute left-6 -translate-x-1/2 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
                     <span className="text-xs font-bold">5</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Update neighbor nodes</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Reconstruct the Path</h3>
                   <p className="text-gray-300">
-                    Calculate new costs for neighboring nodes and update their values if a better path is found.
-                  </p>
-                </li>
-                <li className="pl-16 relative">
-                  <div className="absolute left-6 -translate-x-1/2 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
-                    <span className="text-xs font-bold">6</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Reconstruct the path</h3>
-                  <p className="text-gray-300">
-                    Once the goal is reached, backtrack through the parent pointers to reconstruct the optimal path.
+                    Once the goal is reached, backtrack using parent pointers to highlight the optimal path.
                   </p>
                 </li>
               </ol>
@@ -300,31 +284,18 @@ const Documentation: NextPage = () => {
             <div className="mt-12 p-6 bg-slate-700/50 rounded-xl border border-slate-600">
               <h3 className="text-lg font-semibold text-white mb-4">Pseudocode</h3>
               <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm">
-                {`function A_Star(start, goal):
-    // Initialize data structures
-    frontier = PriorityQueue()
-    frontier.add(start, 0)
-    came_from = {}
-    cost_so_far = {}
-    came_from[start] = null
-    cost_so_far[start] = 0
-    
-    while not frontier.empty():
-        current = frontier.pop()
-        
+                {`function searchMaze(start, goal):
+    initialize frontier with start node
+    mark all nodes as unvisited
+    while frontier is not empty:
+        current = choose node from frontier based on algorithm
         if current == goal:
             break
-            
-        for next in graph.neighbors(current):
-            new_cost = cost_so_far[current] + graph.cost(current, next)
-            if next not in cost_so_far or new_cost < cost_so_far[next]:
-                cost_so_far[next] = new_cost
-                priority = new_cost + heuristic(next, goal)
-                frontier.add(next, priority)
-                came_from[next] = current
-                
-    // Reconstruct path
-    return reconstruct_path(came_from, start, goal)`}
+        for each neighbor of current:
+            if neighbor is valid and not visited:
+                mark neighbor as visited
+                add neighbor to frontier with updated cost/heuristic
+    return reconstructPath(goal)`}
               </pre>
             </div>
           </div>
@@ -338,8 +309,7 @@ const Documentation: NextPage = () => {
           </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
             <p className="text-gray-300 text-lg mb-8">
-              During the development of our A* implementation, we encountered several challenges that required
-              innovative solutions:
+              Implementing a dynamic maze with multiple search strategies brought its own set of challenges:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600 hover:border-blue-500/50 transition-colors">
@@ -361,13 +331,12 @@ const Documentation: NextPage = () => {
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Infinite Loops</h3>
                 <p className="text-gray-300 mb-4">
-                  The algorithm would sometimes get stuck in infinite loops when exploring certain graph structures.
+                  Certain maze configurations risked infinite loops during exploration.
                 </p>
                 <div className="p-3 bg-slate-800 rounded-lg">
                   <h4 className="text-sm font-semibold text-blue-400 mb-1">Solution:</h4>
                   <p className="text-sm text-gray-400">
-                    Implemented a robust visited nodes tracking system that prevents revisiting nodes unless a better
-                    path is found.
+                    Implemented a robust visited tracking system and error counters to safely exit loops.
                   </p>
                 </div>
               </div>
@@ -388,15 +357,14 @@ const Documentation: NextPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Accurate Cost Calculation</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">Accurate Cost & Heuristics</h3>
                 <p className="text-gray-300 mb-4">
-                  Determining accurate cost functions that properly balance edge weights and heuristic estimates.
+                  Balancing the actual path cost and heuristic estimates to ensure optimal pathfinding.
                 </p>
                 <div className="p-3 bg-slate-800 rounded-lg">
                   <h4 className="text-sm font-semibold text-blue-400 mb-1">Solution:</h4>
                   <p className="text-sm text-gray-400">
-                    Developed a weighted combination of Euclidean distance and actual road distances for more accurate
-                    estimates.
+                    Tuned the cost functions and heuristics specific to the maze’s grid structure for each algorithm.
                   </p>
                 </div>
               </div>
@@ -417,41 +385,17 @@ const Documentation: NextPage = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Robustness</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">Smooth Animations</h3>
                 <p className="text-gray-300 mb-4">
-                  Ensuring the algorithm remains stable and reliable even with incomplete or inconsistent map data.
+                  Ensuring that the visual expansion and path reconstruction are both engaging and informative.
                 </p>
                 <div className="p-3 bg-slate-800 rounded-lg">
                   <h4 className="text-sm font-semibold text-blue-400 mb-1">Solution:</h4>
                   <p className="text-sm text-gray-400">
-                    Implemented NASA-inspired error handling and fallback mechanisms to gracefully handle edge cases.
+                    Utilized timed state updates and frame-by-frame rendering to create responsive animations.
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="mt-8 p-6 bg-slate-700/50 rounded-xl border border-slate-600">
-              <div className="flex items-center mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-blue-400 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <h3 className="text-lg font-semibold text-white">Key Insight</h3>
-              </div>
-              <p className="text-gray-300">
-                By addressing these challenges with robust testing and a clear strategy, the final implementation is
-                both efficient and reliable. Our approach of incremental improvements and thorough validation ensured
-                that the algorithm performs well in real-world scenarios.
-              </p>
             </div>
           </div>
         </section>
@@ -475,11 +419,10 @@ const Documentation: NextPage = () => {
               <div className="relative z-10 p-8">
                 <div className="flex items-center mb-4">
                   <Youtube className="text-red-500 w-8 h-8 mr-3" />
-                  <h3 className="text-xl font-bold text-white">NASAs Uncrashable Code</h3>
+                  <h3 className="text-xl font-bold text-white">Maze Search Visualization</h3>
                 </div>
                 <p className="text-gray-300 mb-6">
-                  A deep dive into robust code techniques used by NASA for mission-critical systems. Learn how these
-                  principles can be applied to your pathfinding algorithms.
+                  Watch our demo on how various search algorithms expand and solve a maze in real time.
                 </p>
                 <div className="flex items-center">
                   <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
@@ -489,9 +432,9 @@ const Documentation: NextPage = () => {
               <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black to-transparent"></div>
             </a>
 
-            {/* Google Drive Resource Card */}
+            {/* GitHub Resource Card */}
             <a
-              href="https://drive.google.com/file/d/1Ua5NQmB-9rFB6Td3B9aMq0pmn05GeN23/view"
+              href="https://github.com/yourusername/maze-search-algorithms"
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
@@ -500,41 +443,18 @@ const Documentation: NextPage = () => {
                 <Folder className="text-green-400 w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">Supporting Materials</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Source Code</h3>
                 <p className="text-gray-300 mb-4">
-                  Comprehensive documentation, code samples, and additional resources for implementing the A* algorithm.
+                  Explore the complete codebase including the maze renderer, search algorithm implementations, and animation components.
                 </p>
                 <div className="flex items-center">
                   <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-sm text-gray-400">View on Google Drive</span>
+                  <span className="text-sm text-gray-400">View on GitHub</span>
                 </div>
               </div>
             </a>
 
-            {/* OpenStreetMap Resource Card */}
-            <a
-              href="https://www.openstreetmap.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
-            >
-              <div className="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                <MapPin className="text-yellow-400 w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">OpenStreetMap</h3>
-                <p className="text-gray-300 mb-4">
-                  The source of our map data. Learn how to extract and process geographic information for your
-                  pathfinding projects.
-                </p>
-                <div className="flex items-center">
-                  <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-sm text-gray-400">Visit OpenStreetMap</span>
-                </div>
-              </div>
-            </a>
-
-            {/* CS50 AI Lectures Resource Card */}
+            {/* Maze Demo Resource Card */}
             <a
               href="#"
               className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
@@ -543,14 +463,13 @@ const Documentation: NextPage = () => {
                 <BookOpen className="text-purple-400 w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">CS50 AI Lectures</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Interactive Demo</h3>
                 <p className="text-gray-300 mb-4">
-                  Harvards CS50 AI course provides excellent explanations of search algorithms, including A* and its
-                  applications.
+                  Experience the maze search algorithms firsthand in our interactive 3D demo.
                 </p>
                 <div className="flex items-center">
                   <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-sm text-gray-400">Access Lectures</span>
+                  <span className="text-sm text-gray-400">Try the Demo</span>
                 </div>
               </div>
             </a>
@@ -565,10 +484,9 @@ const Documentation: NextPage = () => {
           </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
             <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              The A* algorithm, as implemented in this project, demonstrates the power of heuristic search in real-world
-              applications. By leveraging efficient graph representations and accurate cost estimations, it reliably
-              finds the shortest path between cities. Future enhancements may include dynamic user inputs and a more
-              interactive map visualization.
+              This project demonstrates how various search algorithms can be visualized and compared within a 3D maze environment.
+              By integrating interactive graphics and dynamic animations, users can gain insights into how BFS, DFS, UCS, A*, and Greedy search methods navigate complex mazes.
+              Future enhancements may include user-controlled parameters and real-time algorithm comparisons.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -594,7 +512,7 @@ const Documentation: NextPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              <span className="text-blue-400 font-bold text-xl">A* Algorithm</span>
+              <span className="text-blue-400 font-bold text-xl">Maze Search Algorithms</span>
               <p className="text-gray-400 mt-2">© {new Date().getFullYear()} All rights reserved</p>
             </div>
             <div className="flex space-x-6">
@@ -629,4 +547,3 @@ const Documentation: NextPage = () => {
 }
 
 export default Documentation
-

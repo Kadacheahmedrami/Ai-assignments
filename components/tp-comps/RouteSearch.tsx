@@ -2,16 +2,10 @@ import React, { useState, useMemo, useCallback } from 'react';
 import { Node, Edge } from '@/app/types/graph';
 import { aStar } from '@/app/utils/tp01Utils/astar';
 
-// New interface that includes both path and exploredEdges
-interface RouteResult {
-  path: Node[];
-  exploredEdges: Edge[];
-}
-
 interface RouteSearchProps {
   nodes: Node[];
   edges: Edge[];
-  onPathFound: (result: RouteResult) => void;
+  onPathFound: (path: Node[]) => void;
 }
 
 interface SuggestionListProps {
@@ -23,7 +17,7 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ suggestions, onSelect }
   if (suggestions.length === 0) return null;
   return (
     <ul
-      className="absolute z-10 w-full bg-white mt-1 border border-gray-300 shadow-lg max-h-60 overflow-auto"
+      className="absolute z-10 w-full bg-white mt-1 border border-gray-300  shadow-lg max-h-60 overflow-auto"
       role="listbox"
     >
       {suggestions.map((city) => (
@@ -31,7 +25,7 @@ const SuggestionList: React.FC<SuggestionListProps> = ({ suggestions, onSelect }
           key={city} 
           className="px-4 py-2 hover:bg-blue-100 cursor-pointer"
           role="option"
-          aria-selected="false"
+          aria-selected="false" // Added to satisfy ARIA requirements
           onMouseDown={() => onSelect(city)}
         >
           {city}
@@ -61,7 +55,7 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
       .slice(0, 5);
   }, [cityNames]);
 
-  // Memoized suggestions for each input field
+  // Memoized suggestions for each input field, now including getSuggestions in the dependency arrays
   const filteredStartSuggestions = useMemo(() => getSuggestions(start), [start, getSuggestions]);
   const filteredGoalSuggestions = useMemo(() => getSuggestions(goal), [goal, getSuggestions]);
 
@@ -101,30 +95,26 @@ const RouteSearch: React.FC<RouteSearchProps> = ({ nodes, edges, onPathFound }) 
 
     // Calculate the path using the A* algorithm
     setIsLoading(true);
-// ...
-try {
-  const result = aStar({
-    graph: { nodes, edges },
-    start,
-    goal
-  });
+    try {
+      const result = aStar({
+        graph: { nodes, edges },
+        start,
+        goal
+      });
 
-  if (!result) {
-    setError('No path found between these cities');
-  } else {
-    // Use a fallback empty array for exploredEdges if it's undefined.
-    onPathFound({
-      path: result.path,
-      exploredEdges: result.exploredEdges || []
-    });
-  }
-} catch (err) {
-  setError(`Error finding path: ${err instanceof Error ? err.message : String(err)}`);
-} finally {
-  setIsLoading(false);
-}
-// ...
 
+
+
+      if (!result) {
+        setError('No path found between these cities');
+      } else {
+        onPathFound(result.path);
+      }
+    } catch (err) {
+      setError(`Error finding path: ${err instanceof Error ? err.message : String(err)}`);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Handle suggestion selection for both inputs
@@ -156,7 +146,7 @@ try {
                 onFocus={() => setShowStartSuggestions(true)}
                 onBlur={() => setTimeout(() => setShowStartSuggestions(false), 100)}
                 placeholder="Enter starting city"
-                className="w-full bg-white px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full bg-white px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-autocomplete="list"
                 aria-controls="start-suggestion-list"
               />
@@ -181,7 +171,7 @@ try {
                 onFocus={() => setShowGoalSuggestions(true)}
                 onBlur={() => setTimeout(() => setShowGoalSuggestions(false), 100)}
                 placeholder="Enter destination city"
-                className="w-full bg-white px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full bg-white px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-autocomplete="list"
                 aria-controls="goal-suggestion-list"
               />
@@ -198,7 +188,7 @@ try {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4  transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center">
@@ -223,7 +213,7 @@ try {
 
           {/* Error Message */}
           {error && (
-            <div role="alert" className="text-red-500 text-sm py-2 px-3 bg-red-50">
+            <div role="alert" className="text-red-500 text-sm py-2 px-3 bg-red-50 ">
               {error}
             </div>
           )}

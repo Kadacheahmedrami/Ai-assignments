@@ -1,20 +1,22 @@
-import {Graph,Node ,Edge} from '@/app/types/graph'
+
+import {Graph,Node} from '@/app/types/graph'
 import {Agent} from '@/app/utils/tp01Utils/class'
 import {GetNodeByName,GetNodeById,heuristicMap,subtractNodesArray, insertcost} from "@/app/utils/tp01Utils/tools"
+
 
 export interface aStarProps{
   graph: Graph;
   start: string;
-  goal: string;
+   goal: string
 }
 export const aStar = ({graph , start , goal }:aStarProps) => {
 
-  const nodes = graph.nodes
-  const edges = graph.edges
+  const nodes =   graph.nodes
+  const edges =   graph.edges
   const st = GetNodeByName({name : start , nodes})
   const go = GetNodeByName({name :goal, nodes})
   const path: Node[] = []
-  const exploredEdges : Edge[] = []
+
   if(!st || !go)
   {
     alert("one of the names is wrong")
@@ -36,7 +38,7 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
       {
         alert("no path found")
         console.log("no path found")
-        return { path: [], cost: Infinity, exploredEdges: [] }; 
+        return { path: [], cost: Infinity }; 
       }
       else
       {
@@ -47,12 +49,18 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
           {
             // console.log(agent.node.name)
             path[path.length]= agent.node
-            agent.node = GetNodeById({id:agent.node.parentid,nodes})!           
+            agent.node = GetNodeById({id:agent.node.parentid,nodes})!
+           
           }
         
           console.log("it wooorks :)")
+       
+
           path.reverse()
-          return { path, cost, exploredEdges };
+
+        
+          return { path, cost};
+
         }
 
         const neighbors = agent.neighbors()
@@ -66,21 +74,13 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
         })
         
         alreadyvisted = alreadyvisted.concat([agent.node])
-        // added pour eviter la boucle 
+       // added pour eviter la boucle 
         frontier = subtractNodesArray({neighbors: frontier,alreadyvisted})
-
-        // ---- ADDED LINES TO STORE EXPLORED EDGES ----
-        // Capture the current node before moving
-        const previousNode = agent.node;
+        // console.log('step ',x, '= ',agent.node.name
         frontier = agent.move({frontier});
-        // After move, find the edge from previousNode to the new agent.node
-        const connectingEdge = edges.find(edge => edge.start === previousNode.id && edge.destination === agent.node.id);
-        if (connectingEdge) {
-          exploredEdges.push(connectingEdge);
-        }
-        // -----------------------------------------------
+
       }
-      x = x + 1
+      x=x+1
     }
   } 
 };

@@ -4,23 +4,17 @@ import MapComponent from "@/components/tp-comps/map";
 import RouteSearch from '@/components/tp-comps/RouteSearch';
 import { Node, Edge } from '@/app/types/graph';
 
-interface RouteResult {
-  path: Node[];
-  exploredEdges: Edge[];
-}
-
 interface RouteFinderContainerProps {
   nodes: Node[];
   edges: Edge[];
 }
 
 const RouteFinderContainer: React.FC<RouteFinderContainerProps> = ({ nodes, edges }) => {
-  const [routeResult, setRouteResult] = useState<RouteResult>({ path: [], exploredEdges: [] });
+  const [path, setPath] = useState<Node[]>([]);
   const [hasSearched, setHasSearched] = useState<boolean>(false);
 
-  const handlePathFound = (result: RouteResult) => {
-    setRouteResult(result);
- 
+  const handlePathFound = (foundPath: Node[]) => {
+    setPath(foundPath);
     setHasSearched(true);
   };
 
@@ -30,13 +24,13 @@ const RouteFinderContainer: React.FC<RouteFinderContainerProps> = ({ nodes, edge
         <RouteSearch nodes={nodes} edges={edges} onPathFound={handlePathFound} />
         {hasSearched && (
           <div className="text-white mt-2">
-            {routeResult.path.length > 0 ? (
+            {path.length > 0 ? (
               <div>
                 <p className="mb-2 font-bold text-[20px]">
-                  {routeResult.path.map(node => node.name).join(' → ')}
+                  {path.map(node => node.name).join(' → ')}
                 </p>
                 <p>
-                  <span className="font-medium">Total cities:</span> {routeResult.path.length}
+                  <span className="font-medium">Total cities:</span> {path.length}
                 </p>
               </div>
             ) : (
@@ -45,13 +39,8 @@ const RouteFinderContainer: React.FC<RouteFinderContainerProps> = ({ nodes, edge
           </div>
         )}
       </div>
-      <div className="h-[93.5vh] bg-white shadow-lg overflow-hidden">
-        <MapComponent 
-          nodes={nodes} 
-          edges={edges} 
-          path={routeResult.path} 
-          exploredEdges={routeResult.exploredEdges} 
-        />
+      <div className="h-[93.5vh] bg-white  shadow-lg overflow-hidden">
+        <MapComponent nodes={nodes} edges={edges} path={path} />
       </div>
     </div>
   );

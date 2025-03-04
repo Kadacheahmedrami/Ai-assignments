@@ -1,30 +1,30 @@
-import React from 'react';
-import Image from 'next/image';
-import RouteFinderContainer from '@/components/tp-comps/RouteFinderContainer';
-import { getEdges, getNodes } from "@/app/utils/tp01Utils/getData";
-import { Node, Edge } from '@/app/types/graph';
+import MazeRenderer from "@/components/td-comps/MazeRenderer"
+import type { MazeGrid } from "@/app/types/maze"
 
-export const dynamic = "force-dynamic";
+// Example maze layout:
+// 0: Empty space
+// 1: Wall
+// 2: Start point
+// 3: End point
+const exampleMaze: MazeGrid = [
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 , 1],
+  [1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 3 , 1],
+  [1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0 , 1],
+  [1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0 , 1],
+  [1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0 , 1],
+  [1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0 , 1],
+  [1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1 , 1],
+  [1, 2, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0 , 1],
+  [1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0 , 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 , 1],
 
-export default function MainPage() {
-  const nodes: Node[] = getNodes().nodes;
-  const edges: Edge[] = getEdges().edges;
-  
-  console.log("wtf");
+]
 
+export default function Home() {
   return (
-    <>
-      <div className="w-full lg:w-[86.1%] h-[92.1%] overflow-hidden absolute bg-black">
-        <Image 
-          src="/wall.jpg" 
-          alt="Background" 
-          fill 
-          style={{ objectFit: "fill" }} 
-          quality={100}
-        />
-           <RouteFinderContainer nodes={nodes} edges={edges} />
-      </div>  
-   
-    </>
-  );
+    <main>
+      <MazeRenderer grid={exampleMaze} cellSize={1.2} />
+    </main>
+  )
 }
+

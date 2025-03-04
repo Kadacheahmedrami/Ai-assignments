@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { ArrowRight } from "lucide-react"
-import NeuralNetwork from "@/components/neural-network"
+import NeuralNetwork from "@/components/tp-comps/neural-network"
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)

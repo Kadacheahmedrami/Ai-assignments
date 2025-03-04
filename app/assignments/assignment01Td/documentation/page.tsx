@@ -1,6 +1,7 @@
 import type { NextPage } from "next"
 import Image from "next/image"
 import { Youtube, Folder, MapPin, BookOpen, ExternalLink, ChevronRight } from "lucide-react"
+import React from "react"
 
 const Documentation: NextPage = () => {
   return (

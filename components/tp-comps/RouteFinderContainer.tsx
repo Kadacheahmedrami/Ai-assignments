@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-import MapComponent from "@/components/map";
-import RouteSearch from '@/components/RouteSearch';
+import MapComponent from "@/components/tp-comps/map";
+import RouteSearch from '@/components/tp-comps/RouteSearch';
 import { Node, Edge } from '@/app/types/graph';
 
 interface RouteFinderContainerProps {

@@ -28,13 +28,23 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     title: "assignment01 (tp)",
-    href: "/assignment01",
+    href: "/assignment01Tp",
     icon: FileText,
     subItems: [
-      { title: "documentation", href: "/assignments/assignment01/documentation", icon: BookOpen },
-      { title: "start", href: "/assignments/assignment01/start", icon: PlayCircle },
-      { title: "code", href: "/assignments/assignment01/code", icon: Code },
-      { title: "Contact", href: "/assignments/assignment01/contact", icon: User },
+      { title: "documentation", href: "/assignments/assignment01Tp/documentation", icon: BookOpen },
+      { title: "start", href: "/assignments/assignment01Tp/start", icon: PlayCircle },
+      { title: "code", href: "/assignments/assignment01Tp/code", icon: Code },
+      { title: "Contact", href: "/assignments/assignment01Tp/contact", icon: User },
+    ],
+  },  {
+    title: "assignment01 (td)",
+    href: "/assignment01Td",
+    icon: FileText,
+    subItems: [
+      { title: "documentation", href: "/assignments/assignment01Td/documentation", icon: BookOpen },
+      { title: "start", href: "/assignments/  /start", icon: PlayCircle },
+      { title: "code", href: "/assignments/assignment01Td/code", icon: Code },
+      { title: "Contact", href: "/assignments/assignment01Td/contact", icon: User },
     ],
   },
 ]

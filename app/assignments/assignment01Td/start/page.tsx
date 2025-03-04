@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import RouteFinderContainer from '@/components/RouteFinderContainer';
+import RouteFinderContainer from '@/components/tp-comps/RouteFinderContainer';
 import { getEdges, getNodes } from "@/app/utils/getData";
 import { Node, Edge } from '@/app/types/graph';
 

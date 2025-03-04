@@ -18,11 +18,19 @@ interface MapProps {
   nodes: Node[];
   edges: Edge[];
   path?: Node[]; // A* path
+  exploredEdges?: Edge[]; // Newly added property for explored edges
 }
 
-const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
+const MapComponent: React.FC<MapProps> = ({ nodes, edges, path, exploredEdges }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
+
+  // Log exploredEdges whenever they change
+  useEffect(() => {
+    if (exploredEdges && exploredEdges.length > 0) {
+      console.log("Explored Edges:", exploredEdges);
+    } 
+  }, [exploredEdges]);
 
   // Helper: fetch a route between two nodes using Mapbox Directions API
   const fetchRoute = async (
@@ -208,36 +216,34 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
       if (allCoordinates.length === 0) return;
 
       // If the astarPath source doesn't exist yet, create it along with its layer
- // Replace the original astarPathLayer creation with this updated version
-if (!mapRef.current!.getSource("astarPath")) {
-  const initialGeojson: FeatureCollection<LineString, GeoJsonProperties> = {
-    type: "FeatureCollection",
-    features: [
-      {
-        type: "Feature",
-        geometry: {
-          type: "LineString",
-          coordinates: [allCoordinates[0]],
-        },
-        properties: {},
-      },
-    ],
-  };
-  mapRef.current!.addSource("astarPath", { type: "geojson", data: initialGeojson });
-  mapRef.current!.addLayer({
-    id: "astarPathLayer",
-    type: "line",
-    source: "astarPath",
-    layout: { "line-join": "round", "line-cap": "round" },
-    paint: {
-      "line-color": "blue", // Vibrant purple
-      "line-width": 6,         // Thicker line for more impact
-      "line-opacity": 1,
-      "line-blur": 4,          // Adds a glowing effect
-    },
-  });
-}
-
+      if (!mapRef.current!.getSource("astarPath")) {
+        const initialGeojson: FeatureCollection<LineString, GeoJsonProperties> = {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              geometry: {
+                type: "LineString",
+                coordinates: [allCoordinates[0]],
+              },
+              properties: {},
+            },
+          ],
+        };
+        mapRef.current!.addSource("astarPath", { type: "geojson", data: initialGeojson });
+        mapRef.current!.addLayer({
+          id: "astarPathLayer",
+          type: "line",
+          source: "astarPath",
+          layout: { "line-join": "round", "line-cap": "round" },
+          paint: {
+            "line-color": "blue",
+            "line-width": 6,
+            "line-opacity": 1,
+            "line-blur": 4,
+          },
+        });
+      }
 
       // Animate the path update over a duration
       const duration = 3000; // in milliseconds

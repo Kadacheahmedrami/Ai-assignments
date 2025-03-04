@@ -10,7 +10,7 @@ export default function MainPage() {
   const nodes: Node[] = getNodes().nodes;
   const edges: Edge[] = getEdges().edges;
   
-  console.log("wtf");
+
 
   return (
     <>

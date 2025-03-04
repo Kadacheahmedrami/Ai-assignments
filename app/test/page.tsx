@@ -22,11 +22,7 @@ const exampleMaze: MazeGrid = [
 
 export default function Home() {
   return (
-    <div className="w-full lg:w-[86.1%] h-[92.1%] overflow-hidden absolute bg-black">
-      
- <MazeRenderer grid={exampleMaze} cellSize={1.2} />
-    </div>
-   
+    <MazeRenderer grid={exampleMaze} cellSize={1.2} />
   
   )
 }

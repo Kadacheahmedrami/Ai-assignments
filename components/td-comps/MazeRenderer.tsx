@@ -57,7 +57,7 @@ export default function MazeRenderer({ grid, cellSize = 1 }: MazeProps) {
   }, [])
 
   return (
-    <div className="relative w-full h-screen bg-black">
+    <div className="relative w-full h-full bg-black">
       <Canvas shadows camera={{ position: [0, 20, 0], fov: 60 }}>
         <color attach="background" args={["#050505"]} />
         <fog attach="fog" args={["#050505", 30, 60]} />
@@ -112,7 +112,7 @@ export default function MazeRenderer({ grid, cellSize = 1 }: MazeProps) {
       {canRestart && (
         <button
           onClick={handleRestart}
-          className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors"
+          className="absolute bottom-4  left-[82%]   lg:left-[93%] bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors"
         >
           Restart
         </button>

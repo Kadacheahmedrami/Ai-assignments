@@ -2,7 +2,7 @@
 
 import {Node} from '@/app/types/graph'
 import { getDistance } from 'geolib';
-import {idnameprops,nameidprops,hProps,heuristicMapProps,hmapProp,jariPropos,neighborsProps,costProp,insertProp,substractProp} from '@/app/utils/interfaces'
+import {idnameprops,nameidprops,hProps,heuristicMapProps,hmapProp,jariPropos,neighborsProps,costProp,insertProp,substractProp} from '@/app/utils/tp01Utils/interfaces'
 
 // tjiib node bl name
 export const GetNodeByName = ({name , nodes}:idnameprops) => {

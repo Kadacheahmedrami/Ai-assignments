@@ -1,4 +1,4 @@
-import { Graph,Node ,Edge} from "../types/graph";
+import { Graph,Node ,Edge} from "../../types/graph";
 
 export interface neighborsProps {
     graph:Graph;

@@ -1,6 +1,6 @@
 import {Node,Graph} from '@/app/types/graph'
-import {neighbors } from '@/app/utils/tools'
-import {neighborsProps,moveProps} from '@/app/utils/interfaces'
+import {neighbors } from '@/app/utils/tp01Utils/tools'
+import {neighborsProps,moveProps} from '@/app/utils/tp01Utils/interfaces'
 
 
 export class Agent {

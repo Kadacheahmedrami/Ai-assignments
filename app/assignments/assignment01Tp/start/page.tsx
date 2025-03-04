@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import RouteFinderContainer from '@/components/tp-comps/RouteFinderContainer';
-import { getEdges, getNodes } from "@/app/utils/getData";
+import { getEdges, getNodes } from "@/app/utils/tp01Utils/getData";
 import { Node, Edge } from '@/app/types/graph';
 
 export const dynamic = "force-dynamic";

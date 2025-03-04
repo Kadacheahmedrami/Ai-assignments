@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { Node, Edge } from '@/app/types/graph';
-import { aStar } from '@/app/utils/astar';
+import { aStar } from '@/app/utils/tp01Utils/astar';
 
 interface RouteSearchProps {
   nodes: Node[];

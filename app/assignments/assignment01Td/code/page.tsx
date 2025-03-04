@@ -16,8 +16,6 @@ import {
 const CodeDocumentation: NextPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white font-sans">
-
-
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-slate-900">
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=800&width=1600')] bg-cover bg-center opacity-10"></div>
@@ -25,20 +23,20 @@ const CodeDocumentation: NextPage = () => {
           <div className="text-center md:text-left md:max-w-3xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-                A* Pathfinding
+                Maze Search Algorithms
               </span>
-              <span className="block text-white mt-1">Algorithm Implementation</span>
+              <span className="block text-white mt-1">Interactive Maze Exploration</span>
             </h1>
             <p className="mt-6 text-xl text-gray-300 max-w-3xl">
-              A detailed documentation of our A* search algorithm implementation for finding optimal paths between
-              locations using geographic data.
+              Detailed documentation of our multi-algorithm maze solver. Explore how BFS, DFS, Uniform Cost Search,
+              A* Search, and Greedy Best-First Search are implemented to navigate grid-based mazes and visualize their exploration process in real time.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a
                 href="#algorithm"
                 className="px-8 py-3 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center"
               >
-                View Algorithm
+                View Maze Algorithm
                 <ChevronRight className="ml-2 h-4 w-4" />
               </a>
               <a
@@ -54,8 +52,6 @@ const CodeDocumentation: NextPage = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-
-
         {/* Project Overview */}
         <section id="overview" className="mb-16 scroll-mt-20">
           <div className="flex items-center mb-8">
@@ -64,28 +60,28 @@ const CodeDocumentation: NextPage = () => {
           </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
             <p className="text-gray-300 text-lg leading-relaxed">
-              This implementation of the A* algorithm is designed to find the shortest path between two locations on a
-              map. It uses geographic coordinates (latitude and longitude) to calculate distances and employs a
-              heuristic function to guide the search process efficiently. The algorithm is implemented in TypeScript and
-              can be used with any graph-based representation of a map.
+              This project demonstrates a versatile implementation of maze search algorithms. The maze is modeled as a 2D grid,
+              where each cell represents an open path, wall, start, or goal. Multiple search strategies—Breadth-First Search (BFS),
+              Depth-First Search (DFS), Uniform Cost Search (UCS), A* Search, and Greedy Best-First Search—are implemented to explore the maze
+              and find the optimal path. The system is built in TypeScript with a focus on modularity and clear interface design.
             </p>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
                 <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
                   <Map className="h-6 w-6 text-blue-400" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Geographic Data</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">Maze Representation</h3>
                 <p className="text-gray-300">
-                  Uses real-world coordinates with the geolib library for accurate distance calculations
+                  The maze is defined as a grid where 0 indicates open paths, 1 represents walls, 2 marks the start, and 3 is the goal.
                 </p>
               </div>
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
                 <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
                   <Search className="h-6 w-6 text-blue-400" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Heuristic Search</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">Multiple Search Strategies</h3>
                 <p className="text-gray-300">
-                  Implements an admissible heuristic based on geographic distance to guide the search
+                  Explore how different search methods—BFS, DFS, UCS, A*, and Greedy—navigate the maze to find the optimal route.
                 </p>
               </div>
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
@@ -94,7 +90,7 @@ const CodeDocumentation: NextPage = () => {
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">TypeScript Implementation</h3>
                 <p className="text-gray-300">
-                  Strongly typed code with clear interfaces and modular design for maintainability
+                  Built with modular, strongly typed code to ensure clarity, extensibility, and ease of integration.
                 </p>
               </div>
             </div>
@@ -109,78 +105,68 @@ const CodeDocumentation: NextPage = () => {
           </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
             <p className="text-gray-300 text-lg mb-8">
-              The implementation uses three main data structures to represent the graph and its components:
+              The maze search implementation uses key data structures to represent the grid and support the various search algorithms:
             </p>
-
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
                 <h3 className="text-xl font-bold text-white mb-4 flex items-center">
                   <Database className="h-5 w-5 mr-2 text-blue-400" />
-                  Node Interface
+                  Maze Grid
                 </h3>
                 <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm">
-                  {`export interface Node {
-  id: number;      
-  name: string;
-  lat: number;
-  lon: number;
-  nodeType: string;
-  isSettlement: boolean;
-  population: number;
-  parentid: number   // for backtracking
-  cost: number
-}`}
+                  {`// Example maze grid representation
+const maze = [
+  [2, 0, 1, 0, 3],
+  [0, 1, 0, 0, 0],
+  [0, 0, 0, 1, 0],
+  // 0 = open path, 1 = wall, 2 = start, 3 = goal
+];`}
                 </pre>
                 <div className="mt-4 text-gray-300">
-                  <p>Represents a location on the map with:</p>
-                  <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
-                    <li>Geographic coordinates (lat, lon)</li>
-                    <li>Metadata (name, type, population)</li>
-                    <li>Algorithm-specific data (parentid, cost)</li>
-                  </ul>
+                  <p>Defines the maze structure used by the search algorithms.</p>
                 </div>
               </div>
-
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
                 <h3 className="text-xl font-bold text-white mb-4 flex items-center">
                   <GitBranch className="h-5 w-5 mr-2 text-blue-400" />
-                  Edge Interface
+                  Search Nodes
                 </h3>
                 <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm">
-                  {`export interface Edge {
-  start: number;
-  destination: number;
+                  {`export interface Node {
+  x: number;
+  z: number;
+  distance: number;
+  parent: Node | null;
+  cost?: number;
+  heuristic?: number;
+  f?: number;
+}`}
+                </pre>
+                <div className="mt-4 text-gray-300">
+                  <p>Nodes store positional and cost information used across all search methods.</p>
+                </div>
+              </div>
+              <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                  <Navigation className="h-5 w-5 mr-2 text-blue-400" />
+                  Search Interfaces
+                </h3>
+                <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm">
+                  {`export interface QueueNode extends Node {
+  parent: QueueNode | null;
+  cost?: number;
+  heuristic?: number;
+  f?: number;
+}
+
+export interface ExpansionNode {
+  x: number;
+  z: number;
   distance: number;
 }`}
                 </pre>
                 <div className="mt-4 text-gray-300">
-                  <p>Represents a connection between two nodes:</p>
-                  <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
-                    <li>References nodes by their IDs</li>
-                    <li>Stores the distance between nodes</li>
-                    <li>Used to calculate path costs</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-                  <Navigation className="h-5 w-5 mr-2 text-blue-400" />
-                  Graph Interface
-                </h3>
-                <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm">
-                  {`export interface Graph {
-  nodes: Node[];
-  edges: Edge[];
-}`}
-                </pre>
-                <div className="mt-4 text-gray-300">
-                  <p>Contains the complete map representation:</p>
-                  <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
-                    <li>Collection of all nodes (locations)</li>
-                    <li>Collection of all edges (connections)</li>
-                    <li>Used by the algorithm to navigate the map</li>
-                  </ul>
+                  <p>Defines common interfaces shared by the maze search algorithm implementations.</p>
                 </div>
               </div>
             </div>
@@ -195,50 +181,46 @@ const CodeDocumentation: NextPage = () => {
           </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
             <p className="text-gray-300 text-lg mb-8">
-              The Agent class is responsible for navigating through the graph, tracking the current position and cost,
-              and making decisions about which node to visit next.
+              The Agent class is responsible for traversing the maze using the chosen search algorithm. It maintains the current position,
+              tracks the accumulated cost, and selects the next node to explore based on the algorithm’s strategy.
             </p>
-
             <pre className="bg-slate-900 p-6 rounded-lg overflow-x-auto text-gray-300 text-sm mb-8">
               {`export class Agent {
-    currentCost: number;
-    node: Node;
-    graph: Graph;
+  currentCost: number;
+  node: Node;
+  grid: number[][];
 
-    neighbors = () => {
-        return neighbors({graph: this.graph, node: this.node, currentCost: this.currentCost})
-    }
+  neighbors = () => {
+    // Retrieves valid adjacent nodes in the maze grid
+    return getNeighbors(this.grid, this.node);
+  }
 
-    move = ({frontier}: moveProps) => {  
-        let selectedNode = <Node>{}
-        let min = Infinity
-        frontier.map((node) => {
-            if(min > node.cost) {
-                min = node.cost
-                selectedNode = node
-            }
-        })
-        
-        if(!selectedNode) {
-            return frontier;
-        }
+  move = ({ frontier }: { frontier: Node[] }): Node[] => {
+    let selectedNode = {} as Node;
+    let minCost = Infinity;
+    frontier.forEach((node) => {
+      if (node.cost !== undefined && node.cost < minCost) {
+        minCost = node.cost;
+        selectedNode = node;
+      }
+    });
 
-        // Update agent position
-        this.node = selectedNode
-        // Save the cost
-        this.currentCost = min
+    if (!selectedNode) return frontier;
 
-        return frontier.filter(node => node !== this.node)
-    }
+    // Update agent state
+    this.node = selectedNode;
+    this.currentCost = minCost;
 
-    constructor({graph, node, currentCost}: neighborsProps) {
-        this.graph = graph;
-        this.node = node;
-        this.currentCost = currentCost;
-    }
+    return frontier.filter((node) => node !== this.node);
+  }
+
+  constructor({ grid, node, currentCost }: { grid: number[][]; node: Node; currentCost: number }) {
+    this.grid = grid;
+    this.node = node;
+    this.currentCost = currentCost;
+  }
 }`}
             </pre>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
                 <h3 className="text-xl font-bold text-white mb-3 flex items-center">
@@ -248,29 +230,19 @@ const CodeDocumentation: NextPage = () => {
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      <span className="font-semibold">State Tracking:</span> Maintains the current node and accumulated
-                      cost
-                    </span>
+                    <span><span className="font-semibold">State Tracking:</span> Maintains current position and cost.</span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      <span className="font-semibold">Neighbor Discovery:</span> Finds adjacent nodes in the graph
-                    </span>
+                    <span><span className="font-semibold">Neighbor Discovery:</span> Identifies valid adjacent nodes.</span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      <span className="font-semibold">Movement Logic:</span> Selects the next node with the lowest cost
-                    </span>
+                    <span><span className="font-semibold">Movement Logic:</span> Selects the next node based on search strategy.</span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      <span className="font-semibold">Frontier Management:</span> Updates the frontier by removing the
-                      selected node
-                    </span>
+                    <span><span className="font-semibold">Frontier Management:</span> Updates the set of nodes to be explored.</span>
                   </li>
                 </ul>
               </div>
@@ -283,25 +255,19 @@ const CodeDocumentation: NextPage = () => {
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      The <code className="bg-slate-800 px-1 rounded">neighbors()</code> method retrieves all connected
-                      nodes
-                    </span>
+                    <span>The <code className="bg-slate-800 px-1 rounded">neighbors()</code> method retrieves adjacent nodes.</span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      The <code className="bg-slate-800 px-1 rounded">move()</code> method implements the greedy
-                      selection strategy
-                    </span>
+                    <span>The <code className="bg-slate-800 px-1 rounded">move()</code> method selects the node with the lowest cost.</span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>Uses a priority-based approach to select the next node with minimum cost</span>
+                    <span>Utilizes a priority-based approach for efficient exploration.</span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>Returns the updated frontier after removing the selected node</span>
+                    <span>Tracks visited nodes to prevent cycles and infinite loops.</span>
                   </li>
                 </ul>
               </div>
@@ -317,407 +283,207 @@ const CodeDocumentation: NextPage = () => {
           </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
             <p className="text-gray-300 text-lg mb-8">
-              The implementation includes several utility functions that support the A* algorithm by providing node
-              lookup, distance calculations, and other helper operations.
+              Utility functions support maze traversal by providing node lookup, cost calculations, heuristic evaluations, and neighbor discovery.
             </p>
-
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
-                <h3 className="text-xl font-bold text-white mb-4">Node Lookup Functions</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Node Lookup</h3>
                 <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm mb-4">
-                  {`// Get node by name
-export const GetNodeByName = ({name, nodes}: idnameprops) => {
-  const foundNode = nodes.find((node) => {
-    return node.name === name;
-  });
-  return foundNode;
-}
+                  {`// Get a node by name
+export const GetNodeByName = ({ name, nodes }: { name: string; nodes: Node[] }) => {
+  return nodes.find((node) => node.name === name);
+};
 
-// Get node by ID
-export const GetNodeById = ({id, nodes}: nameidprops) => {
-  const foundNode = nodes.find((node) => {
-    return node.id === id;
-  });
-  return foundNode;
-}`}
+// Get a node by ID
+export const GetNodeById = ({ id, nodes }: { id: number; nodes: Node[] }) => {
+  return nodes.find((node) => node.id === id);
+`}
                 </pre>
                 <p className="text-gray-300 text-sm">
-                  These functions provide convenient ways to retrieve nodes from the graph by either name or ID, which
-                  is essential for the algorithms operation.
+                  Provides quick access to nodes within the maze based on their name or ID.
                 </p>
               </div>
-
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
                 <h3 className="text-xl font-bold text-white mb-4">Heuristic Functions</h3>
                 <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm mb-4">
-                  {`// h(x) - Heuristic function
-export const h = ({node1, node2}: hProps) => {     
-  const distance = getDistance(
-    { latitude: node1.lat, longitude: node1.lon }, 
-    { latitude: node2.lat, longitude: node2.lon }   
-  );
-  return distance/1000;
-}
-
-// Calculate heuristic values for all nodes
-export const heuristicMap = ({Graph, endNode}: heuristicMapProps) => {
-  const nodes = Graph.nodes
-  const hValues = nodes.map((node) => {
-    return [node, h({node1: endNode, node2: node})];
-  })
-  const hmap = hValues.map((hval) => {
-    return <hmapProp>{node: hval[0], h: hval[1]};
-  })
-  return hmap;
-}`}
+                  {`// Calculate Manhattan distance as a heuristic for grid-based maze
+export const h = ({ x1, z1, x2, z2 }: { x1: number; z1: number; x2: number; z2: number }) => {
+  return Math.abs(x1 - x2) + Math.abs(z1 - z2);
+`}
                 </pre>
                 <p className="text-gray-300 text-sm">
-                  The heuristic functions calculate the estimated distance to the goal, which is crucial for the A*
-                  algorithms efficiency in finding the optimal path.
-                </p>
-              </div>
-
-              <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
-                <h3 className="text-xl font-bold text-white mb-4">Neighbor and Edge Functions</h3>
-                <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm mb-4">
-                  {`// Get connected edges
-export const getJari = ({nodeid, edges}: jariPropos) => {
-  const jiran = edges.filter((edge) => {
-    if (edge.start === nodeid) {
-      return edge;
-    }
-  })
-  return jiran;  
-}
-
-// Get neighbor nodes
-export const neighbors = ({graph, node}: neighborsProps) => {
-  const nodes = graph.nodes;
-  const jiran = getJari({nodeid: node.id, edges: graph.edges});
-  if(!jiran) {
-    return [];
-  }
-  const neighbors = jiran.map((jar) => {
-    return GetNodeById({id: jar.destination, nodes: nodes})!;
-  })
-  return neighbors;
-}`}
-                </pre>
-                <p className="text-gray-300 text-sm">
-                  These functions help identify connected nodes and edges in the graph, allowing the algorithm to
-                  explore the map structure efficiently.
-                </p>
-              </div>
-
-              <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
-                <h3 className="text-xl font-bold text-white mb-4">Cost and Path Functions</h3>
-                <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm mb-4">
-                  {`// Calculate cost between nodes
-export const getCost = ({current, next, graph, currentCost}: costProp) => {
-  const cost = graph.edges.find((edge) => {
-    if(edge.start === current.id && edge.destination === next.id) {
-      return edge.distance;
-    }
-  })
-  return cost ? cost.distance + currentCost : 0;
-}
-
-// Insert cost into nodes
-export const insertcost = ({graph, hmap, currentNode, currentCost}: insertProp) => {
-  let nodesWithCost;
-  const nodes = graph.nodes;
-  hmap.find((tuple) => {
-    nodesWithCost = nodes.map((node) => {
-      if (tuple.node.id === node.id) {
-        return node.cost = tuple.h + getCost({
-          current: currentNode, 
-          next: node, 
-          graph, 
-          currentCost
-        });
-      }  
-    })
-  })
-  return nodesWithCost;
-}
-
-// Remove already visited nodes
-export const subtractNodesArray = ({neighbors, alreadyvisted}: substractProp): Node[] => {
-  return neighbors.filter(node => 
-    !alreadyvisted.some(visited => node.id === visited.id)
-  );
-}`}
-                </pre>
-                <p className="text-gray-300 text-sm">
-                  These functions handle cost calculations, node updates, and filtering operations that are essential
-                  for the A* algorithms path-finding process.
+                  An admissible heuristic to guide the search in a grid maze.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* A* Algorithm Implementation */}
+        {/* Maze Search Algorithm Implementation */}
         <section id="algorithm" className="mb-16 scroll-mt-20">
           <div className="flex items-center mb-8">
             <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
-            <h2 className="text-3xl font-bold text-white">A* Algorithm Implementation</h2>
+            <h2 className="text-3xl font-bold text-white">Maze Search Algorithm Implementation</h2>
           </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
             <p className="text-gray-300 text-lg mb-8">
-              The core A* algorithm implementation combines all the components to find the optimal path between two
-              locations.
+              This core implementation integrates multiple search strategies. Based on the selected algorithm—BFS, DFS, UCS, A*, or Greedy Best-First Search—the maze is explored until the goal (cell value 3) is reached. The expansion path is recorded for visualization and later path reconstruction.
             </p>
-
             <pre className="bg-slate-900 p-6 rounded-lg overflow-x-auto text-gray-300 text-sm mb-8">
-              {`export interface aStarProps {
-  graph: Graph;
-  start: string;
-  goal: string;
+              {`export interface MazeSearchProps {
+  grid: number[][];
+  startPos: { x: number; z: number };
+  algorithm: "bfs" | "dfs" | "ucs" | "astar" | "greedy";
 }
 
-export const aStar = ({graph, start, goal}: aStarProps) => {
-  const nodes = graph.nodes;
-  const edges = graph.edges;
-  const st = GetNodeByName({name: start, nodes});
-  const go = GetNodeByName({name: goal, nodes});
-  const path: Node[] = [];
-
-  if(!st || !go) {
-    alert("one of the names is wrong");
-    return { path: [], cost: Infinity }; 
-  } else {
-    const agent = new Agent({graph, node: st, currentCost: 0});
-    let alreadyvisted = [agent.node]; 
-    const hmap = heuristicMap({Graph: {nodes, edges}, endNode: go});
-    let frontier = [agent.node];
-    let x = 0;
-
-    // Use x to write a non-crushable code
-    // Learned from NASA's approach to uncrashable code
-    while(true && x < 10000) {
-      if(frontier.length === 0) {
-        alert("no path found");
-        console.log("no path found");
-        return { path: [], cost: Infinity }; 
-      } else {
-        if(agent.node.id === go.id) { 
-          const cost = agent.currentCost;
-          while (agent.node) {
-            path[path.length] = agent.node;
-            agent.node = GetNodeById({id: agent.node.parentid, nodes})!;
-          }
-          console.log("it wooorks :)");
-          path.reverse();
-          return { path, cost };
-        }
-
-        const neighbors = agent.neighbors();
-        const notvisited = subtractNodesArray({neighbors, alreadyvisted});
-        notvisited.map((node) => {
-          node.parentid = agent.node.id;
-        });
-        frontier = frontier.concat(notvisited);
-        neighbors.map((node) => {
-          insertcost({graph, hmap, currentNode: node, currentCost: agent.currentCost});
-        });
-        
-        alreadyvisted = alreadyvisted.concat([agent.node]);
-        // Added to avoid loops
-        frontier = subtractNodesArray({neighbors: frontier, alreadyvisted});
-        frontier = agent.move({frontier});
-      }
-      x = x + 1;
+export const mazeSearch = ({ grid, startPos, algorithm }: MazeSearchProps) => {
+  const visited = Array.from({ length: grid.length }, () => Array(grid[0].length).fill(false));
+  let frontier = [{ x: startPos.x, z: startPos.z, distance: 0, parent: null }];
+  const expansionPath = [];
+  let counter = 0;
+  
+  while (frontier.length > 0 && counter < 10000) {
+    let current;
+    if (algorithm === "bfs") {
+      current = frontier.shift();
+    } else if (algorithm === "dfs") {
+      current = frontier.pop();
+    } else {
+      frontier.sort((a, b) => (a.f ?? a.distance) - (b.f ?? b.distance));
+      current = frontier.shift();
     }
-  } 
+    
+    if (!current) break;
+    const { x, z, distance } = current;
+    
+    if (x < 0 || x >= grid[0].length || z < 0 || z >= grid.length || grid[z][x] === 1 || visited[z][x]) {
+      continue;
+    }
+    
+    visited[z][x] = true;
+    expansionPath.push({ x, z, distance });
+    
+    if (grid[z][x] === 3) break;
+    
+    const newDistance = distance + 1;
+    if (z + 1 < grid.length && grid[z + 1][x] !== 1) frontier.push({ x, z: z + 1, distance: newDistance, parent: current });
+    if (x + 1 < grid[0].length && grid[z][x + 1] !== 1) frontier.push({ x: x + 1, z, distance: newDistance, parent: current });
+    if (z - 1 >= 0 && grid[z - 1][x] !== 1) frontier.push({ x, z: z - 1, distance: newDistance, parent: current });
+    if (x - 1 >= 0 && grid[z][x - 1] !== 1) frontier.push({ x: x - 1, z, distance: newDistance, parent: current });
+    
+    counter++;
+  }
+  
+  return expansionPath;
 };`}
             </pre>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
                 <h3 className="text-xl font-bold text-white mb-3">Algorithm Flow</h3>
                 <ol className="space-y-3 text-gray-300 list-decimal list-inside">
-                  <li className="pl-2">
-                    <span className="font-semibold">Initialization:</span> Set up the start and goal nodes, create an
-                    agent, and initialize data structures
-                  </li>
-                  <li className="pl-2">
-                    <span className="font-semibold">Main Loop:</span> Continue searching until the goal is found or the
-                    frontier is empty
-                  </li>
-                  <li className="pl-2">
-                    <span className="font-semibold">Goal Check:</span> If the current node is the goal, reconstruct and
-                    return the path
-                  </li>
-                  <li className="pl-2">
-                    <span className="font-semibold">Expansion:</span> Find neighbors of the current node and add
-                    unvisited ones to the frontier
-                  </li>
-                  <li className="pl-2">
-                    <span className="font-semibold">Cost Calculation:</span> Update costs for neighboring nodes based on
-                    the heuristic
-                  </li>
-                  <li className="pl-2">
-                    <span className="font-semibold">Selection:</span> Move the agent to the node with the lowest cost
-                  </li>
-                  <li className="pl-2">
-                    <span className="font-semibold">Loop Prevention:</span> Track visited nodes to avoid cycles
-                  </li>
+                  <li className="pl-2"><span className="font-semibold">Initialization:</span> Set up the maze grid, start position, and data structures.</li>
+                  <li className="pl-2"><span className="font-semibold">Algorithm Selection:</span> Choose the search strategy (BFS, DFS, UCS, A*, or Greedy).</li>
+                  <li className="pl-2"><span className="font-semibold">Expansion:</span> Iteratively explore adjacent nodes while marking visited cells.</li>
+                  <li className="pl-2"><span className="font-semibold">Goal Check:</span> Stop when the goal cell (value 3) is reached.</li>
+                  <li className="pl-2"><span className="font-semibold">Path Reconstruction:</span> Trace back from the goal using parent pointers.</li>
                 </ol>
               </div>
-
               <div className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
                 <h3 className="text-xl font-bold text-white mb-3">Key Features</h3>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      <span className="font-semibold">Safety Limit:</span> Uses a counter (x) to prevent infinite loops,
-                      inspired by NASAs approach to robust code
-                    </span>
+                    <span><span className="font-semibold">Multiple Strategies:</span> Supports BFS, DFS, UCS, A*, and Greedy Search.</span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      <span className="font-semibold">Path Reconstruction:</span> Uses parent pointers to trace back
-                      from the goal to the start
-                    </span>
+                    <span><span className="font-semibold">Safety Mechanism:</span> Implements a counter to avoid infinite loops.</span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      <span className="font-semibold">Error Handling:</span> Provides clear feedback when no path is
-                      found or input names are incorrect
-                    </span>
+                    <span><span className="font-semibold">Modular Design:</span> Easy to switch between search algorithms.</span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      <span className="font-semibold">Optimized Search:</span> Combines actual cost and heuristic
-                      estimates to guide the search efficiently
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <ArrowRight className="h-5 w-5 mr-2 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span>
-                      <span className="font-semibold">Flexible Interface:</span> Takes start and goal locations by name
-                      for easy integration with user interfaces
-                    </span>
+                    <span><span className="font-semibold">Visual Feedback:</span> Records expansion path for subsequent animation.</span>
                   </li>
                 </ul>
               </div>
             </div>
-
             <div className="mt-8 p-6 bg-slate-700/50 rounded-xl border border-slate-600">
               <div className="flex items-center mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-blue-400 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <h3 className="text-lg font-semibold text-white">Implementation Notes</h3>
               </div>
               <p className="text-gray-300">
-                This implementation follows the classic A* algorithm pattern but is adapted for geographic data. The use
-                of a safety counter (x) is inspired by NASAs approach to writing robust, uncrashable code. The
-                algorithm efficiently balances exploration of promising paths with the guarantee of finding the optimal
-                solution when one exists.
+                The maze search framework is designed to be flexible and modular. It supports various search strategies,
+                tracks visited nodes to prevent cycles, and uses a simple cost model for grid navigation. Safety mechanisms such as a loop counter ensure robustness.
               </p>
             </div>
           </div>
         </section>
 
         {/* Visualization and Example */}
-        <section className="mb-16">
+        <section id="visualization" className="mb-16">
           <div className="flex items-center mb-8">
             <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
             <h2 className="text-3xl font-bold text-white">Visualization & Example</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
-              <h3 className="text-xl font-bold text-white mb-6">Sample Path Visualization</h3>
+              <h3 className="text-xl font-bold text-white mb-6">Maze Visualization</h3>
               <div className="aspect-square relative rounded-lg overflow-hidden bg-slate-900 mb-4">
                 <div className="absolute inset-0 bg-[url('/placeholder.svg?height=500&width=500')] bg-cover bg-center opacity-70"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <p className="text-gray-400 text-center px-8">Interactive visualization would appear here</p>
+                  <p className="text-gray-400 text-center px-8">Interactive maze visualization would appear here</p>
                 </div>
               </div>
               <p className="text-gray-300 text-sm">
-                A visual representation of the A* algorithm finding the shortest path between two cities. The green
-                nodes represent the optimal path, yellow nodes are explored but not part of the final path, and red
-                nodes are the start and goal locations.
+                Visual demonstration of the maze exploration process. Colors indicate the order in which nodes are expanded.
               </p>
             </div>
-
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
               <h3 className="text-xl font-bold text-white mb-6">Usage Example</h3>
               <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm mb-4">
-                {`// Example usage of the A* algorithm
-import { aStar } from '@/app/utils/astar';
-import { Graph } from '@/app/types/graph';
+                {`// Example usage of the maze search algorithm
+import { mazeSearch } from '@/app/utils/mazeSearch';
 
-// Sample graph with cities and roads
-const cityGraph: Graph = {
-  nodes: [
-    { id: 1, name: "New York", lat: 40.7128, lon: -74.0060, nodeType: "city", isSettlement: true, population: 8400000, parentid: 0, cost: 0 },
-    { id: 2, name: "Boston", lat: 42.3601, lon: -71.0589, nodeType: "city", isSettlement: true, population: 675000, parentid: 0, cost: 0 },
-    { id: 3, name: "Philadelphia", lat: 39.9526, lon: -75.1652, nodeType: "city", isSettlement: true, population: 1500000, parentid: 0, cost: 0 },
-    // More cities...
-  ],
-  edges: [
-    { start: 1, destination: 2, distance: 346 },
-    { start: 1, destination: 3, distance: 151 },
-    { start: 2, destination: 3, distance: 438 },
-    // More roads...
-  ]
-};
+const grid = [
+  [2, 0, 1, 0, 3],
+  [0, 1, 0, 0, 0],
+  [0, 0, 0, 1, 0],
+  // 2 = start, 3 = goal, 1 = wall, 0 = open path
+];
 
-// Find the shortest path from New York to Boston
-const result = aStar({
-  graph: cityGraph,
-  start: "New York",
-  goal: "Boston"
+const expansionPath = mazeSearch({
+  grid,
+  startPos: { x: 0, z: 0 },
+  algorithm: "astar" // Options: "bfs", "dfs", "ucs", "astar", "greedy"
 });
 
-console.log("Path found:", result.path.map(node => node.name));
-console.log("Total distance:", result.cost, "km");`}
+console.log("Expansion Path:", expansionPath);
+`}
               </pre>
               <p className="text-gray-300 text-sm">
-                This example demonstrates how to use the A* algorithm implementation with a sample graph of cities and
-                roads. The algorithm finds the shortest path from New York to Boston and returns both the path and the
-                total distance.
+                This example demonstrates calling the maze search function with a sample grid and selected algorithm. The returned expansion path is used for animating the maze exploration.
               </p>
             </div>
           </div>
         </section>
 
         {/* Conclusion */}
-        <section className="mb-16">
+        <section id="conclusion" className="mb-16">
           <div className="flex items-center mb-8">
             <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
             <h2 className="text-3xl font-bold text-white">Conclusion</h2>
           </div>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
             <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              This implementation of the A* algorithm provides an efficient and robust solution for finding optimal
-              paths in geographic data. By combining a well-structured graph representation, an admissible heuristic
-              function, and careful state management, the algorithm can reliably find the shortest path between any two
-              locations in the graph when such a path exists.
-            </p>
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              The code is designed with maintainability and robustness in mind, featuring clear interfaces, modular
-              components, and safety mechanisms to prevent crashes. The implementation can be easily integrated into
-              larger applications that require pathfinding capabilities, such as navigation systems, logistics planning
-              tools, or geographic information systems.
+              The maze search algorithms implementation offers a robust and flexible framework for exploring grid-based mazes.
+              By supporting multiple search strategies and providing clear visual feedback, the project serves as a powerful tool for understanding
+              the strengths and differences of various pathfinding approaches.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -743,7 +509,7 @@ console.log("Total distance:", result.cost, "km");`}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              <span className="text-blue-400 font-bold text-xl">A* Algorithm Implementation</span>
+              <span className="text-blue-400 font-bold text-xl">Maze Search Algorithms</span>
               <p className="text-gray-400 mt-2">© {new Date().getFullYear()} All rights reserved</p>
             </div>
             <div className="flex space-x-6">
@@ -778,4 +544,3 @@ console.log("Total distance:", result.cost, "km");`}
 }
 
 export default CodeDocumentation
-

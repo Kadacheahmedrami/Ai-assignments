@@ -45,7 +45,7 @@ const Documentation: NextPage = () => {
         <div className="mb-16 rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/10 relative group">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <Image
-            src="/maze-hero.png"
+            src="/maze.png"
             alt="3D Maze Visualization with Search Algorithms"
             width={1200}
             height={600}
@@ -281,23 +281,7 @@ const Documentation: NextPage = () => {
                 </li>
               </ol>
             </div>
-            <div className="mt-12 p-6 bg-slate-700/50 rounded-xl border border-slate-600">
-              <h3 className="text-lg font-semibold text-white mb-4">Pseudocode</h3>
-              <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm">
-                {`function searchMaze(start, goal):
-    initialize frontier with start node
-    mark all nodes as unvisited
-    while frontier is not empty:
-        current = choose node from frontier based on algorithm
-        if current == goal:
-            break
-        for each neighbor of current:
-            if neighbor is valid and not visited:
-                mark neighbor as visited
-                add neighbor to frontier with updated cost/heuristic
-    return reconstructPath(goal)`}
-              </pre>
-            </div>
+          
           </div>
         </section>
 
@@ -407,102 +391,92 @@ const Documentation: NextPage = () => {
             <h2 className="text-3xl font-bold text-white">Resources</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* YouTube Resource Card */}
-            <a
-              href="https://www.youtube.com/watch?v=HaGj0DjX8W8&t=226s"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-2xl shadow-xl"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-red-700/20 group-hover:from-red-500/30 group-hover:to-red-700/30 transition-all duration-300"></div>
-              <div className="absolute inset-0 bg-[url('/placeholder.svg?height=400&width=600')] bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-500"></div>
-              <div className="relative z-10 p-8">
-                <div className="flex items-center mb-4">
-                  <Youtube className="text-red-500 w-8 h-8 mr-3" />
-                  <h3 className="text-xl font-bold text-white">Maze Search Visualization</h3>
-                </div>
-                <p className="text-gray-300 mb-6">
-                  Watch our demo on how various search algorithms expand and solve a maze in real time.
-                </p>
-                <div className="flex items-center">
-                  <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-sm text-gray-400">Watch on YouTube</span>
-                </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black to-transparent"></div>
-            </a>
+          
+                {/* YouTube Resource Card */}
+                <a
+  href="https://www.youtube.com/watch?v=WbzNRTTrX0g&t=1908s"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+>
+  <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+    <Youtube className="text-red-400 w-8 h-8" />
+  </div>
+  <div>
+    <h3 className="text-xl font-bold text-white mb-2">CS50's Introduction to AI Search - Lecture 0</h3>
+    <p className="text-gray-300 mb-4">
+      Explore how NASA’s clever coding methods power AI search, and discover practical tips you can apply to your own projects.
+    </p>
+    <div className="flex items-center">
+      <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+      <span className="text-sm text-gray-400">Watch on YouTube</span>
+    </div>
+  </div>
+</a>
 
-            {/* GitHub Resource Card */}
-            <a
-              href="https://github.com/yourusername/maze-search-algorithms"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
-            >
-              <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                <Folder className="text-green-400 w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">Source Code</h3>
-                <p className="text-gray-300 mb-4">
-                  Explore the complete codebase including the maze renderer, search algorithm implementations, and animation components.
-                </p>
-                <div className="flex items-center">
-                  <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-sm text-gray-400">View on GitHub</span>
-                </div>
-              </div>
-            </a>
+<a
+  href="https://www.youtube.com/watch?v=GWYhtksrmhE"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+>
+  <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+    <Youtube className="text-red-400 w-8 h-8" />
+  </div>
+  <div>
+    <h3 className="text-xl font-bold text-white mb-2">NASAs Uncrashable Code</h3>
+    <p className="text-gray-300 mb-4">
+      Uncover the secrets behind NASA’s resilient code and see how these battle-tested techniques can inspire your own software solutions.
+    </p>
+    <div className="flex items-center">
+      <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+      <span className="text-sm text-gray-400">Watch on YouTube</span>
+    </div>
+  </div>
+</a>
 
-            {/* Maze Demo Resource Card */}
-            <a
-              href="#"
-              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
-            >
-              <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                <BookOpen className="text-purple-400 w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">Interactive Demo</h3>
-                <p className="text-gray-300 mb-4">
-                  Experience the maze search algorithms firsthand in our interactive 3D demo.
-                </p>
-                <div className="flex items-center">
-                  <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-sm text-gray-400">Try the Demo</span>
-                </div>
-              </div>
-            </a>
-          </div>
-        </section>
+{/* Google Drive Resource Card */}
+<a
+  href="https://drive.google.com/file/d/1Ua5NQmB-9rFB6Td3B9aMq0pmn05GeN23/view"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+>
+  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+    <Folder className="text-green-400 w-8 h-8" />
+  </div>
+  <div>
+    <h3 className="text-xl font-bold text-white mb-2">Supporting Materials</h3>
+    <p className="text-gray-300 mb-4">
+      Get easy-to-follow guides, sample code, and extra resources to help you master the A* algorithm and boost your programming skills.
+    </p>
+    <div className="flex items-center">
+      <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+      <span className="text-sm text-gray-400">View on Google Drive</span>
+    </div>
+  </div>
+</a>
 
-        {/* Conclusion */}
-        <section className="mb-16">
-          <div className="flex items-center mb-8">
-            <div className="h-10 w-1 bg-blue-500 rounded-full mr-4"></div>
-            <h2 className="text-3xl font-bold text-white">Conclusion</h2>
-          </div>
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl">
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              This project demonstrates how various search algorithms can be visualized and compared within a 3D maze environment.
-              By integrating interactive graphics and dynamic animations, users can gain insights into how BFS, DFS, UCS, A*, and Greedy search methods navigate complex mazes.
-              Future enhancements may include user-controlled parameters and real-time algorithm comparisons.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#"
-                className="px-8 py-3 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center"
-              >
-                View Source Code
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="px-8 py-3 rounded-lg bg-slate-700 text-white font-medium hover:bg-slate-600 transition-colors shadow-lg flex items-center justify-center"
-              >
-                Try Demo
-              </a>
-            </div>
+{/* CS50 AI Lectures Resource Card */}
+<a
+  href="#"
+  className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+>
+  <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+    <BookOpen className="text-purple-400 w-8 h-8" />
+  </div>
+  <div>
+    <h3 className="text-xl font-bold text-white mb-2">CS50 AI Lectures</h3>
+    <p className="text-gray-300 mb-4">
+      Enjoy Harvard’s engaging CS50 AI lectures that break down complex search algorithms into clear, relatable concepts for beginners and pros alike.
+    </p>
+    <div className="flex items-center">
+      <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+      <span className="text-sm text-gray-400">Access Lectures</span>
+    </div>
+  </div>
+</a>
+
           </div>
         </section>
       </div>

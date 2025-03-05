@@ -538,132 +538,132 @@ const Documentation: NextPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* YouTube Resource Card */}
             <a
-                    href="https://www.youtube.com/watch?v=WbzNRTTrX0g&t=1908s"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
-                  >
-                    <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                      <Youtube className="text-red-400 w-8 h-8" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">CS50's Introduction to AI Search - Lecture 0 </h3>
-                      <p className="text-gray-300 mb-4">
-                        A deep dive into robust code techniques used by NASA for mission-critical systems. Learn how these principles can be applied to your pathfinding algorithms.
-                      </p>
-                      <div className="flex items-center">
-                        <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="text-sm text-gray-400">Watch on YouTube</span>
-                      </div>
-                    </div>
-                  </a>
-            
-                <a
-                    href="https://www.youtube.com/watch?v=GWYhtksrmhE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
-                  >
-                    <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                      <Youtube className="text-red-400 w-8 h-8" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">NASAs Uncrashable Code</h3>
-                      <p className="text-gray-300 mb-4">
-                        A deep dive into robust code techniques used by NASA for mission-critical systems. Learn how these principles can be applied to your pathfinding algorithms.
-                      </p>
-                      <div className="flex items-center">
-                        <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="text-sm text-gray-400">Watch on YouTube</span>
-                      </div>
-                    </div>
-                  </a>
+  href="https://www.youtube.com/watch?v=WbzNRTTrX0g&t=1908s"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+>
+  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+    <Youtube className="text-red-400 w-8 h-8" />
+  </div>
+  <div>
+    <h3 className="text-xl font-bold text-white mb-2">CS50's Introduction to AI Search - Lecture 0</h3>
+    <p className="text-gray-300 mb-4">
+      Discover how NASA’s innovative coding methods power advanced AI search – and pick up tips you can use in your own projects.
+    </p>
+    <div className="flex items-center">
+      <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+      <span className="text-sm text-gray-400">Watch on YouTube</span>
+    </div>
+  </div>
+</a>
 
 <a
-                    href="https://www.youtube.com/watch?v=HaGj0DjX8W8&t=226s"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
-                  >
-                    <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                      <Youtube className="text-red-400 w-8 h-8" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">Calculate distance using lang and lot   </h3>
-                      <p className="text-gray-300 mb-4">
-                        A deep dive into robust code techniques used by NASA for mission-critical systems. Learn how these principles can be applied to your pathfinding algorithms.
-                      </p>
-                      <div className="flex items-center">
-                        <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="text-sm text-gray-400">Watch on YouTube</span>
-                      </div>
-                    </div>
-                  </a>
-            {/* Google Drive Resource Card */}
-            <a
-              href="https://drive.google.com/file/d/1Ua5NQmB-9rFB6Td3B9aMq0pmn05GeN23/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
-            >
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                <Folder className="text-green-400 w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">Supporting Materials</h3>
-                <p className="text-gray-300 mb-4">
-                  Comprehensive documentation, code samples, and additional resources for implementing the A* algorithm.
-                </p>
-                <div className="flex items-center">
-                  <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-sm text-gray-400">View on Google Drive</span>
-                </div>
-              </div>
-            </a>
+  href="https://www.youtube.com/watch?v=GWYhtksrmhE"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+>
+  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+    <Youtube className="text-red-400 w-8 h-8" />
+  </div>
+  <div>
+    <h3 className="text-xl font-bold text-white mb-2">NASAs Uncrashable Code</h3>
+    <p className="text-gray-300 mb-4">
+      Uncover the secrets behind NASA’s unbreakable code and see how these proven techniques can inspire your own software solutions.
+    </p>
+    <div className="flex items-center">
+      <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+      <span className="text-sm text-gray-400">Watch on YouTube</span>
+    </div>
+  </div>
+</a>
 
-            {/* OpenStreetMap Resource Card */}
-            <a
-              href="https://www.openstreetmap.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
-            >
-              <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                <MapPin className="text-yellow-400 w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">OpenStreetMap</h3>
-                <p className="text-gray-300 mb-4">
-                  The source of our map data. Learn how to extract and process geographic information for your
-                  pathfinding projects.
-                </p>
-                <div className="flex items-center">
-                  <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-sm text-gray-400">Visit OpenStreetMap</span>
-                </div>
-              </div>
-            </a>
+<a
+  href="https://www.youtube.com/watch?v=HaGj0DjX8W8&t=226s"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+>
+  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+    <Youtube className="text-red-400 w-8 h-8" />
+  </div>
+  <div>
+    <h3 className="text-xl font-bold text-white mb-2">Calculate Distance Using Lang and Lot</h3>
+    <p className="text-gray-300 mb-4">
+      Learn a hands-on method for calculating distances with latitude and longitude – perfect for boosting your mapping projects.
+    </p>
+    <div className="flex items-center">
+      <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+      <span className="text-sm text-gray-400">Watch on YouTube</span>
+    </div>
+  </div>
+</a>
 
-            {/* CS50 AI Lectures Resource Card */}
-            <a
-              href="#"
-              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
-            >
-              <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                <BookOpen className="text-purple-400 w-8 h-8" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">CS50 AI Lectures</h3>
-                <p className="text-gray-300 mb-4">
-                  Harvards CS50 AI course provides excellent explanations of search algorithms, including A* and its
-                  applications.
-                </p>
-                <div className="flex items-center">
-                  <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-sm text-gray-400">Access Lectures</span>
-                </div>
-              </div>
-            </a>
+{/* Google Drive Resource Card */}
+<a
+  href="https://drive.google.com/file/d/1Ua5NQmB-9rFB6Td3B9aMq0pmn05GeN23/view"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+>
+  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+    <Folder className="text-green-400 w-8 h-8" />
+  </div>
+  <div>
+    <h3 className="text-xl font-bold text-white mb-2">Supporting Materials</h3>
+    <p className="text-gray-300 mb-4">
+      Find easy-to-follow guides, sample code, and extra resources to help you master the A* algorithm in your projects.
+    </p>
+    <div className="flex items-center">
+      <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+      <span className="text-sm text-gray-400">View on Google Drive</span>
+    </div>
+  </div>
+</a>
+
+{/* OpenStreetMap Resource Card */}
+<a
+  href="https://www.openstreetmap.org/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+>
+  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+    <MapPin className="text-yellow-400 w-8 h-8" />
+  </div>
+  <div>
+    <h3 className="text-xl font-bold text-white mb-2">OpenStreetMap</h3>
+    <p className="text-gray-300 mb-4">
+      Explore OpenStreetMap – your go-to source for detailed map data and a great starting point for your own mapping adventures.
+    </p>
+    <div className="flex items-center">
+      <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+      <span className="text-sm text-gray-400">Visit OpenStreetMap</span>
+    </div>
+  </div>
+</a>
+
+{/* CS50 AI Lectures Resource Card */}
+<a
+  href="#"
+  className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+>
+  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+    <BookOpen className="text-purple-400 w-8 h-8" />
+  </div>
+  <div>
+    <h3 className="text-xl font-bold text-white mb-2">CS50 AI Lectures</h3>
+    <p className="text-gray-300 mb-4">
+      Dive into Harvard’s CS50 AI lectures for clear, engaging lessons on search algorithms and real-world applications.
+    </p>
+    <div className="flex items-center">
+      <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+      <span className="text-sm text-gray-400">Access Lectures</span>
+    </div>
+  </div>
+</a>
+
           </div>
         </section>
 

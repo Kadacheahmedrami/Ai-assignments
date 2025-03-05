@@ -14,7 +14,6 @@ import {
   BookOpen,
   PlayCircle,
   Code,
-  Mail,
 } from "lucide-react"
 import { SVGProps } from "react"
 
@@ -111,10 +110,10 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
         `}
       >
         <div className="flex items-center justify-between h-[8vh] px-4 bg-gray-800">
-        <a href="/" className="text-2xl font-bold flex items-center">
+        <Link href="/" className="text-2xl font-bold flex items-center">
   <ArrowLeft className="mr-2" />
   Home
-</a>
+</ Link>
           <button
             onClick={() => setSidebarOpen(false)}
             className="p-2 rounded-md lg:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"

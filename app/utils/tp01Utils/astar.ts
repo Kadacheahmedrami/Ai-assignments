@@ -35,25 +35,25 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
     
     while(true && x< 10000)
     {
-    console.log("rep " ,x)
+    // console.log("rep " ,x)
 
-    console.log("we are in ")
-    console.log(agent.node)
+    // console.log("we are in ")
+    // console.log(agent.node)
 
-    console.log("the neighbors are : ")
-    console.log(agent.neighbors())
+    // console.log("the neighbors are : ")
+    // console.log(agent.neighbors())
 
-    console.log("you have alredy visited  : ")
-    console.log(alreadyvisted)
+    // console.log("you have alredy visited  : ")
+    // console.log(alreadyvisted)
 
-    console.log("frontier content  : ")
+    // console.log("frontier content  : ")
 
-    console.log(frontier)
+    // console.log(frontier)
 
 
       if(frontier.length === 0)
       {
-      console.log(alreadyvisted)
+      // console.log(alreadyvisted)
         alert("no path found")
         console.log("no path found")
         return { path: [], cost: Infinity }; 

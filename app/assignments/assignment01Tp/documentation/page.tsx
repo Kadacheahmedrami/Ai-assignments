@@ -547,9 +547,9 @@ const Documentation: NextPage = () => {
     <Youtube className="text-red-400 w-8 h-8" />
   </div>
   <div>
-    <h3 className="text-xl font-bold text-white mb-2">CS50's Introduction to AI Search - Lecture 0</h3>
+    <h3 className="text-xl font-bold text-white mb-2">CS50 Introduction to AI Search - Lecture 0</h3>
     <p className="text-gray-300 mb-4">
-      Discover how NASA’s innovative coding methods power advanced AI search – and pick up tips you can use in your own projects.
+      Discover how NASAs innovative coding methods power advanced AI search  and pick up tips you can use in your own projects.
     </p>
     <div className="flex items-center">
       <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
@@ -570,7 +570,7 @@ const Documentation: NextPage = () => {
   <div>
     <h3 className="text-xl font-bold text-white mb-2">NASAs Uncrashable Code</h3>
     <p className="text-gray-300 mb-4">
-      Uncover the secrets behind NASA’s unbreakable code and see how these proven techniques can inspire your own software solutions.
+      Uncover the secrets behind NASA unbreakable code and see how these proven techniques can inspire your own software solutions.
     </p>
     <div className="flex items-center">
       <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
@@ -591,7 +591,7 @@ const Documentation: NextPage = () => {
   <div>
     <h3 className="text-xl font-bold text-white mb-2">Calculate Distance Using Lang and Lot</h3>
     <p className="text-gray-300 mb-4">
-      Learn a hands-on method for calculating distances with latitude and longitude – perfect for boosting your mapping projects.
+      Learn a hands-on method for calculating distances with latitude and longitude  perfect for boosting your mapping projects.
     </p>
     <div className="flex items-center">
       <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
@@ -635,7 +635,7 @@ const Documentation: NextPage = () => {
   <div>
     <h3 className="text-xl font-bold text-white mb-2">OpenStreetMap</h3>
     <p className="text-gray-300 mb-4">
-      Explore OpenStreetMap – your go-to source for detailed map data and a great starting point for your own mapping adventures.
+      Explore OpenStreetMap  your go-to source for detailed map data and a great starting point for your own mapping adventures.
     </p>
     <div className="flex items-center">
       <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
@@ -655,7 +655,7 @@ const Documentation: NextPage = () => {
   <div>
     <h3 className="text-xl font-bold text-white mb-2">CS50 AI Lectures</h3>
     <p className="text-gray-300 mb-4">
-      Dive into Harvard’s CS50 AI lectures for clear, engaging lessons on search algorithms and real-world applications.
+      Dive into Harvard CS50 AI lectures for clear, engaging lessons on search algorithms and real-world applications.
     </p>
     <div className="flex items-center">
       <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />

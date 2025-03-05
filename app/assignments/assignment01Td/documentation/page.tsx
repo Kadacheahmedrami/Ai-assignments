@@ -403,9 +403,9 @@ const Documentation: NextPage = () => {
     <Youtube className="text-red-400 w-8 h-8" />
   </div>
   <div>
-    <h3 className="text-xl font-bold text-white mb-2">CS50's Introduction to AI Search - Lecture 0</h3>
+    <h3 className="text-xl font-bold text-white mb-2">CS50 Introduction to AI Search - Lecture 0</h3>
     <p className="text-gray-300 mb-4">
-      Explore how NASA’s clever coding methods power AI search, and discover practical tips you can apply to your own projects.
+      Explore how NASA clever coding methods power AI search, and discover practical tips you can apply to your own projects.
     </p>
     <div className="flex items-center">
       <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />

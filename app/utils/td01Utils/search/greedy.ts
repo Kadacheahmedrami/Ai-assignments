@@ -1,4 +1,4 @@
-import type { QueueNode, ExpansionNode } from "@/app/types/search-types";
+import type {  ExpansionNode } from "@/app/types/search-types";
 
   type Node = { x: number; z: number ,heuristic : number }
   // mannhatan distance mn cs 50  course 

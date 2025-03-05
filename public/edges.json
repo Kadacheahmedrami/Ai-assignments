@@ -33,6 +33,7 @@
     { "start": 1042, "destination": 1023, "distance": 80 },
     { "start": 1023, "destination": 1020, "distance": 109 },
     { "start": 1023, "destination": 1022, "distance": 79 },
+    { "start": 1022, "destination": 1023, "distance": 79 },
     { "start": 1022, "destination": 1020, "distance": 79 },
     { "start": 1022, "destination": 1011, "distance": 84 },
     { "start": 1011, "destination": 1007, "distance": 96 },

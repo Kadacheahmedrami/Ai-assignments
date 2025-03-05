@@ -36,8 +36,21 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
     while(true && x< 10000)
     {
     console.log("rep " ,x)
+
+    console.log("we are in ")
     console.log(agent.node)
+
+    console.log("the neighbors are : ")
     console.log(agent.neighbors())
+
+    console.log("you have alredy visited  : ")
+    console.log(alreadyvisted)
+
+    console.log("frontier content  : ")
+
+    console.log(frontier)
+
+
       if(frontier.length === 0)
       {
       console.log(alreadyvisted)
@@ -70,6 +83,8 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
 
         const neighbors = agent.neighbors()
         const notvisited = subtractNodesArray({neighbors,alreadyvisted})
+
+
         notvisited.map((node)=>{
           node.parentid = agent.node.id
         })
@@ -80,7 +95,7 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
         
         alreadyvisted = alreadyvisted.concat([agent.node])
        // added pour eviter la boucle 
-        frontier = subtractNodesArray({neighbors: frontier,alreadyvisted})
+        frontier = frontier.concat(notvisited)
         // console.log('step ',x, '= ',agent.node.name
         frontier = agent.move({frontier});
 

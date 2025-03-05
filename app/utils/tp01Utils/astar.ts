@@ -65,6 +65,8 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
         }
 
         const neighbors = agent.neighbors()
+        console.log(agent.node.name)
+        console.log(neighbors)
         const notvisited = subtractNodesArray({neighbors,alreadyvisted})
         notvisited.map((node)=>{
           node.parentid = agent.node.id
@@ -79,12 +81,10 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
         frontier = subtractNodesArray({neighbors: frontier,alreadyvisted})
         // console.log('step ',x, '= ',agent.node.name
 
-        console.log("rep " ,  x, " :")
-        console.log(frontier)
+      
         frontier = agent.move({frontier});
-        console.log(agent.node.name)
-        console.log("after : ")
-        console.log(frontier)
+        
+    
       }
       x=x+1
     }

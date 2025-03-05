@@ -32,11 +32,15 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
 
     // use the x to write a non crushable code
     // i learned this from this video that talk how nasa write uncrashable code
+    
     while(true && x< 10000)
     {
-
+    console.log("rep " ,x)
+    console.log(agent.node)
+    console.log(agent.neighbors())
       if(frontier.length === 0)
       {
+      console.log(alreadyvisted)
         alert("no path found")
         console.log("no path found")
         return { path: [], cost: Infinity }; 
@@ -65,8 +69,6 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
         }
 
         const neighbors = agent.neighbors()
-        console.log(agent.node.name)
-        console.log(neighbors)
         const notvisited = subtractNodesArray({neighbors,alreadyvisted})
         notvisited.map((node)=>{
           node.parentid = agent.node.id
@@ -80,11 +82,8 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
        // added pour eviter la boucle 
         frontier = subtractNodesArray({neighbors: frontier,alreadyvisted})
         // console.log('step ',x, '= ',agent.node.name
-
-      
         frontier = agent.move({frontier});
-        
-    
+
       }
       x=x+1
     }

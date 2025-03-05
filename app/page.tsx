@@ -36,7 +36,7 @@ export default function Home() {
           <div className="space-y-6 max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
-                Kadache Ahmed Rami&apos;s
+                Kadache & Djouza &apos;s
               </span>{" "}
               AI Projects &amp; Assignments
             </h1>

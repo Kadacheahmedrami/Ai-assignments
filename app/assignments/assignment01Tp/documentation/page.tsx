@@ -300,31 +300,104 @@ const Documentation: NextPage = () => {
             <div className="mt-12 p-6 bg-slate-700/50 rounded-xl border border-slate-600">
               <h3 className="text-lg font-semibold text-white mb-4">Pseudocode</h3>
               <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto text-gray-300 text-sm">
-                {`function A_Star(start, goal):
-    // Initialize data structures
-    frontier = PriorityQueue()
-    frontier.add(start, 0)
-    came_from = {}
-    cost_so_far = {}
-    came_from[start] = null
-    cost_so_far[start] = 0
-    
-    while not frontier.empty():
-        current = frontier.pop()
-        
-        if current == goal:
-            break
-            
-        for next in graph.neighbors(current):
-            new_cost = cost_so_far[current] + graph.cost(current, next)
-            if next not in cost_so_far or new_cost < cost_so_far[next]:
-                cost_so_far[next] = new_cost
-                priority = new_cost + heuristic(next, goal)
-                frontier.add(next, priority)
-                came_from[next] = current
+                {`
+         
+                 function aStar = ({graph , start , goal }:aStarProps) => {
                 
-    // Reconstruct path
-    return reconstruct_path(came_from, start, goal)`}
+                  const nodes =   graph.nodes
+                  const edges =   graph.edges
+                  const st = GetNodeByName({name : start , nodes})
+                  const go = GetNodeByName({name :goal, nodes})
+                  const path: Node[] = []
+                
+                  if(!st || !go)
+                  {
+                    alert("one of the names is wrong")
+                    return { path: [], cost: Infinity }; 
+                  }
+                  else
+                  {
+                    const agent = new Agent({graph,node: st,currentCost:0})
+                    let alreadyvisted = [agent.node] 
+                    const hmap = heuristicMap({Graph : {nodes,edges} , endNode : go })
+                    let frontier = [agent.node]
+                    let x = 0
+                
+                    // use the x to write a non crushable code
+                    // i learned this from this video that talk how nasa write uncrashable code
+                    
+                    while(true && x< 10000)
+                    {
+                    console.log("rep " ,x)
+                
+                    console.log("we are in ")
+                    console.log(agent.node)
+                
+                    console.log("the neighbors are : ")
+                    console.log(agent.neighbors())
+                
+                    console.log("you have alredy visited  : ")
+                    console.log(alreadyvisted)
+                
+                    console.log("frontier content  : ")
+                
+                    console.log(frontier)
+                
+                
+                      if(frontier.length === 0)
+                      {
+                      console.log(alreadyvisted)
+                        alert("no path found")
+                        console.log("no path found")
+                        return { path: [], cost: Infinity }; 
+                      }
+                      else
+                      {
+                        if(agent.node.id === go.id)
+                        { 
+                          const cost = agent.currentCost
+                          while (agent.node)
+                          {
+                            // console.log(agent.node.name)
+                            path[path.length]= agent.node
+                            agent.node = GetNodeById({id:agent.node.parentid,nodes})!
+                           
+                          }
+                        
+                          console.log("it wooorks :)")
+                       
+                
+                          path.reverse()
+                
+                        
+                          return { path, cost};
+                
+                        }
+                
+                        const neighbors = agent.neighbors()
+                        const notvisited = subtractNodesArray({neighbors,alreadyvisted})
+                
+                
+                        notvisited.map((node)=>{
+                          node.parentid = agent.node.id
+                        })
+                        frontier = frontier.concat(notvisited)
+                        neighbors.map((node)=>{
+                          insertcost({graph,hmap,currentNode:node,currentCost:agent.currentCost})
+                        })
+                        
+                        alreadyvisted = alreadyvisted.concat([agent.node])
+                       // added pour eviter la boucle 
+                        frontier = frontier.concat(notvisited)
+                        // console.log('step ',x, '= ',agent.node.name
+                        frontier = agent.move({frontier});
+                
+                      }
+                      x=x+1
+                    }
+                  } 
+                };
+                `}
               </pre>
             </div>
           </div>
@@ -465,30 +538,67 @@ const Documentation: NextPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* YouTube Resource Card */}
             <a
-              href="https://www.youtube.com/watch?v=HaGj0DjX8W8&t=226s"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-2xl shadow-xl"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-red-700/20 group-hover:from-red-500/30 group-hover:to-red-700/30 transition-all duration-300"></div>
-              <div className="absolute inset-0 bg-[url('/placeholder.svg?height=400&width=600')] bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-500"></div>
-              <div className="relative z-10 p-8">
-                <div className="flex items-center mb-4">
-                  <Youtube className="text-red-500 w-8 h-8 mr-3" />
-                  <h3 className="text-xl font-bold text-white">NASAs Uncrashable Code</h3>
-                </div>
-                <p className="text-gray-300 mb-6">
-                  A deep dive into robust code techniques used by NASA for mission-critical systems. Learn how these
-                  principles can be applied to your pathfinding algorithms.
-                </p>
-                <div className="flex items-center">
-                  <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
-                  <span className="text-sm text-gray-400">Watch on YouTube</span>
-                </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black to-transparent"></div>
-            </a>
+                    href="https://www.youtube.com/watch?v=WbzNRTTrX0g&t=1908s"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+                  >
+                    <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+                      <Youtube className="text-red-400 w-8 h-8" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">CS50's Introduction to AI Search - Lecture 0 </h3>
+                      <p className="text-gray-300 mb-4">
+                        A deep dive into robust code techniques used by NASA for mission-critical systems. Learn how these principles can be applied to your pathfinding algorithms.
+                      </p>
+                      <div className="flex items-center">
+                        <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+                        <span className="text-sm text-gray-400">Watch on YouTube</span>
+                      </div>
+                    </div>
+                  </a>
+            
+                <a
+                    href="https://www.youtube.com/watch?v=GWYhtksrmhE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+                  >
+                    <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+                      <Youtube className="text-red-400 w-8 h-8" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">NASAs Uncrashable Code</h3>
+                      <p className="text-gray-300 mb-4">
+                        A deep dive into robust code techniques used by NASA for mission-critical systems. Learn how these principles can be applied to your pathfinding algorithms.
+                      </p>
+                      <div className="flex items-center">
+                        <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+                        <span className="text-sm text-gray-400">Watch on YouTube</span>
+                      </div>
+                    </div>
+                  </a>
 
+<a
+                    href="https://www.youtube.com/watch?v=HaGj0DjX8W8&t=226s"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
+                  >
+                    <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+                      <Youtube className="text-red-400 w-8 h-8" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">Calculate distance using lang and lot   </h3>
+                      <p className="text-gray-300 mb-4">
+                        A deep dive into robust code techniques used by NASA for mission-critical systems. Learn how these principles can be applied to your pathfinding algorithms.
+                      </p>
+                      <div className="flex items-center">
+                        <ExternalLink className="h-4 w-4 text-gray-400 mr-2" />
+                        <span className="text-sm text-gray-400">Watch on YouTube</span>
+                      </div>
+                    </div>
+                  </a>
             {/* Google Drive Resource Card */}
             <a
               href="https://drive.google.com/file/d/1Ua5NQmB-9rFB6Td3B9aMq0pmn05GeN23/view"
@@ -496,8 +606,8 @@ const Documentation: NextPage = () => {
               rel="noopener noreferrer"
               className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
             >
-              <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                <Folder className="text-green-400 w-6 h-6" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+                <Folder className="text-green-400 w-8 h-8" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">Supporting Materials</h3>
@@ -518,8 +628,8 @@ const Documentation: NextPage = () => {
               rel="noopener noreferrer"
               className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
             >
-              <div className="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                <MapPin className="text-yellow-400 w-6 h-6" />
+              <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+                <MapPin className="text-yellow-400 w-8 h-8" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">OpenStreetMap</h3>
@@ -539,8 +649,8 @@ const Documentation: NextPage = () => {
               href="#"
               className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-blue-500/5 transition-all flex items-start"
             >
-              <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
-                <BookOpen className="text-purple-400 w-6 h-6" />
+              <div className="w-12 h-12  rounded-lg flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+                <BookOpen className="text-purple-400 w-8 h-8" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">CS50 AI Lectures</h3>
@@ -572,14 +682,14 @@ const Documentation: NextPage = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="#"
+                href="https://github.com/Kadacheahmedrami/Ai-assignments"
                 className="px-8 py-3 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center"
               >
                 View Source Code
                 <ExternalLink className="ml-2 h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="/assignments/assignment01Tp/start"
                 className="px-8 py-3 rounded-lg bg-slate-700 text-white font-medium hover:bg-slate-600 transition-colors shadow-lg flex items-center justify-center"
               >
                 Try Demo

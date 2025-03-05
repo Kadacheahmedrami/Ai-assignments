@@ -82,7 +82,7 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
         console.log("rep " ,  x, " :")
         console.log(frontier)
         frontier = agent.move({frontier});
-        agent.node
+        console.log(agent.node.name)
         console.log("after : ")
         console.log(frontier)
       }

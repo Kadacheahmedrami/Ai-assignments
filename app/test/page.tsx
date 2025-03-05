@@ -8,7 +8,7 @@ export default function Home() {
     const edges = getEdges().edges
 
     
-    const result = aStar({graph : {nodes,edges} , start:"Oran" , goal:"Adrar"})
+    const result = aStar({graph : {nodes,edges} , start:"Relizane" , goal:"Adrar"})
     console.log(result)
   return (
 

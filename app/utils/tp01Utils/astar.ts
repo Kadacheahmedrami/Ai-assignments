@@ -34,6 +34,7 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
     // i learned this from this video that talk how nasa write uncrashable code
     while(true && x< 10000)
     {
+
       if(frontier.length === 0)
       {
         alert("no path found")
@@ -77,8 +78,12 @@ export const aStar = ({graph , start , goal }:aStarProps) => {
        // added pour eviter la boucle 
         frontier = subtractNodesArray({neighbors: frontier,alreadyvisted})
         // console.log('step ',x, '= ',agent.node.name
-        frontier = agent.move({frontier});
 
+        console.log("rep " ,  x, " :")
+        console.log(frontier)
+        frontier = agent.move({frontier});
+        console.log("after : ")
+        console.log(frontier)
       }
       x=x+1
     }

@@ -97,9 +97,6 @@ export default function MazeRenderer({ grid, cellSize = 1 }: MazeProps) {
         />
       </Canvas>
 
-      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 text-white text-xl font-bold">
-        3D Maze Visualization
-      </div>
 
       {showInstructions && (
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm bg-black/50 p-2 rounded-lg animate-pulse">

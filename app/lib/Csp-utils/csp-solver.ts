@@ -10,7 +10,7 @@ const SLOTS_PER_DAY: SlotsPerDay = {
   Wednesday: 5,
   Thursday: 5,
 }
-const MAX_SUCCESSIVE = 3
+
 
 // Courses and teachers
 const courses: CourseTeachers = {

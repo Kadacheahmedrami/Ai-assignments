@@ -5,17 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-// Course color mapping
-const COURSE_COLORS: Record<string, string> = {
-  Sécurité: "bg-red-400",
-  MéthodesFormelles: "bg-blue-400",
-  AnalyseNum: "bg-green-400",
-  Entrepreneuriat: "bg-yellow-400",
-  RO2: "bg-purple-400",
-  DAIC: "bg-pink-400",
-  Réseaux2: "bg-cyan-400",
-  IA: "bg-orange-400",
-}
+
 
 // Update the getCourseColor function to ensure it returns valid Tailwind classes
 export function getCourseColor(courseBase: string): string {

@@ -176,7 +176,7 @@ const MapComponent: React.FC<MapProps> = ({ nodes, edges, path }) => {
     return () => {
       map.remove();
     };
-  }, []); // Runs only once on mount
+  }, [edges, nodes]); // Runs only once on mount
 
   // --- Update only the A* path when `path` changes ---
   useEffect(() => {

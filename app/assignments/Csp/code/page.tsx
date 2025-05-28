@@ -1,5 +1,5 @@
 import React from "react"
-import { Code, GitBranch, Calendar, Clock, Users, Settings, Database, ArrowRight, CheckCircle, AlertTriangle, Cpu, Play } from "lucide-react"
+import { Code, GitBranch, Clock, Settings, Database, ArrowRight, CheckCircle, AlertTriangle, Cpu, Play } from "lucide-react"
 
 const CSPCodeDocumentation = () => {
   return (
@@ -345,7 +345,7 @@ const CSPCodeDocumentation = () => {
                     </div>
                     <div className="flex items-center text-yellow-300">
                       <ArrowRight className="h-4 w-4 mr-2" />
-                      Try each value in the variable's domain
+                      Try each value in the variables domain
                     </div>
                     <div className="flex items-center text-purple-300">
                       <ArrowRight className="h-4 w-4 mr-2" />

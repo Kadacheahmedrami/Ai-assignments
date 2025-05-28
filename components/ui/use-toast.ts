@@ -1,3 +1,4 @@
+/* eslint-disable */
 "use client"
 
 // Inspired by react-hot-toast library

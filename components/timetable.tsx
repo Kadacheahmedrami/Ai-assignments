@@ -37,7 +37,7 @@ export function Timetable({ solution }: TimetableProps) {
                 const course = Object.entries(solution).find(
                   ([_, [courseDay, courseSlot]]) => courseDay === day && courseSlot === slotIndex,
                 )?.[0]
-
+            
                 if (!course) {
                   return (
                     <div

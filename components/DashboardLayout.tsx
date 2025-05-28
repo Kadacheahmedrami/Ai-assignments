@@ -140,13 +140,13 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
       <aside
         className={`
           fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 
-          transition-transform duration-300 ease-in-out transform shadow-xl
+          transition-transform duration-300 ease-in-out transform shadow-xl flex flex-col
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
           lg:relative lg:translate-x-0 lg:shadow-none
         `}
       >
         {/* Header */}
-        <div className="flex items-center justify-between h-16 px-4 bg-gray-900 border-b border-gray-700">
+        <div className="flex items-center justify-between h-16 px-4 bg-gray-900 border-b border-gray-700 flex-shrink-0">
           <Link href="/" className="flex items-center text-white hover:text-blue-300 transition-colors">
             <ArrowLeft className="mr-2 h-5 w-5" />
             <span className="text-lg font-semibold">Home</span>
@@ -160,15 +160,15 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ child
           </button>
         </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 px-3 py-4 space-y-2 overflow-y-auto">
+        {/* Navigation - Scrollable Area */}
+        <nav className="flex-1 px-3 py-4 space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
           {navItems.map((item) => (
             <NavItemComponent key={item.href} item={item} isOpen={true} />
           ))}
         </nav>
 
         {/* Footer */}
-        <div className="p-4 border-t border-gray-700">
+        <div className="p-4 border-t border-gray-700 flex-shrink-0">
           <div className="text-xs text-gray-500 text-center">
             Dashboard v1.0
           </div>

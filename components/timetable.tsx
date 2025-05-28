@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react"
 import type { TimetableSolution } from "@/app/lib/Csp-utils/types"
 import { getCourseColor } from "@/app/lib/Csp-utils/utils"

@@ -1,6 +1,5 @@
+"use client";
 import React from 'react';
-import { getEdges, getNodes } from "@/app/utils/3d-maze-utils/getData";
-import { Node, Edge } from '@/app/types/graph';
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -11,7 +10,7 @@ import { RefreshCw } from "lucide-react"
 export const dynamic = "force-dynamic";
 
 export default function MainPage() {
-  
+
   const [solution, setSolution] = useState<TimetableSolution | null>(null)
   const [loading, setLoading] = useState(false)
 

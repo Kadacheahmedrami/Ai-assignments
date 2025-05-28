@@ -72,6 +72,7 @@ const navItems: NavItem[] = [
       { title: "Contact", href: "/assignments/connect4/contact", icon: User },
     ],
   },
+
   {
     title: "numbergame",
     href: "/assignments/numbergame",
@@ -83,6 +84,17 @@ const navItems: NavItem[] = [
       { title: "Contact", href: "/assignments/numbergame/contact", icon: User },
     ],
   },
+  {
+    title: "logic-aima3",
+    href: "/assignments/logic-aima3",
+    icon: FileText,
+    subItems: [
+      { title: "Documentation", href: "/assignments/logic-aima3/documentation", icon: BookOpen },
+      { title: "Start", href: "/assignments/logic-aima3/start", icon: PlayCircle },
+      { title: "Code", href: "/assignments/logic-aima3/code", icon: Code },
+      { title: "Contact", href: "/assignments/logic-aima3/contact", icon: User },
+    ],
+  }
 ]
 
 const NavItemComponent: React.FC<{ item: NavItem; isOpen: boolean }> = ({ item, isOpen }) => {

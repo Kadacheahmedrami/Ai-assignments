@@ -48,6 +48,7 @@ const navItems: NavItem[] = [
       { title: "Contact", href: "/assignments/3d-maze/contact", icon: User },
     ],
   },
+  
   {
     title: "Csp",
     href: "/assignments/Csp",
@@ -57,6 +58,18 @@ const navItems: NavItem[] = [
       { title: "Start", href: "/assignments/Csp/start", icon: PlayCircle },
       { title: "Code", href: "/assignments/Csp/code", icon: Code },
       { title: "Contact", href: "/assignments/Csp/contact", icon: User },
+    ],
+  },
+  
+  {
+    title: "connect4",
+    href: "/assignments/connect4",
+    icon: FileText,
+    subItems: [
+      { title: "Documentation", href: "/assignments/connect4/documentation", icon: BookOpen },
+      { title: "Start", href: "/assignments/connect4/start", icon: PlayCircle },
+      { title: "Code", href: "/assignments/connect4/code", icon: Code },
+      { title: "Contact", href: "/assignments/connect4/contact", icon: User },
     ],
   },
 ]

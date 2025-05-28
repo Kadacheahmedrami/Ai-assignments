@@ -9,7 +9,7 @@ const Assignments: NextPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Assignment 1: A* Shortest Path */}
           <a
-            href="/assignments/assignment01Tp/start" // update with your route or external link
+            href="/assignments/Astar-map/start" // update with your route or external link
             className="group relative overflow-hidden rounded-2xl bg-slate-800/50 backdrop-blur-sm p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:border-blue-500/50 transition-all duration-300"
           >
             <div className="relative z-10">
@@ -30,7 +30,7 @@ const Assignments: NextPage = () => {
 
           {/* Assignment 2: 3D Maze with Search Algorithms */}
           <a
-            href="/assignments/assignment01Td/start" // update with your route or external link
+            href="/assignments/3d-maze/start" // update with your route or external link
             className="group relative overflow-hidden rounded-2xl bg-slate-800/50 backdrop-blur-sm p-8 border border-slate-700 shadow-xl hover:shadow-2xl hover:border-blue-500/50 transition-all duration-300"
           >
             <div className="relative z-10">

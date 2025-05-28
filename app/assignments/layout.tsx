@@ -8,12 +8,12 @@ export default function RootLayout({
 }>) {
   return (
     <DashboardLayout> 
-              <div className=" h-full w-full">
+         
             
          
               {children}
   
-            </div>
+      
     </DashboardLayout>
 
   );

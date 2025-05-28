@@ -14,7 +14,7 @@ import {
   calculateUniformCostExpansionPath,
   calculateAStarExpansionPath,
   calculateGreedySearchExpansionPath, // Added Greedy search import
-} from "@/app/utils/td01Utils/search"
+} from "@/app/utils/astar-map-utils/search"
 
 interface MazeNode {
   x: number

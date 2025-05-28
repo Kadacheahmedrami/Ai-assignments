@@ -64,7 +64,7 @@ export default function Home() {
 
 
   return (
-    <div className="w-full lg:w-[86.1%] h-[92.1%] overflow-hidden absolute bg-black">
+    <div className="w-full lg:w-[87%] h-[93%] overflow-hidden absolute bg-black">
       {/* Overlaid controls (positioned as desired) */}
       <div className="absolute top-4 left-4 z-10 flex space-x-4">
         <button

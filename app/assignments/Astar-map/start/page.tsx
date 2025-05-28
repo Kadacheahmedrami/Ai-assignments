@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import RouteFinderContainer from '@/components/tp-comps/RouteFinderContainer';
-import { getEdges, getNodes } from "@/app/utils/tp01Utils/getData";
+import { getEdges, getNodes } from "@/app/utils/3d-maze-utils/getData";
 import { Node, Edge } from '@/app/types/graph';
 
 export const dynamic = "force-dynamic";
@@ -14,7 +14,7 @@ export default function MainPage() {
 
   return (
     <>
-      <div className="w-full lg:w-[86.1%] h-[92.1%] overflow-hidden absolute bg-black">
+      <div className="w-full h-full overflow-hidden absolute bg-black">
         <Image 
           src="/wall.jpg" 
           alt="Background" 

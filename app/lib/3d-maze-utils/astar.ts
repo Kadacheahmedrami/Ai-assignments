@@ -1,7 +1,7 @@
 
 import {Graph,Node} from '@/app/types/graph'
-import {Agent} from '@/app/utils/3d-maze-utils/class'
-import {GetNodeByName,GetNodeById,heuristicMap,subtractNodesArray, insertcost} from "@/app/utils/3d-maze-utils/tools"
+import {Agent} from '@/app/lib/3d-maze-utils/class'
+import {GetNodeByName,GetNodeById,heuristicMap,subtractNodesArray, insertcost} from "@/app/lib/3d-maze-utils/tools"
 
 
 export interface aStarProps{

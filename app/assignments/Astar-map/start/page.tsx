@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import RouteFinderContainer from '@/components/tp-comps/RouteFinderContainer';
-import { getEdges, getNodes } from "@/app/utils/3d-maze-utils/getData";
+import { getEdges, getNodes } from "@/app/lib/3d-maze-utils/getData";
 import { Node, Edge } from '@/app/types/graph';
 
 export const dynamic = "force-dynamic";

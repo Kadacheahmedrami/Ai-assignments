@@ -1,6 +1,6 @@
 import {Node,Graph} from '@/app/types/graph'
-import {neighbors } from '@/app/utils/3d-maze-utils/tools'
-import {neighborsProps,moveProps} from '@/app/utils/3d-maze-utils/interfaces'
+import {neighbors } from '@/app/lib/3d-maze-utils/tools'
+import {neighborsProps,moveProps} from '@/app/lib/3d-maze-utils/interfaces'
 
 
 export class Agent {

@@ -1,6 +1,6 @@
 
-import {aStar} from "@/app/utils/3d-maze-utils/astar"
-import {getEdges,getNodes} from "@/app/utils/3d-maze-utils/getData"
+import {aStar} from "@/app/lib/3d-maze-utils/astar"
+import {getEdges,getNodes} from "@/app/lib/3d-maze-utils/getData"
 
 
 

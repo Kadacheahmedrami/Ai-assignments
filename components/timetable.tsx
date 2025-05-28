@@ -1,6 +1,6 @@
 import React from "react"
-import type { TimetableSolution } from "@/app/utils/Csp-utils/types"
-import { getCourseColor } from "@/app/utils/Csp-utils/utils"
+import type { TimetableSolution } from "@/app/lib/Csp-utils/types"
+import { getCourseColor } from "@/app/lib/Csp-utils/utils"
 import { CourseCell } from "./course-cell"
 
 interface TimetableProps {

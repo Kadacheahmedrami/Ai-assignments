@@ -4,8 +4,8 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Timetable } from "@/components/timetable"
-import { solveTimetable } from "@/app/utils/Csp-utils/csp-solver"
-import type { TimetableSolution } from "@/app/utils/Csp-utils/types"
+import { solveTimetable } from "@/app/lib/Csp-utils/csp-solver"
+import type { TimetableSolution } from "@/app/lib/Csp-utils/types"
 import { RefreshCw } from "lucide-react"
 export const dynamic = "force-dynamic";
 

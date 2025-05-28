@@ -50,6 +50,7 @@
     "expo-asset": "latest",
     "expo-file-system": "latest",
     "expo-gl": "latest",
+    "framer-motion": "^12.15.0",
     "geolib": "^3.3.4",
     "input-otp": "1.4.1",
     "lucide-react": "^0.477.0",

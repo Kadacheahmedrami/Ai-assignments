@@ -72,6 +72,17 @@ const navItems: NavItem[] = [
       { title: "Contact", href: "/assignments/connect4/contact", icon: User },
     ],
   },
+  {
+    title: "numbergame",
+    href: "/assignments/numbergame",
+    icon: FileText,
+    subItems: [
+      { title: "Documentation", href: "/assignments/numbergame/documentation", icon: BookOpen },
+      { title: "Start", href: "/assignments/numbergame/start", icon: PlayCircle },
+      { title: "Code", href: "/assignments/numbergame/code", icon: Code },
+      { title: "Contact", href: "/assignments/numbergame/contact", icon: User },
+    ],
+  },
 ]
 
 const NavItemComponent: React.FC<{ item: NavItem; isOpen: boolean }> = ({ item, isOpen }) => {

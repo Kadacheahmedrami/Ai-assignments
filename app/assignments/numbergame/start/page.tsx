@@ -1,73 +1,46 @@
-"use client";
-import React from 'react';
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Timetable } from "@/components/timetable"
-import { solveTimetable } from "@/app/lib/Csp-utils/csp-solver"
-import type { TimetableSolution } from "@/app/lib/Csp-utils/types"
-import { RefreshCw } from "lucide-react"
-export const dynamic = "force-dynamic";
+import { GameVisualizer } from "@/components/game-visualizer"
+import { GameExplainer } from "@/components/game-explainer"
+import { GamePlayer } from "@/components/game-player"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-export default function MainPage() {
-
-  const [solution, setSolution] = useState<TimetableSolution | null>(null)
-  const [loading, setLoading] = useState(false)
-
-  const generateTimetable = () => {
-    setLoading(true)
-    // Use setTimeout to prevent UI freeze during calculation
-    setTimeout(() => {
-      const result = solveTimetable()
-      setSolution(result)
-      setLoading(false)
-    }, 100)
-  }
-
-  useEffect(() => {
-    generateTimetable()
-  }, [])
-
-
-
+export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-4 md:p-8 bg-gray-950 text-gray-100">
-    <Card className="w-full max-w-6xl bg-gray-900 border-gray-800">
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
-            Semester 2 Timetable Scheduler
-          </h1>
-          <Button
-            onClick={generateTimetable}
-            className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
-            disabled={loading}
-          >
-            <RefreshCw className={`mr-2 h-4 w-4 ${loading ? "animate-spin" : ""}`} />
-            {loading ? "Generating..." : "Generate New Timetable"}
-          </Button>
+    <ThemeProvider defaultTheme="blue" storageKey="number-game-theme">
+      <main className="h-full bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+        <div className="container mx-auto px-4 py-4">
+          <Tabs defaultValue="play" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-6 bg-gray-800/50">
+              <TabsTrigger value="play" className="text-base">
+                Play Game
+              </TabsTrigger>
+              <TabsTrigger value="visualize" className="text-base">
+                Visualize Algorithm
+              </TabsTrigger>
+              <TabsTrigger value="learn" className="text-base">
+                Learn Rules
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="play" className="mt-0">
+              <GamePlayer />
+            </TabsContent>
+            <TabsContent value="visualize" className="mt-0">
+              <GameVisualizer />
+            </TabsContent>
+            <TabsContent value="learn" className="mt-0">
+              <GameExplainer expanded={true} />
+            </TabsContent>
+          </Tabs>
         </div>
-
-        {solution ? (
-          <Timetable solution={solution} />
-        ) : (
-          <div className="flex justify-center items-center h-64">
-            <p className="text-gray-400">
-              {loading ? "Generating timetable..." : "No valid timetable found. Try again."}
+        <footer className="w-full mt-auto bg-blue-900/80 border-t border-blue-800 py-3 text-center text-blue-100">
+          <div className="container mx-auto px-4">
+            <p className="text-sm">
+              Developed by <span className="font-bold">Kadache Ahmed Rami</span> | Group 4
             </p>
+            <p className="text-xs text-blue-300 mt-1">Assignment for AI Course | ESTIN School</p>
           </div>
-        )}
-
-        <div className="mt-6 text-sm text-gray-400">
-          <p>This timetable is generated using a Constraint Satisfaction Problem (CSP) solver with:</p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>No overlapping classes in the same time slot</li>
-            <li>Maximum of 3 successive classes per day</li>
-            <li>Minimum Remaining Values (MRV) and Least Constraining Value (LCV) heuristics</li>
-          </ul>
-        </div>
-      </div>
-    </Card>
-  </main>
-  );
+        </footer>
+      </main>
+    </ThemeProvider>
+  )
 }

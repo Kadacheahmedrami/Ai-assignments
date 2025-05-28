@@ -14,7 +14,8 @@ export default function ConnectFourGame() {
   const [game] = useState(() => new ConnectFour())
   const [gameState, setGameState] = useState(game.getGameStatus())
   const [hoveredColumn, setHoveredColumn] = useState<number | null>(null)
-  const [cameraPosition, setCameraPosition] = useState([0, 5, 10])
+  const [cameraPosition, setCameraPosition] = useState<[number, number, number]>([0, 5, 10])
+
 
   // Handle player move
   const handleColumnClick = async (col: number) => {

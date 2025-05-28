@@ -4,7 +4,8 @@ import { useState } from "react"
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls, Text, Environment } from "@react-three/drei"
 import { Button } from "@/components/ui/button"
-import ConnectFour from "@/lib/connect-four"
+import ConnectFour from "@/app/lib/connect4-utils/connect-four"
+
 import GameBoard from "@/components/game-board"
 import GamePiece from "@/components/game-piece"
 import ColumnHighlight from "@/components/column-highlight"
@@ -71,7 +72,7 @@ export default function ConnectFourGame() {
   }
 
   return (
-    <div className="relative w-full h-screen bg-gradient-to-b from-indigo-900 to-purple-900">
+    <div className="relative w-full h-full bg-gradient-to-b from-indigo-900 to-purple-900">
       <Canvas camera={{ position: cameraPosition, fov: 50 }} dpr={[1, 2]} performance={{ min: 0.5 }}>
         <color attach="background" args={["#1e1b4b"]} />
 

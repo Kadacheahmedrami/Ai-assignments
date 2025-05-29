@@ -91,7 +91,7 @@ const navItems: NavItem[] = [
     subItems: [
       { title: "Documentation", href: "/assignments/logic-aima3/documentation", icon: BookOpen },
       { title: "Start", href: "/assignments/logic-aima3/start", icon: PlayCircle },
-      { title: "Code", href: "/assignments/logic-aima3/code", icon: Code },
+
       { title: "Contact", href: "/assignments/logic-aima3/contact", icon: User },
     ],
   }

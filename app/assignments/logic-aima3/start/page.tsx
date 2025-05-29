@@ -4,6 +4,7 @@ import { Play, Terminal, Code2, Copy, Download, Settings, Maximize2 } from 'luci
 
 const AIMA3Compiler = () => {
   const [code, setCode] = useState(`# Test AIMA3 medical diagnosis system
+
 try:
     from aima3.logic import *
     
@@ -11,28 +12,63 @@ try:
     
     # Create our medical knowledge base
     medical_kb = FolKB()
-
     # Adding patient data
     medical_kb.tell(expr("Fever(Ahmad)"))
     medical_kb.tell(expr("Cough(Ahmad)"))
     medical_kb.tell(expr("SoreThroat(Ahmad)"))
-
     medical_kb.tell(expr("Fatigue(Fatima)"))
     medical_kb.tell(expr("Rash(Fatima)"))
     medical_kb.tell(expr("JointPain(Fatima)"))
-
     medical_kb.tell(expr("ShortnessOfBreath(Leila)"))
     medical_kb.tell(expr("ChestPain(Leila)"))
     medical_kb.tell(expr("Cough(Leila)"))
-
+    
+    # Omar came in with bad headache
+    medical_kb.tell(expr("Headache(Omar)"))
+    medical_kb.tell(expr("Fever(Omar)"))
+    medical_kb.tell(expr("Fatigue(Omar)"))
+    
+    # Youssef has stomach issues
+    medical_kb.tell(expr("Nausea(Youssef)"))
+    medical_kb.tell(expr("Vomiting(Youssef)"))
+    medical_kb.tell(expr("AbdominalPain(Youssef)"))
+    
     # Diagnostic rules
     medical_kb.tell(expr("Fever(x) & Cough(x) & SoreThroat(x) ==> HasStrepThroat(x)"))
     medical_kb.tell(expr("ShortnessOfBreath(x) & ChestPain(x) ==> HasPneumonia(x)"))
     medical_kb.tell(expr("Rash(x) & JointPain(x) ==> HasLymeDisease(x)"))
-
+    
+    # Additional diagnostic rules
+    medical_kb.tell(expr("Fever(x) & Cough(x) ==> HasFlu(x)"))
+    medical_kb.tell(expr("Nausea(x) & Vomiting(x) ==> HasGastroenteritis(x)"))
+    medical_kb.tell(expr("Headache(x) & Fever(x) ==> HasMeningitis(x)"))
+    medical_kb.tell(expr("Fatigue(x) & Fever(x) ==> HasMononucleosis(x)"))
+    medical_kb.tell(expr("Cough(x) & ShortnessOfBreath(x) ==> HasBronchitis(x)"))
+    
     print("Knowledge base populated!")
     
-    # Test diagnoses
+    # Test diagnoses - using forward chaining to find all possible diagnoses
+    print("Possible diagnoses based on symptoms:")
+    
+    # All the conditions we can diagnose
+    possible_conditions = [
+        "HasFlu", "HasStrepThroat", "HasPneumonia", "HasLymeDisease",
+        "HasGastroenteritis", "HasMeningitis", "HasMononucleosis", "HasBronchitis"
+    ]
+    
+    # Check each condition using forward chaining
+    for condition in possible_conditions:
+        query = expr(f"{condition}(x)")
+        matches = fol_fc_ask(medical_kb, query)
+        
+        for match in matches:
+            if 'x' in match:
+                patient_name = match['x']
+                # Strip the "Has" prefix for readability
+                condition_name = condition[3:] 
+                print(f"{patient_name} likely has {condition_name}")
+    
+    # Test specific diagnoses using backward chaining
     ahmad_strep = list(fol_bc_ask(medical_kb, expr("HasStrepThroat(Ahmad)")))
     if ahmad_strep:
         print("Ahmad likely has StrepThroat")
@@ -44,7 +80,7 @@ try:
     fatima_lyme = list(fol_bc_ask(medical_kb, expr("HasLymeDisease(Fatima)")))
     if fatima_lyme:
         print("Fatima likely has LymeDisease")
-
+    
     print("AIMA3 medical diagnosis completed!")
     
 except Exception as e:
@@ -55,20 +91,28 @@ except Exception as e:
     patients = {
         "Ahmad": ["Fever", "Cough", "SoreThroat"],
         "Fatima": ["Fatigue", "Rash", "JointPain"], 
-        "Leila": ["ShortnessOfBreath", "ChestPain", "Cough"]
+        "Leila": ["ShortnessOfBreath", "ChestPain", "Cough"],
+        "Omar": ["Headache", "Fever", "Fatigue"],
+        "Youssef": ["Nausea", "Vomiting", "AbdominalPain"]
     }
     
     rules = {
+        "Flu": ["Fever", "Cough"],
         "StrepThroat": ["Fever", "Cough", "SoreThroat"],
         "Pneumonia": ["ShortnessOfBreath", "ChestPain"],
-        "LymeDisease": ["Rash", "JointPain"]
+        "LymeDisease": ["Rash", "JointPain"],
+        "Gastroenteritis": ["Nausea", "Vomiting"],
+        "Meningitis": ["Headache", "Fever"],
+        "Mononucleosis": ["Fatigue", "Fever"],
+        "Bronchitis": ["Cough", "ShortnessOfBreath"]
     }
     
+    print("Possible diagnoses based on symptoms:")
     for patient, symptoms in patients.items():
         print(f"{patient}: {', '.join(symptoms)}")
         for disease, required in rules.items():
             if all(s in symptoms for s in required):
-                print(f"  -> {disease}")
+                print(f"  -> {patient} likely has {disease}")
 `);
   const [output, setOutput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
